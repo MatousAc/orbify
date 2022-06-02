@@ -1,0 +1,411 @@
+[
+    {
+       "displayName": "Section",
+       "Label": "Section",
+       "icon": "<i class=\"material-icons\">crop_square</i>",
+       "showAsCollapsible": true,
+       "showSectionOutline": true,
+       "contents": [
+          {
+             "displayName": "Container",
+             "icon": "<i class=\"material-icons\">crop_square</i>",
+             "columns": [
+                {
+                   "items": [
+                      {
+                         "displayName": "Image",
+                         "QuestionType": "Image",
+                         "Label": "Image",
+                         "type": "FormTool_Type",
+                         "flex": 100,
+                         "ClientID": 1623344869770,
+                         "id": "tmp-8125344345617",
+                         "class": "",
+                         "show": true,
+                         "properties": {
+                            "height": 100,
+                            "width": 100,
+                            "url": "/rest-service/files/stream/?owner_sid=9a88b5bc-8abf-4747-bce7-155f322cd920&owner_type=form&object_sid=64099bff-d356-48e1-b434-f0b52717d7aa&object_type=attachment",
+                            "imageFile": {
+                               "text": "FTD logo Full Color.jpg",
+                               "file_key": "64099bff-d356-48e1-b434-f0b52717d7aa",
+                               "file_id": "64099bff-d356-48e1-b434-f0b52717d7aa",
+                               "object_sid": "64099bff-d356-48e1-b434-f0b52717d7aa",
+                               "object_type": "attachment",
+                               "owner_type": "form",
+                               "owner_sid": "9a88b5bc-8abf-4747-bce7-155f322cd920",
+                               "url": "/rest-service/files/stream/?owner_sid=9a88b5bc-8abf-4747-bce7-155f322cd920&owner_type=form&object_sid=64099bff-d356-48e1-b434-f0b52717d7aa&object_type=attachment"
+                            },
+                            "alt": ""
+                         },
+                         "new": true,
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "showEditPanel": false,
+                         "stopBlurSave": false,
+                         "validation": {}
+                      }
+                   ]
+                }
+             ],
+             "readonly": false,
+             "open": true,
+             "show": true,
+             "type": "Container_Type",
+             "id": "tmp-9356384634970c",
+             "ClientID": "1623344864995c",
+             "showEditPanel": false
+          }
+       ],
+       "readonly": false,
+       "type": "Section_Type",
+       "ClientID": "1623344864995s",
+       "id": "tmp-3215119364072s",
+       "class": "",
+       "expandOnLoad": true,
+       "open": true,
+       "show": true,
+       "ui": {
+          "backgroundColor": "#757575",
+          "textColor": "#000"
+       },
+       "showEditPanel": false
+    },
+    {
+       "displayName": "Section",
+       "Label": "Section",
+       "icon": "<i class=\"material-icons\">crop_square</i>",
+       "showAsCollapsible": true,
+       "showSectionOutline": true,
+       "contents": [
+          {
+             "displayName": "Container",
+             "icon": "<i class=\"material-icons\">crop_square</i>",
+             "columns": [
+                {
+                   "items": [
+                      {
+                         "displayName": "Short Text",
+                         "QuestionType": "ShortText",
+                         "Label": "Employee First Name",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1601936909663,
+                         "class": "",
+                         "show": true,
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1601936909663,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "showEditPanel": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      },
+                      {
+                         "displayName": "Short Text",
+                         "QuestionType": "ShortText",
+                         "Label": "Employee Last Name",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1601936916796,
+                         "class": "",
+                         "show": true,
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1601936916796,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      },
+                      {
+                         "displayName": "Radio Buttons",
+                         "QuestionType": "DbRadioButton",
+                         "Label": "New Employee?",
+                         "Choices": [
+                            {
+                               "Label": "Yes",
+                               "Value": "Yes"
+                            },
+                            {
+                               "Label": "No",
+                               "Value": "No"
+                            }
+                         ],
+                         "columnOrRow": "row",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1601936922698,
+                         "class": "",
+                         "show": true,
+                         "dbSettings": {
+                            "useDB": false
+                         },
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1601936922698,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      },
+                      {
+                         "displayName": "Email",
+                         "QuestionType": "EmailAddress",
+                         "Label": "Employee Email Address",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1602010611835,
+                         "class": "",
+                         "show": true,
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1602010611835,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      },
+                      {
+                         "displayName": "Short Text",
+                         "QuestionType": "ShortText",
+                         "Label": "Employee Cell Phone Number",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1602185902959,
+                         "class": "",
+                         "show": true,
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1602185902959,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      },
+                      {
+                         "displayName": "Short Text",
+                         "QuestionType": "ShortText",
+                         "Label": "Shipping Address",
+                         "type": "Question_Type",
+                         "flex": 100,
+                         "ClientID": 1601936971319,
+                         "class": "",
+                         "show": true,
+                         "validation": {
+                            "required": true,
+                            "requiredMessage": "This field is required",
+                            "min": null,
+                            "minMessage": "This field is too short",
+                            "max": null,
+                            "maxMessage": "This field is too long",
+                            "regEx": null,
+                            "regExMessage": "This field is not valid"
+                         },
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "new": false,
+                         "id": 1601936971319,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "islive": false,
+                         "stopBlurSave": false,
+                         "Answer": null,
+                         "originalAnswer": null
+                      }
+                   ]
+                }
+             ],
+             "readonly": false,
+             "open": true,
+             "show": true,
+             "type": "Container_Type",
+             "id": "1601936900520c",
+             "ClientID": "1601936900520c",
+             "showEditPanel": false
+          }
+       ],
+       "readonly": false,
+       "type": "Section_Type",
+       "ClientID": "1601936900520s",
+       "id": "1601936900520s",
+       "class": "",
+       "expandOnLoad": true,
+       "open": true,
+       "show": true,
+       "ui": {
+          "backgroundColor": "#757575",
+          "textColor": "#000"
+       },
+       "showEditPanel": false
+    },
+    {
+       "displayName": "Section",
+       "Label": "Start Date",
+       "showAsCollapsible": true,
+       "showSectionOutline": true,
+       "contents": [
+          {
+             "displayName": "Container",
+             "icon": "<i class=\"material-icons\">crop_square</i>",
+             "columns": [
+                {
+                   "items": [
+                      {
+                         "displayName": "Calendar",
+                         "QuestionType": "Calendar",
+                         "Label": "Employee Start Date:",
+                         "type": "Question_Type",
+                         "ClientID": 1643394208343,
+                         "class": "",
+                         "show": true,
+                         "events": {
+                            "onChange": null,
+                            "onBlur": null,
+                            "onFocus": null
+                         },
+                         "validation": {
+                            "futureDatesOnly": false,
+                            "required": false,
+                            "requiredMessage": "This field is required",
+                            "minDate": null,
+                            "maxDate": null,
+                            "mdDateFilter": null
+                         },
+                         "Answer": null,
+                         "new": false,
+                         "id": 1643394208343,
+                         "showEditPanel": false,
+                         "loaded": true,
+                         "isdirty": false,
+                         "originalAnswer": null,
+                         "islive": false,
+                         "debugMode": false,
+                         "todaysDate": "06/02/2022",
+                         "dateFormat": "L"
+                      }
+                   ]
+                }
+             ],
+             "readonly": false,
+             "open": true,
+             "show": true,
+             "type": "Container_Type",
+             "id": "1643394176917c",
+             "ClientID": "1643394176917c",
+             "new": true,
+             "showEditPanel": false
+          }
+       ],
+       "readonly": false,
+       "type": "Section_Type",
+       "ClientID": "1643394176917s",
+       "id": "1643394176917s",
+       "class": "",
+       "expandOnLoad": true,
+       "open": true,
+       "show": false,
+       "ui": {
+          "backgroundColor": "#757575",
+          "textColor": "#000"
+       },
+       "new": true,
+       "showEditPanel": false,
+       "displayLabel": "Start Date"
+    }
+ ]
