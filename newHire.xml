@@ -12,46 +12,93 @@
          xmlns:saxon="http://saxon.sf.net/"
          xmlns:sql="http://orbeon.org/oxf/xml/sql"
          xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-         xmlns:fb="http://orbeon.org/oxf/xml/form-builder">
+         xmlns:fb="http://orbeon.org/oxf/xml/form-builder"
+         fr:data-format-version="4.0.0">
     <xh:head>
         <xh:title>New Hire Request</xh:title>
         <xf:model id="fr-form-model" xxf:expose-xpath-types="true" xxf:analysis.calculate="true">
 
-            <!-- Main instance -->
+            
             <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
                 <form>
-                    <section-1>
+                    <applicant_information>
                         <grid-1>
-                            <control-1/>
-                            <control-2/>
-                            <control-3/>
-                            <control-4 filename="" mediatype="" size=""/>
-                            <control-5/>
-                            <control-6 filename="" mediatype="" size=""/>
-                            <control-7/>
+                            <date/>
+                            <job_title/>
+                            <applicant_name/>
+                            <applicant_acceptance_letter filename="" mediatype="" size=""/>
+                            <applicant_address/>
+                            <applicnt_resume filename="" mediatype="" size=""/>
+                            <is_certifications_needed/>
                         </grid-1>
                         
-                    </section-1>
+                    </applicant_information>
+                    <cert_section>
+                        <grid-2>
+                            <certifications/>
+                        </grid-2>
+                    </cert_section>
+                    <section-3>
+                        <grid-3>
+                            <start_date/>
+                            <full_or_part_time/>
+                            <benefits_qualified_for>retirement-savings-plan life-insurance pto flex-time education-reimbursement</benefits_qualified_for>
+                            
+                            <review_date/>
+                            <is_replacement/>
+                            <salary_or_hourly_rate/>
+                        </grid-3>
+                    </section-3>
                 </form>
             </xf:instance>
 
-            <!-- Bindings -->
+            
             <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
-                <xf:bind id="section-1-bind" name="section-1" ref="section-1">
+                <xf:bind id="applicant_information-bind" name="applicant_information"
+                         ref="applicant_information">
                     <xf:bind id="grid-1-bind" ref="grid-1" name="grid-1">
-                        <xf:bind id="control-1-bind" ref="control-1" name="control-1" type="xf:date"/>
-                        <xf:bind id="control-2-bind" ref="control-2" name="control-2" xxf:whitespace="trim"/>
-                        <xf:bind id="control-3-bind" ref="control-3" name="control-3" xxf:whitespace="trim"/>
-                        <xf:bind id="control-4-bind" ref="control-4" name="control-4" type="xf:anyURI"/>
-                        <xf:bind id="control-5-bind" ref="control-5" name="control-5" xxf:whitespace="trim"/>
-                        <xf:bind id="control-6-bind" ref="control-6" name="control-6" type="xf:anyURI"/>
-                        <xf:bind id="control-7-bind" ref="control-7" name="control-7" type="xf:boolean"/>
+                        <xf:bind id="date-bind" ref="date" name="date" type="xf:date"/>
+                        <xf:bind id="job_title-bind" ref="job_title" name="job_title" xxf:whitespace="trim"/>
+                        <xf:bind id="applicant_name-bind" ref="applicant_name" name="applicant_name"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="applicant_acceptance_letter-bind" ref="applicant_acceptance_letter"
+                                 name="applicant_acceptance_letter"
+                                 type="xf:anyURI"/>
+                        <xf:bind id="applicant_address-bind" ref="applicant_address" name="applicant_address"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="applicnt_resume-bind" ref="applicnt_resume" name="applicnt_resume"
+                                 type="xf:anyURI"/>
+                        <xf:bind id="is_certifications_needed-bind" ref="is_certifications_needed"
+                                 name="is_certifications_needed"
+                                 type="xf:boolean"/>
                     </xf:bind>
                     
                 </xf:bind>
+                <xf:bind id="cert_section-bind" ref="cert_section" name="cert_section">
+                    <xf:bind id="grid-2-bind" ref="grid-2" name="grid-2">
+                        <xf:bind id="certifications-bind" ref="certifications" name="certifications"
+                                 xxf:whitespace="trim"/>
+                    </xf:bind>
+                </xf:bind>
+                <xf:bind id="section-3-bind" ref="section-3" name="section-3">
+                    <xf:bind id="grid-3-bind" ref="grid-3" name="grid-3">
+                        <xf:bind id="start_date-bind" ref="start_date" name="start_date" type="xf:date"/>
+                        <xf:bind id="review_date-bind" ref="review_date" name="review_date" type="xf:date"/>
+                        <xf:bind id="full_or_part_time-bind" ref="full_or_part_time" name="full_or_part_time"/>
+                        <xf:bind id="is_replacement-bind" ref="is_replacement" name="is_replacement"
+                                 type="xf:boolean"/>
+                        <xf:bind id="benefits_qualified_for-bind" ref="benefits_qualified_for"
+                                 name="benefits_qualified_for"/>
+                        <xf:bind id="salary_or_hourly_rate-bind" ref="salary_or_hourly_rate"
+                                 name="salary_or_hourly_rate"
+                                 type="xf:decimal"
+                                 constraint="xxf:fraction-digits(2)"/>
+                        
+                    </xf:bind>
+                </xf:bind>
             </xf:bind>
 
-            <!-- Metadata -->
+            
             <xf:instance id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all">
                 <metadata>
                     <application-name>ftd</application-name>
@@ -59,49 +106,126 @@
                     <title xml:lang="en">New Hire Request</title>
                     <description xml:lang="en">This is a copy of the New Hire Request Form in Integrify. I'm mostly just playing around with this to get the automatic form generation thing (Orbify) to work.</description>
                     <created-with-version>2019.2.2.202003311635 PE</created-with-version>
+                    <updated-with-version>2019.2.2.202003311635 PE</updated-with-version>
                 </metadata>
             </xf:instance>
 
-            <!-- Attachments -->
+            
             <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
                 <attachments/>
             </xf:instance>
 
-            <!-- All form resources -->
+            
             <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
                 <resources>
                     <resource xml:lang="en">
-                        <control-1>
+                        <start_date>
+                            <label>Start date</label>
+                            <hint/>
+                        </start_date>
+                        <full_or_part_time>
+                            <label>Full or Part Time?</label>
+                            <hint/>
+                            <item>
+                                <label>Full-Time</label>
+                                <hint/>
+                                <value>full-time</value>
+                            </item>
+                            <item>
+                                <label>Part-Time</label>
+                                <hint/>
+                                <value>part-time</value>
+                            </item>
+                        </full_or_part_time>
+                        <benefits_qualified_for>
+                            <label>Benefits Qualified For</label>
+                            <hint/>
+                            <item>
+                                <label>Healthcare</label>
+                                <hint/>
+                                <value>healthcare</value>
+                            </item>
+                            <item>
+                                <label>Retirement Savings Plan</label>
+                                <hint/>
+                                <value>retirement-savings-plan</value>
+                            </item>
+                            <item>
+                                <label>Life Insurance</label>
+                                <hint/>
+                                <value>life-insurance</value>
+                            </item>
+                            <item>
+                                <label>PTO</label>
+                                <hint/>
+                                <value>pto</value>
+                            </item>
+                            <item>
+                                <label>Flex Time</label>
+                                <hint/>
+                                <value>flex-time</value>
+                            </item>
+                            <item>
+                                <label>Education Reimbursement</label>
+                                <hint/>
+                                <value>education-reimbursement</value>
+                            </item>
+                        </benefits_qualified_for>
+                        
+                        <review_date>
+                            <label>Review Date</label>
+                            <hint/>
+                        </review_date>
+                        <is_replacement>
+                            <label>Replacement?</label>
+                            <hint/>
+                        </is_replacement>
+                        <salary_or_hourly_rate>
+                            <label>Salary or Hourly Rate</label>
+                            <hint/>
+                        </salary_or_hourly_rate>
+                        <certifications>
+                            <label>Certifications</label>
+                            <hint/>
+                        </certifications>
+                        <date>
                             <label>Date</label>
                             <hint/>
-                        </control-1>
-                        <control-2>
+                        </date>
+                        <job_title>
                             <label>Job Title</label>
                             <hint/>
-                        </control-2>
-                        <control-3>
+                        </job_title>
+                        <applicant_name>
                             <label>Applicant Name</label>
                             <hint/>
-                        </control-3>
-                        <control-4>
+                        </applicant_name>
+                        <applicant_acceptance_letter>
                             <label>Applicant Acceptance Letter</label>
                             <hint/>
-                        </control-4>
-                        <control-5>
+                        </applicant_acceptance_letter>
+                        <applicant_address>
                             <label>Applicant Address</label>
                             <hint/>
-                        </control-5>
-                        <control-6>
+                        </applicant_address>
+                        <applicnt_resume>
                             <label>Applicant Resume</label>
                             <hint/>
-                        </control-6>
-                        <control-7>
+                        </applicnt_resume>
+                        <is_certifications_needed>
                             <label>Certifications Needed</label>
                             <hint/>
-                        </control-7>
-                        <section-1>
+                        </is_certifications_needed>
+                        <applicant_information>
                             <label>Applicant Information</label>
-                        </section-1>
+                        </applicant_information>
+                        <cert_section>
+                            <label>Cert Section</label>
+                        </cert_section>
+                        <section-3>
+                            <label>HR Details</label>
+                            <help/>
+                        </section-3>
                         
                     </resource>
                 </resources>
@@ -113,82 +237,189 @@
         <fr:view>
             <fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"
                      xmlns:oxf="http://www.orbeon.com/oxf/processors">
-                <fr:section id="section-1-section" bind="section-1-bind">
-                    <xf:label ref="$form-resources/section-1/label"/>
+                <fr:section id="applicant_information-section" bind="applicant_information-bind">
+                    <xf:label ref="$form-resources/applicant_information/label"/>
                     <fr:grid id="grid-1-grid" bind="grid-1-bind">
                         <fr:c y="1" x="1" w="6">
                             <fr:date xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
                                      xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava"
-                                     id="control-1-control"
-                                     bind="control-1-bind"
+                                     id="date-control"
+                                     bind="date-bind"
                                      field-width="natural">
-                                <xf:label ref="$form-resources/control-1/label"/>
-                                <xf:hint ref="$form-resources/control-1/hint"/>
-                        
+                                <xf:label ref="$form-resources/date/label"/>
+                                <xf:hint ref="$form-resources/date/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </fr:date>
                                 
                             </fr:c>
                         <fr:c y="1" x="7" w="6">
-                            <xf:input id="control-2-control" bind="control-2-bind">
-                                <xf:label ref="$form-resources/control-2/label"/>
-                                <xf:hint ref="$form-resources/control-2/hint"/>
-                        
+                            <xf:input id="job_title-control" bind="job_title-bind">
+                                <xf:label ref="$form-resources/job_title/label"/>
+                                <xf:hint ref="$form-resources/job_title/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </xf:input>
                         </fr:c>
                         <fr:c x="1" y="2" w="6">
-                            <xf:input id="control-3-control" bind="control-3-bind">
-                                <xf:label ref="$form-resources/control-3/label"/>
-                                <xf:hint ref="$form-resources/control-3/hint"/>
-                        
+                            <xf:input id="applicant_name-control" bind="applicant_name-bind">
+                                <xf:label ref="$form-resources/applicant_name/label"/>
+                                <xf:hint ref="$form-resources/applicant_name/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </xf:input>
                         </fr:c>
                         <fr:c x="7" y="2" w="6">
                             <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder"
                                            xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                           id="control-4-control"
-                                           class="fr-attachment"
-                                           bind="control-4-bind">
-                                <xf:label ref="$form-resources/control-4/label"/>
-                                <xf:hint ref="$form-resources/control-4/hint"/>
-                        
+                                           id="applicant_acceptance_letter-control"
+                                           bind="applicant_acceptance_letter-bind"
+                                           class="fr-attachment">
+                                <xf:label ref="$form-resources/applicant_acceptance_letter/label"/>
+                                <xf:hint ref="$form-resources/applicant_acceptance_letter/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </fr:attachment>
                         </fr:c>
                         <fr:c x="1" y="3" w="6">
-                            <xf:input id="control-5-control" bind="control-5-bind">
-                                <xf:label ref="$form-resources/control-5/label"/>
-                                <xf:hint ref="$form-resources/control-5/hint"/>
-                        
+                            <xf:input id="applicant_address-control" bind="applicant_address-bind">
+                                <xf:label ref="$form-resources/applicant_address/label"/>
+                                <xf:hint ref="$form-resources/applicant_address/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </xf:input>
                         </fr:c>
                         <fr:c x="7" y="3" w="6">
                             <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder"
                                            xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                           id="control-6-control"
-                                           class="fr-attachment"
-                                           bind="control-6-bind">
-                                <xf:label ref="$form-resources/control-6/label"/>
-                                <xf:hint ref="$form-resources/control-6/hint"/>
-                        
+                                           id="applicnt_resume-control"
+                                           bind="applicnt_resume-bind"
+                                           class="fr-attachment">
+                                <xf:label ref="$form-resources/applicnt_resume/label"/>
+                                <xf:hint ref="$form-resources/applicnt_resume/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </fr:attachment>
                         </fr:c>
                         <fr:c x="1" y="4" w="6"/>
                         <fr:c x="7" y="4" w="6">
                             <fr:yesno-input xmlns="http://orbeon.org/oxf/xml/form-builder"
                                             xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                            id="control-7-control"
-                                            bind="control-7-bind">
-                                <xf:label ref="$form-resources/control-7/label"/>
-                                <xf:hint ref="$form-resources/control-7/hint"/>
-                        
+                                            id="is_certifications_needed-control"
+                                            bind="is_certifications_needed-bind">
+                                <xf:label ref="$form-resources/is_certifications_needed/label"/>
+                                <xf:hint ref="$form-resources/is_certifications_needed/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
                             </fr:yesno-input>
                         </fr:c>
+                    </fr:grid>
+                </fr:section>
+                <fr:section id="cert_section-section" bind="cert_section-bind">
+                    <xf:label ref="$form-resources/cert_section/label"/>
+                    <fr:grid id="grid-2-grid" bind="grid-2-bind">
+                        <fr:c x="1" y="1" w="6">
+                            <xf:input id="certifications-control" bind="certifications-bind">
+                                <xf:label ref="$form-resources/certifications/label"/>
+                                <xf:hint ref="$form-resources/certifications/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:input>
+                        </fr:c>
+                        <fr:c x="7" y="1" w="6"/>
+                    </fr:grid>
+                </fr:section>
+                <fr:section id="section-3-section" bind="section-3-bind">
+                    <xf:label ref="$form-resources/section-3/label"/>
+                    <fr:grid id="grid-3-grid" bind="grid-3-bind">
+                        <fr:c x="1" y="1" w="4">
+                            <fr:date xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                     xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava"
+                                     id="start_date-control"
+                                     bind="start_date-bind">
+                                <xf:label ref="$form-resources/start_date/label"/>
+                                <xf:hint ref="$form-resources/start_date/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:date>
+                        </fr:c>
+                        <fr:c x="5" y="1" w="4">
+                            <xf:select1 id="full_or_part_time-control" appearance="full" bind="full_or_part_time-bind">
+                                <xf:label ref="$form-resources/full_or_part_time/label"/>
+                                <xf:hint ref="$form-resources/full_or_part_time/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                                <xf:itemset ref="$form-resources/full_or_part_time/item">
+                                    <xf:label ref="label"/>
+                                    <xf:value ref="value"/>
+                                    <xf:hint ref="hint"/>
+                                </xf:itemset>
+                            </xf:select1>
+                        </fr:c>
+                        <fr:c x="9" y="1" w="4" h="3">
+                            <xf:select id="benefits_qualified_for-control" appearance="full"
+                                       bind="benefits_qualified_for-bind">
+                                <xf:label ref="$form-resources/benefits_qualified_for/label"/>
+                                <xf:hint ref="$form-resources/benefits_qualified_for/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                                
+                                <xf:itemset ref="$form-resources/benefits_qualified_for/item">
+                                    <xf:label ref="label"/>
+                                    <xf:value ref="value"/>
+                                    <xf:hint ref="hint"/>
+                                </xf:itemset>
+                            </xf:select>
+                            
+                        </fr:c>
+                        <fr:c x="1" y="2" w="4">
+                            <fr:date xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                     xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava"
+                                     id="review_date-control"
+                                     bind="review_date-bind">
+                                <xf:label ref="$form-resources/review_date/label"/>
+                                <xf:hint ref="$form-resources/review_date/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:date>
+                        </fr:c>
+                        <fr:c x="5" y="2" w="4">
+                            <fr:yesno-input xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                            xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                            id="is_replacement-control"
+                                            bind="is_replacement-bind">
+                                <xf:label ref="$form-resources/is_replacement/label"/>
+                                <xf:hint ref="$form-resources/is_replacement/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:yesno-input>
+                        </fr:c>
+                        <fr:c x="1" y="3" w="4">
+                            <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                         xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                         xmlns:NumberSupport="java:org.orbeon.xbl.NumberSupportJava"
+                                         id="salary_or_hourly_rate-control"
+                                         bind="salary_or_hourly_rate-bind">
+                                <xf:label ref="$form-resources/salary_or_hourly_rate/label"/>
+                                <xf:hint ref="$form-resources/salary_or_hourly_rate/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:currency>
+                        </fr:c>
+                        <fr:c x="5" y="3" w="4"/>
                     </fr:grid>
                 </fr:section>
             </fr:body>
