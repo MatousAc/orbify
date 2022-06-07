@@ -42,13 +42,28 @@
                         <grid-3>
                             <start_date/>
                             <full_or_part_time/>
-                            <benefits_qualified_for>retirement-savings-plan life-insurance pto flex-time education-reimbursement</benefits_qualified_for>
+                            <benefits_qualified_for/>
                             
                             <review_date/>
                             <is_replacement/>
                             <salary_or_hourly_rate/>
+                            <employee_being_replaced/>
+                            <tax_exempt_status/>
+                            <department/>
                         </grid-3>
                     </section-3>
+                    <section-1>
+                        <grid-4>
+                            <control-2/>
+                            <link_to_wikipedia/>
+                            <your_email/>
+                            <age/>
+                            <life_story/>
+                            <formatted_life_story/>
+                            <signature/>
+                            <password/>
+                        </grid-4>
+                    </section-1>
                 </form>
             </xf:instance>
 
@@ -93,7 +108,27 @@
                                  name="salary_or_hourly_rate"
                                  type="xf:decimal"
                                  constraint="xxf:fraction-digits(2)"/>
+                        <xf:bind id="employee_being_replaced-bind" ref="employee_being_replaced"
+                                 name="employee_being_replaced"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="tax_exempt_status-bind" ref="tax_exempt_status" name="tax_exempt_status"/>
+                        <xf:bind id="department-bind" ref="department" name="department"/>
                         
+                    </xf:bind>
+                </xf:bind>
+                <xf:bind id="section-1-bind" ref="section-1" name="section-1">
+                    <xf:bind id="grid-4-bind" ref="grid-4" name="grid-4">
+                        <xf:bind id="control-2-bind" ref="control-2" name="control-2"/>
+                        <xf:bind id="link_to_wikipedia-bind" ref="link_to_wikipedia" name="link_to_wikipedia"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="your_email-bind" ref="your_email" name="your_email" type="xf:email"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="age-bind" ref="age" name="age" type="xf:decimal"/>
+                        <xf:bind id="life_story-bind" ref="life_story" name="life_story" xxf:whitespace="trim"/>
+                        <xf:bind id="formatted_life_story-bind" ref="formatted_life_story"
+                                 name="formatted_life_story"/>
+                        <xf:bind id="signature-bind" ref="signature" name="signature" type="xf:anyURI"/>
+                        <xf:bind id="password-bind" ref="password" name="password"/>
                     </xf:bind>
                 </xf:bind>
             </xf:bind>
@@ -119,6 +154,38 @@
             <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
                 <resources>
                     <resource xml:lang="en">
+                        <control-2>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;div&gt;Here is some text to help explain things.&lt;/div&gt;</text>
+                        </control-2>
+                        <link_to_wikipedia>
+                            <label>Link to Wikipedia</label>
+                            <hint/>
+                        </link_to_wikipedia>
+                        <your_email>
+                            <label>Your Email</label>
+                            <hint/>
+                        </your_email>
+                        <age>
+                            <label>Age</label>
+                            <hint/>
+                        </age>
+                        <life_story>
+                            <label>Life Story</label>
+                            <hint/>
+                        </life_story>
+                        <formatted_life_story>
+                            <label>Formatted Life Story</label>
+                            <hint/>
+                        </formatted_life_story>
+                        <signature>
+                            <label>Signature</label>
+                            <hint/>
+                        </signature>
+                        <password>
+                            <label>Password</label>
+                            <hint/>
+                        </password>
                         <start_date>
                             <label>Start date</label>
                             <hint/>
@@ -184,6 +251,53 @@
                             <label>Salary or Hourly Rate</label>
                             <hint/>
                         </salary_or_hourly_rate>
+                        <employee_being_replaced>
+                            <label>Employee Being Replaced</label>
+                            <hint/>
+                        </employee_being_replaced>
+                        <tax_exempt_status>
+                            <label>Tax Exempt Status</label>
+                            <hint/>
+                            <item>
+                                <label>Exempt</label>
+            
+                                <value>exempt</value>
+                            </item>
+                            <item>
+                                <label>Non-Exempt</label>
+            
+                                <value>non-exempt</value>
+                            </item>
+                        </tax_exempt_status>
+                        <department>
+                            <label>Department</label>
+                            <hint/>
+                            <item>
+                                <label>Human Resources</label>
+            
+                                <value>human-resources</value>
+                            </item>
+                            <item>
+                                <label>Finance</label>
+            
+                                <value>finance</value>
+                            </item>
+                            <item>
+                                <label>Operations</label>
+            
+                                <value>operations</value>
+                            </item>
+                            <item>
+                                <label>Executive</label>
+            
+                                <value>executive</value>
+                            </item>
+                            <item>
+                                <label>IT</label>
+            
+                                <value>it</value>
+                            </item>
+                        </department>
                         <certifications>
                             <label>Certifications</label>
                             <hint/>
@@ -226,6 +340,10 @@
                             <label>HR Details</label>
                             <help/>
                         </section-3>
+                        <section-1>
+                            <label>Testing Other Fields</label>
+                            <help/>
+                        </section-1>
                         
                     </resource>
                 </resources>
@@ -419,8 +537,128 @@
                         
                             </fr:currency>
                         </fr:c>
-                        <fr:c x="5" y="3" w="4"/>
+                        <fr:c x="5" y="3" w="4">
+                            <xf:input id="employee_being_replaced-control" bind="employee_being_replaced-bind">
+                                <xf:label ref="$form-resources/employee_being_replaced/label"/>
+                                <xf:hint ref="$form-resources/employee_being_replaced/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:input>
+                        </fr:c>
+                        <fr:c x="1" y="4" w="4">
+                            <xf:select1 id="tax_exempt_status-control" bind="tax_exempt_status-bind"
+                                        appearance="dropdown">
+                                <xf:label ref="$form-resources/tax_exempt_status/label"/>
+                                <xf:hint ref="$form-resources/tax_exempt_status/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                                <xf:itemset ref="$form-resources/tax_exempt_status/item">
+                                    <xf:label ref="label"/>
+                                    <xf:value ref="value"/>
+                                </xf:itemset>
+                            </xf:select1>
+                        </fr:c>
+                        <fr:c x="5" y="4" w="4">
+                            <xf:select1 id="department-control" bind="department-bind" appearance="search">
+                                <xf:label ref="$form-resources/department/label"/>
+                                <xf:hint ref="$form-resources/department/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                                <xf:itemset ref="$form-resources/department/item">
+                                    <xf:label ref="label"/>
+                                    <xf:value ref="value"/>
+                                </xf:itemset>
+                            </xf:select1>
+                        </fr:c>
+                        <fr:c x="9" y="4" w="4"/>
                     </fr:grid>
+                </fr:section>
+                <fr:section id="section-1-section" bind="section-1-bind">
+                    <fr:grid id="grid-4-grid" bind="grid-4-bind">
+                        <fr:c x="1" y="1" w="6">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="control-2-control"
+                                            bind="control-2-bind">
+                                <fr:text ref="$form-resources/control-2/text" mediatype="text/html"/>
+                            </fr:explanation>
+                        </fr:c>
+                        <fr:c x="7" y="1" w="6">
+                            <xf:input id="link_to_wikipedia-control" bind="link_to_wikipedia-bind">
+                                <xf:label ref="$form-resources/link_to_wikipedia/label"/>
+                                <xf:hint ref="$form-resources/link_to_wikipedia/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:input>
+                        </fr:c>
+                        <fr:c x="1" y="2" w="6">
+                            <xf:input id="your_email-control" bind="your_email-bind">
+                                <xf:label ref="$form-resources/your_email/label"/>
+                                <xf:hint ref="$form-resources/your_email/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:input>
+                        </fr:c>
+                        <fr:c x="7" y="2" w="6">
+                            <fr:number xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                       xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                       xmlns:NumberSupport="java:org.orbeon.xbl.NumberSupportJava"
+                                       id="age-control"
+                                       bind="age-bind">
+                                <xf:label ref="$form-resources/age/label"/>
+                                <xf:hint ref="$form-resources/age/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:number>
+                        </fr:c>
+                        <fr:c x="1" y="3" w="6">
+                            <xf:input id="life_story-control" bind="life_story-bind">
+                                <xf:label ref="$form-resources/life_story/label"/>
+                                <xf:hint ref="$form-resources/life_story/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:input>
+                        </fr:c>
+                        <fr:c x="7" y="3" w="6">
+                            <fr:tinymce xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                        xmlns:f="http://orbeon.org/oxf/xml/formatting"
+                                        id="formatted_life_story-control"
+                                        bind="formatted_life_story-bind">
+                                <xf:label ref="$form-resources/formatted_life_story/label"/>
+                                <xf:hint ref="$form-resources/formatted_life_story/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:tinymce>
+                        </fr:c>
+                        <fr:c x="1" y="4" w="6">
+                            <fr:handwritten-signature xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                      xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                      id="signature-control"
+                                                      bind="signature-bind">
+                                <xf:label ref="$form-resources/signature/label"/>
+                                <xf:hint ref="$form-resources/signature/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:handwritten-signature>
+                        </fr:c>
+                        <fr:c x="7" y="4" w="6">
+                            <xf:secret id="password-control" bind="password-bind">
+                                <xf:label ref="$form-resources/password/label"/>
+                                <xf:hint ref="$form-resources/password/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </xf:secret>
+                        </fr:c>
+                    </fr:grid>
+                    <xf:label ref="$form-resources/section-1/label"/>
                 </fr:section>
             </fr:body>
         </fr:view>
