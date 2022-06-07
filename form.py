@@ -1,5 +1,6 @@
 import json
 from helps import *
+from maps import *
 
 gridCount = 0
 
@@ -7,7 +8,8 @@ class Element: # basic attributes common to all elements
 	def __init__(self, obj):
 		self.displayName = obj["displayName"]
 		self.show = obj["show"]
-		self.type = obj["type"]
+		# section/container/question
+		self.level = obj["type"].replace("_Type", "").lower
 		# everything has a control_name
 		# so we'll set it here
 		if self.type == "Container_Type":
@@ -15,6 +17,26 @@ class Element: # basic attributes common to all elements
 			gridCount += 1
 		else: 
 			self.control_name = snake_case(obj["Label"])
+
+# this defines a single field
+class Field(Element):
+	def __init__(self, obj):
+		super().__init__(obj)
+		self.type = questionTypeMap[obj["QuestionType"]]
+
+
+# sets up a single grid
+class Grid(Element):
+	def __init__(self, obj):
+		super().__init__(obj)
+		self.open = obj["open"]
+		self.readonly = obj["readonly"]
+		self.numColumns = len(obj["columns"])
+		self.colWidth = (int) (12 / self.numColumns)
+		self.fields = []
+		for col in obj["columns"]:
+			for item in col:
+				self.fields.append(Field(item))
 
 # this should basically set up a section 
 # of the form, mainly just the attributes
@@ -28,15 +50,7 @@ class Section(Element):
 		for grid in obj["contents"]:
 			self.grids.append(Grid(grid))
 
-# sets up a single grid
-class Grid(Element):
-	def __init__(self, obj):
-		super().__init__(obj)
-		self.open = obj["open"]
-		self.readonly = obj["readonly"]
-		self.numColumns = len(obj["columns"])
-		self.colWidth = (int) (12 / self.numColumns)
-		self.items = [] # FIXME continue here
+
 		
 
 class Form:
