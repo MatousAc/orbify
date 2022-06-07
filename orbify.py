@@ -1,9 +1,6 @@
 import json
-
-def parseJSON():
-    return json.load(open("examples/newHire.json"))
+from form import *
 
 
 if __name__ == "__main__":
-    form = parseJSON()
-    print(form)
+    form = Form()
