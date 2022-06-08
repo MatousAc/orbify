@@ -1,29 +1,41 @@
 import json
 from helps import *
-from maps import *
+from mapsEnums import *
 
+# keeps track of how many nameless grids we've had so far
 gridCount = 0
+# holds all control_names that need to be 
+# added in Genify for this form
+names2add = []
 
 class Element: # basic attributes common to all elements
 	def __init__(self, obj):
 		self.displayName = obj["displayName"]
 		self.show = obj["show"]
-		# section/container/question
-		self.level = obj["type"].replace("_Type", "").lower
+		# everything is section/container/question/formTool
+		self.formBlock = formBlockMap[obj["type"]]
+
 		# everything has a control_name
 		# so we'll set it here
-		if self.type == "Container_Type":
+		global gridCount
+		if self.formBlock == FormBlock.grid:
 			self.control_name = f"grid_{gridCount}"
 			gridCount += 1
 		else: 
-			self.control_name = snake_case(obj["Label"])
+			self.control_name = to_control_name(obj["Label"])
+			print(self.control_name)
+			if self.formBlock == FormBlock.field:
+				global names2add
+				names2add.append(self.control_name)
 
 # this defines a single field
 class Field(Element):
 	def __init__(self, obj):
 		super().__init__(obj)
 		self.type = questionTypeMap[obj["QuestionType"]]
-
+		match self.type:
+			case FieldType.text:
+				self = Text
 
 # sets up a single grid
 class Grid(Element):
@@ -35,7 +47,8 @@ class Grid(Element):
 		self.colWidth = (int) (12 / self.numColumns)
 		self.fields = []
 		for col in obj["columns"]:
-			for item in col:
+			# stuff is always 1 layer deeper here
+			for item in col["items"]:
 				self.fields.append(Field(item))
 
 # this should basically set up a section 
@@ -55,7 +68,7 @@ class Section(Element):
 
 class Form:
 	def __init__(self):
-		self.title = input("Enter the name of the form you want to generate: ")
+		self.title = input("Enter the name of the form you want to translate: ")
 		self.json = json.load(open("examples/newHire.json"))
 		self.sections = []
 		for section in self.json:
