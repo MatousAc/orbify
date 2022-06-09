@@ -1,6 +1,7 @@
 
 from element import Element
 from helps import *
+from mapsEnums import FieldType
 
 # all these classes define a single field
 # most are all slightly different
@@ -18,6 +19,7 @@ class Numeric(Element):
 class Currency(Element):
 	def __init__(self, item):
 		super().__init__(item)
+		self.fieldType = FieldType.currency
 		self.precision = item["format"]["digitsAfterDecimal"]
 		# decide which type of currency we have
 		self.prefix = '$'
@@ -41,11 +43,9 @@ class Radio(Element):
 class YesNo(Element):
 	def __init__(self, item):
 		super().__init__(item)
+		self.fieldType = FieldType.yesno
 		# change control_name to is_control_name
-		# global names2add
-		# i = names2add.index(self.control_name)
 		self.control_name = f"is_{self.control_name}"
-		# names2add[i] = self.control_name
 class CheckBox(Element):
 	def __init__(self, item):
 		super().__init__(item)
