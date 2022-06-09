@@ -1570,6 +1570,47 @@
                         "stopBlurSave": true
                      },
                      {
+                        "displayName": "Number",
+                        "QuestionType": "Number",
+                        "Label": "Money",
+                        "type": "Question_Type",
+                        "flex": 100,
+                        "ClientID": 1654709370295,
+                        "class": "",
+                        "show": true,
+                        "validation": {
+                           "required": false,
+                           "requiredMessage": "This field is required",
+                           "min": null,
+                           "minMessage": "This field is too short",
+                           "max": null,
+                           "maxMessage": "This field is too long",
+                           "regEx": null,
+                           "regExMessage": "This field is not valid"
+                        },
+                        "events": {
+                           "onChange": null,
+                           "onBlur": null,
+                           "onFocus": null
+                        },
+                        "format": {
+                           "digitsAfterDecimal": 2,
+                           "currency": {
+                              "useCurrency": true,
+                              "id": "de-de"
+                           }
+                        },
+                        "Answer": null,
+                        "new": false,
+                        "id": 1654709370295,
+                        "showEditPanel": false,
+                        "loaded": true,
+                        "isdirty": false,
+                        "originalAnswer": null,
+                        "islive": false,
+                        "stopBlurSave": false
+                     },
+                     {
                         "displayName": "Rich Text",
                         "QuestionType": "RichText",
                         "Label": "Formatted Life Story",

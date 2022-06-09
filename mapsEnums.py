@@ -3,7 +3,7 @@ from enum import Enum, auto
 class FieldType(Enum): # defining all the different field types
 	text,	richText, numeric, email, date = auto(), auto(), auto(), auto(), auto()
 	radio, checkbox, dropdown, fileAttach = auto(), auto(), auto(), auto()
-	secret, signature, currency, boolean = auto(), auto(), auto(), auto()
+	secret, signature, currency, yesno = auto(), auto(), auto(), auto()
 	staticText, space = auto(), auto() # form tools
 	
 
@@ -23,8 +23,6 @@ questionTypeMap = {
 	"FileAttachment": FieldType.fileAttach,
 	"Password": FieldType.secret,
 	"Signature": FieldType.signature,
-	"Currency": FieldType.currency, # not used
-	"Boolean": FieldType.boolean, # not used
 	# form tools
 	"FormText": FieldType.staticText,
 	"BlankSpace": FieldType.space,
