@@ -1,5 +1,5 @@
-from helps import *
-from mapsEnums import *
+from helpers.helps import *
+from formRepresentation.mapsEnums import *
 
 # keeps track of how many nameless grids we've had so far
 gridCount = 0

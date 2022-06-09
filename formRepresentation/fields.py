@@ -1,7 +1,7 @@
 
-from element import Element
-from helps import *
-from mapsEnums import FieldType
+from formRepresentation.element import Element
+from helpers.helps import *
+from formRepresentation.mapsEnums import FieldType
 
 # all these classes define a single field
 # most are all slightly different
