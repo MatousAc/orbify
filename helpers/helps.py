@@ -25,7 +25,7 @@ def dashcase(s : str) -> str:
 
 # this helper function determines whether 
 # a given radio button can be a boolean data type
-def isYesNo(choices):
+def isYesNo(choices: dict) -> bool:
 	if len(choices) != 2: return False # duh
 	labels = [ # get our labels
 		choices[0]["Label"].lower(),
@@ -37,7 +37,7 @@ def isYesNo(choices):
 
 # this function collapses a list of choice 
 # dictionaries into a single choice dictionary
-def choiceDict(choiceList):
+def choiceDict(choiceList: list) -> dict:
 	choices = {}
 	for choice in choiceList:
 		l = choice["Label"]

@@ -62,6 +62,7 @@
                             <formatted_life_story/>
                             <signature/>
                             <password/>
+                            <money/>
                         </grid-4>
                     </section-1>
                 </form>
@@ -129,6 +130,8 @@
                                  name="formatted_life_story"/>
                         <xf:bind id="signature-bind" ref="signature" name="signature" type="xf:anyURI"/>
                         <xf:bind id="password-bind" ref="password" name="password"/>
+                        <xf:bind id="money-bind" ref="money" name="money" type="xf:decimal"
+                                 constraint="xxf:fraction-digits(2)"/>
                     </xf:bind>
                 </xf:bind>
             </xf:bind>
@@ -186,6 +189,10 @@
                             <label>Password</label>
                             <hint/>
                         </password>
+                        <money>
+                            <label>Money</label>
+                            <hint/>
+                        </money>
                         <start_date>
                             <label>Start date</label>
                             <hint/>
@@ -203,6 +210,8 @@
                                 <hint/>
                                 <value>part-time</value>
                             </item>
+                            
+                            
                         </full_or_part_time>
                         <benefits_qualified_for>
                             <label>Benefits Qualified For</label>
@@ -656,6 +665,22 @@
                         
                         
                             </xf:secret>
+                        </fr:c>
+                        <fr:c x="1" y="5" w="6"/>
+                        <fr:c x="7" y="5" w="6">
+                            <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                         xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                         xmlns:NumberSupport="java:org.orbeon.xbl.NumberSupportJava"
+                                         id="money-control"
+                                         bind="money-bind"
+                                         prefix="£"
+                                         digits-after-decimal="2">
+                                <xf:label ref="$form-resources/money/label"/>
+                                <xf:hint ref="$form-resources/money/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                            </fr:currency>
                         </fr:c>
                     </fr:grid>
                     <xf:label ref="$form-resources/section-1/label"/>

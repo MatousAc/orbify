@@ -1,7 +1,7 @@
 import json
-from formRepresentation.fields import *
+from formRepr.fields import *
 from helpers.helps import *
-from formRepresentation.mapsEnums import *
+from formRepr.mapsEnums import *
 # holds all control_names that need to be 
 # added in Genify for this form
 names2add = []
@@ -10,9 +10,8 @@ def trackNames(field):
 	if field.formBlock == FormBlock.field:
 		global names2add
 		names2add.append(field.control_name)
-		print(field.control_name)
 
-class FieldHolder():
+class Place():
 	def __init__(self, grid, item):
 		field = None # create an instance of the field
 		match questionTypeMap[item["QuestionType"]]:
@@ -46,8 +45,7 @@ class FieldHolder():
 		self.y = grid.y
 	
 	def accept(self, visitor):
-		visitor.visitFieldHolder(self)
-
+		return visitor.visitPlace(self)
 
 
 # sets up a single grid
@@ -62,16 +60,16 @@ class Grid(Element):
 		self.w = (int) (numDivisions / self.numColumns)
 		self.h = 1
 		self.x = 1
-		self.fields = []
+		self.places = []
 		for col in obj["columns"]:
 			self.y = 1
 			for item in col["items"]:
-				self.fields.append(FieldHolder(self, item))
+				self.places.append(Place(self, item))
 				self.y += 1 # move one row farther down
 			self.x += self.w # move one column farther over
 	
 	def accept(self, visitor):
-		visitor.visitGrid(self)
+		return visitor.visitGrid(self)
 
 # this should basically set up a section 
 # of the form, mainly just the attributes
@@ -86,20 +84,19 @@ class Section(Element):
 			self.grids.append(Grid(grid))
 	
 	def accept(self, visitor):
-		visitor.visitSection(self)
+		return visitor.visitSection(self)
 
 
 class Form:
 	def __init__(self):
-		self.title = input("Enter the name of the form you want to translate: ")
+		self.title = input("Form Name: ")
 		self.control_name = to_control_name(self.title)
-		print(self.control_name)
 		self.json = json.load(open("examples/newHire.json"))
 		self.sections = []
 		for section in self.json:
 			self.sections.append(Section(section))
 	
 	def accept(self, visitor):
-		visitor.visitForm(self)
+		return visitor.visitForm(self)
 
 

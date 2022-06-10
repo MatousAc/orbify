@@ -1,7 +1,7 @@
 
-from formRepresentation.element import Element
+from formRepr.element import Element
 from helpers.helps import *
-from formRepresentation.mapsEnums import FieldType
+from formRepr.mapsEnums import FieldType
 
 # all these classes define a single field
 # most are all slightly different
@@ -65,10 +65,16 @@ class Secret(Element):
 class Signature(Element):
 	def __init__(self, item):
 		super().__init__(item)
+
+# form tools
 class StaticText(Element):
 	def __init__(self, item):
 		super().__init__(item)
+		self.fieldType = FieldType.staticText
+		self.control_name = item["id"]
 		self.text = item["formtext"]
-class Space(Element):
+class Space(Element): # holds space in grid
 	def __init__(self, item):
 		super().__init__(item)
+		self.fieldType = FieldType.space
+
