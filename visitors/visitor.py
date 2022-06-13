@@ -35,6 +35,8 @@ class Visitor:
 		raise Exception("Abstract method 'visitSecret'")
 	def visitSignature(self, signature: Signature) -> str:
 		raise Exception("Abstract method 'visitSignature'")
+	def visitFTDImage(self, image: StaticText) -> str:
+		raise Exception("Abstract method 'visitFTDImage'")
 	def visitStaticText(self, staticText: StaticText) -> str:
 		raise Exception("Abstract method 'visitStaticText'")
 	def visitSpace(self, space: Space) -> str:

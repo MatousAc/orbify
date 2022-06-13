@@ -68,6 +68,9 @@ class Namer(Visitor):
 	def visitSignature(self, signature: Signature) -> str:
 		return tag(signature.control_name, selfClosing=True)
 
+	def visitFTDImage(self, image: StaticText) -> str:
+   pass
+
 	def visitStaticText(self, staticText: StaticText) -> str:
 		return tag(staticText.control_name, selfClosing=True)
  

@@ -49,6 +49,13 @@ def id2control(id: int) -> str:
 	divisor = 26
 	name = ""
 	while id > 100:
-		name += chr(id % divisor + 65)
-		id %= 10
+		name += chr(id % divisor + 97)
+		id //= 10
 	return name
+
+# removes formatting tags from text that would be
+# misinterpreted as XML
+def staticTextScrub(text: str) -> str:
+	text.replace("<p>", "").replace("</p>", "")
+	text.replace("&nbsp;", "")
+	return text

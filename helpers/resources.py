@@ -31,6 +31,7 @@ modelBindAttrs = """id="fr-form-binds" ref="instance('fr-form-instance')\""""
 modelMetaAttrs = 'id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all"'
 modelAttachAttrs = 'id="fr-form-attachments" xxf:exclude-result-prefixes="#all"'
 modelResourcesAttrs = 'xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all"'
+ftdImageAttrs = 'filename="FTD logo Full Color.jpg" mediatype="image/jpeg">/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d9345c74c8205ac6b8da5c91a/a7199ec5951beb7002622bd4456b1063208a8b42.bin'
 # resource attributes
 srcFormTextAttrs = 'xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"'
 # view attributes

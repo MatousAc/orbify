@@ -72,7 +72,7 @@ class StaticText(Element):
 		super().__init__(item)
 		self.fieldType = FieldType.staticText
 		self.control_name = id2control(item["id"])
-		self.text = item["formtext"]
+		self.text = staticTextScrub(item["formtext"])
 class Space(Element): # holds space in grid
 	def __init__(self, item):
 		super().__init__(item)

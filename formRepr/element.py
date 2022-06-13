@@ -4,6 +4,7 @@ from formRepr.mapsEnums import *
 # keeps track of how many nameless grids we've had so far
 gridCount = 0
 sectionCount = 0
+anonControlCount = 0
 
 class Element: # basic attributes common to all elements
 	def __init__(self, obj):
@@ -31,9 +32,16 @@ class Element: # basic attributes common to all elements
 		if self.formBlock == FormBlock.field:
 			self.fieldType = questionTypeMap[obj["QuestionType"]]
 			self.validation = obj["validation"]
+		
+		if self.fieldType == FieldType.ftdImage:
+			self.handleFTDImage(obj)
 	
-	# def accept(self, visitor):
-	# 	raise Exception("Abstract accept. Should override.")
+	def handleFTDImage(self, obj):
+		txt = obj["properties"]["imageFile"]["text"].lower()
+		if "ftd logo" not in txt: 
+			self.fieldType = FieldType.space
+		
+   
 
 	def accept(self, visitor):
 		match self.fieldType:
@@ -50,5 +58,6 @@ class Element: # basic attributes common to all elements
 			case FieldType.fileAttach:return visitor.visitFileAttach(self)
 			case FieldType.secret: 		return visitor.visitSecret(self)
 			case FieldType.signature: return visitor.visitSignature(self)
+			case FieldType.ftdImage:	return visitor.visitFTDImage(self)
 			case FieldType.staticText:return visitor.visitStaticText(self)
 			case FieldType.space: 		return visitor.visitSpace(self)
