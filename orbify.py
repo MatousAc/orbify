@@ -15,7 +15,7 @@ def genMeta(form: Form) -> str:
 		tag("description", attrStr=enlang, selfClosing=True) +
 		tag("created-with-version", innerText=version, close=True) +
 		tag("updated-with-version", innerText=version, close=True)
-		)
+	)
 	return tag("metadata", innerText=src, close=True)
 	
 

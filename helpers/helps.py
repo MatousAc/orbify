@@ -43,3 +43,4 @@ def choiceDict(choiceList: list) -> dict:
 		l = choice["Label"]
 		choices[l] = dashcase(l)
 	return choices
+

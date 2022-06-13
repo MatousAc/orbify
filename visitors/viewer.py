@@ -1,11 +1,42 @@
+from random import choices
 from visitors.visitor import Visitor
-from helpers.xmlUtilities import tag, closing
+from helpers.xmlUtilities import tag
 from formRepr.formBlocks import *
 from formRepr.fields import *
+from helpers.resources import *
 
 class Viewer(Visitor):
 	def ref(self, block, resource):
 		return f" ref=$form-resources/{block.control_name}/{resource}"
+
+	def idBind(self, block) -> str:
+		id = f"{block.control_name}-"
+		match block.formBlock:
+			case FormBlock.section: 	id += "section"
+			case FormBlock.grid: 	id += "grid"
+			case FormBlock.field: 	id += "control"
+			case FormBlock.formTool: 	id += "control"
+		bind = f"{block.control_name}-bind"
+		return f"id=\"{id}\" bind=\"{bind}\""
+
+	def basicTag(self, block, t): # t = tag
+		return tag(f"xf:{t}", attrStr=self.ref(block, t),
+			selfClosing=True)
+
+	def basicAlert(self):
+		return '<xf:alert ref="$fr-resources/detail/labels/alert"/>\n'
+
+	def basic3(self, block):
+		return (self.basicTag(block, "label") +
+			self.basicTag(block, "hint") +
+			self.basicAlert())
+
+	def itemset(self, block):
+		src = tag("xf:label", attrStr="ref=\"label\"", selfClosing=True)
+		src += tag("xf:value", attrStr="ref=\"value\"", selfClosing=True)
+		src += tag("xf:hint", attrStr="ref=\"hint\"", selfClosing=True)
+		return tag("xf:itemset", attrStr=self.ref(block, "item"),
+			innerText=src, close=True)
 
 	def visitForm(self, form: Form) -> str:
 		src = ""
@@ -14,92 +45,108 @@ class Viewer(Visitor):
 		return src
 
 	def visitSection(self, section: Section) -> str:
-		src = tag("xf:label", attrStr=self.ref(section, "label"),
-			selfClosing=True)
+		src = self.basicTag(section, "label")
 		for grid in section.grids:
 			src += grid.accept(self)
-		attrs = {
-			"id":		f"{section.control_name}-section",
-			"bind":	f"{section.control_name}-bind"
-		}
-		return tag("fr:section", attrDict=attrs,
+		return tag("fr:section", attrStr=self.idBind(section),
 			innerText=src, close=True)
 
 	def visitGrid(self, grid: Grid) -> str:
-		src = tag(self.xf, attrDict=self.idRefName(grid))
+		src = ""
 		for place in grid.places:
 			src += place.accept(self)
-		src += closing(self.xf)
-		return src
+		return tag("fr:grid", attrStr=self.idBind(grid),
+			innerText=src, close=True)
 
-	def visitPlace(self, place: Place) -> str:
-		return place.field.accept(self)
+	# this is finally where the "place" block is useful!
+	def visitPlace(self, p: Place) -> str: # p=place
+		placement = f'x="{p.x}" y="{p.y}" w="{p.w}" h="{p.h}"'
+		return tag("fr:c", attrStr=placement,
+			innerText=p.field.accept(self), close=True)
 
 	def visitText(self, text: Text) -> str:
-		attrs = self.idRefName(text)
-		attrs["xxf:whitespace"] = "trim"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(text)
+		return tag("xf:input", attrStr=self.idBind(text),
+			innerText=src, close=True)
 
 	def visitRichText(self, richText: RichText) -> str:
-		return tag(self.xf, attrDict=self.idRefName(richText),
-			selfClosing=True)
+		src = self.basic3(richText)
+		return tag("fr:tinymce", attrDict=viewRichText,
+			attrStr=self.idBind(richText), innerText=src, close=True)
 
 	def visitNumeric(self, numeric: Numeric) -> str:
-		attrs = self.idRefName(numeric)
-		attrs["type"] = "xf:decimal"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(numeric)
+		return tag("fr:number", attrDict=viewNumeric,
+			attrStr=self.idBind(numeric), innerText=src, close=True)
 
 	def visitCurrency(self, currency: Currency) -> str:
-		attrs = self.idRefName(currency)
-		attrs["type"] = "xf:decimal"
-		attrs["constraint"] = f"xxf:fraction-digits({currency.precision})"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(currency)
+		attrs = viewCurrency.copy()
+		attrs["prefix"] = currency.prefix
+		attrs["digits-after-decimal"] = currency.precision
+		return tag("fr:currency", attrDict=attrs,
+			attrStr=self.idBind(currency), innerText=src, close=True)
 
 	def visitEmail(self, email: Email) -> str:
-		attrs = self.idRefName(email)
-		attrs["type"] = "xf:email"
-		attrs["xxf:whitespace"] = "trim"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(email)
+		return tag("xf:input", attrStr=self.idBind(email),
+			innerText=src, close=True)
 
 	def visitDate(self, date: Date) -> str:
-		attrs = self.idRefName(date)
-		attrs["type"] = "xf:date"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(date)
+		return tag("fr:date", attrDict=viewDate,
+			attrStr=self.idBind(date), innerText=src, close=True)
 
 	def visitRadio(self, radio: Radio) -> str:
-		return tag(self.xf, attrDict=self.idRefName(radio),
-			selfClosing=True)
+		src = self.basic3(radio)
+		src += self.itemset(radio)
+		return tag("xf:select1", attrDict=viewRadio,
+			attrStr=self.idBind(radio), innerText=src, close=True)
 
 	def visitYesNo(self, yesno: YesNo) -> str:
-		attrs = self.idRefName(yesno)
-		attrs["type"] = "xf:boolean"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(yesno)
+		return tag("fr:yesno-input", attrDict=viewYesNo,
+			attrStr=self.idBind(yesno), innerText=src, close=True)
 
 	def visitCheckBox(self, checkBox: CheckBox) -> str:
-		return tag(self.xf, attrDict=self.idRefName(checkBox),
-			selfClosing=True)
+		src = self.basic3(checkBox)
+		src += self.itemset(checkBox)
+		return tag("xf:select", attrDict=viewCheckBox,
+			attrStr=self.idBind(checkBox), innerText=src, close=True)
 
 	def visitDropDown(self, dropDown: DropDown) -> str:
-		return tag(self.xf, attrDict=self.idRefName(dropDown), 
-			selfClosing=True)
+		src = self.basic3(dropDown)
+		src += self.itemset(dropDown)
+		# default to searchable list if there are many choices
+		isSearch = len(dropDown.choices) > 3
+		attrs = {
+			"appearance": "search" if isSearch else "dropdown"
+		}
+		return tag("xf:select1", attrDict=attrs,
+			attrStr=self.idBind(dropDown), innerText=src, close=True)
 
 	def visitFileAttach(self, fileAttach: FileAttach) -> str:
-		attrs = self.idRefName(fileAttach)
-		attrs["type"] = "xf:anyURI"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(fileAttach)
+		return tag("fr:attachment", attrDict=viewAttach,
+			attrStr=self.idBind(fileAttach), innerText=src, close=True)
 
 	def visitSecret(self, secret: Secret) -> str:
-		return tag(self.xf, attrDict=self.idRefName(secret), 
-			selfClosing=True)
+		src = self.basic3(secret)
+		return tag("fr:secret", attrStr=self.idBind(secret),
+		innerText=src, close=True)
 
 	def visitSignature(self, signature: Signature) -> str:
-		attrs = self.idRefName(signature)
-		attrs["type"] = "xf:anyURI"
-		return tag(self.xf, attrDict=attrs, selfClosing=True)
+		src = self.basic3(signature)
+		return tag("fr:handwritten-signature", attrDict=viewSignature,
+			attrStr=self.idBind(signature), innerText=src, close=True)
 
 	def visitStaticText(self, staticText: StaticText) -> str:
-		return tag(self.xf, attrDict=self.idRefName(staticText), 
-			selfClosing=True)
+		media = 'mediatype="text/html"'
+		text = tag("fr:text", selfClosing=True,
+			attrStr=f'{self.ref(staticText, "text")} {media}')
+		return tag("fr:explanation", attrDict=viewStaticText,
+			attrStr=self.idBind(staticText), 
+			innerText=text, close=True)
 
 	def visitSpace(self, space: Space) -> str:
 		return "" # space not represented

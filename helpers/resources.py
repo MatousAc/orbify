@@ -34,6 +34,53 @@ modelResourcesAttrs = 'xxf:readonly="true" id="fr-form-resources" xxf:exclude-re
 # resource attributes
 srcFormTextAttrs = 'xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"'
 # view attributes
+# generals
+vfw = 'field-width="natural"'
+xxbl = "http://orbeon.org/oxf/xml/xbl"
+fbURL = "http://orbeon.org/oxf/xml/form-builder"
+xblurl = {
+	"xmlns": fbURL,
+	"xmlns:xxbl": xxbl
+}
+# specifics
 viewFrBody = 'xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors"'
+viewDate = {
+	"xmlns:xxbl": xxbl,
+	"xmlns:DateSupport": "java:org.orbeon.xbl.DateSupportJava",
+	"field-width": "natural"
+}
 
+viewNumeric = {
+	"xmlns": fbURL,
+	"xmlns:xxbl": xxbl,
+	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
+}
 
+viewAttach = {
+	"xmlns": fbURL,
+	"xmlns:xxbl": xxbl,
+	"class": "fr-attachment"
+}
+
+viewYesNo = viewSignature = xblurl
+
+viewRadio = {
+	"appearance": "full"
+}
+
+viewCheckBox = viewRadio
+
+viewCurrency = {
+	"xmlns": fbURL,
+	"xmlns:xxbl": xxbl,
+	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
+}
+
+viewRichText = {
+	"xmlns:xxbl": xxbl,
+	"xmlns:f": "http://orbeon.org/oxf/xml/formatting"
+}
+
+viewStaticText = {
+	"xmlns:xxbl": xxbl
+}
