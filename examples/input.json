@@ -1,0 +1,649 @@
+[
+	{
+		 "displayName": "Section",
+		 "Label": "Section",
+		 "icon": "<i class=\"material-icons\">crop_square</i>",
+		 "showAsCollapsible": true,
+		 "showSectionOutline": true,
+		 "contents": [
+				{
+					 "displayName": "Container",
+					 "icon": "<i class=\"material-icons\">crop_square</i>",
+					 "columns": [
+							{
+								 "items": [
+										{
+											 "displayName": "Image",
+											 "QuestionType": "Image",
+											 "Label": "Image",
+											 "type": "FormTool_Type",
+											 "flex": 100,
+											 "ClientID": 1623344869770,
+											 "id": "tmp-0053813937209",
+											 "class": "",
+											 "show": true,
+											 "properties": {
+													"height": 100,
+													"width": 100,
+													"url": "/rest-service/files/stream/?owner_sid=9a88b5bc-8abf-4747-bce7-155f322cd920&owner_type=form&object_sid=64099bff-d356-48e1-b434-f0b52717d7aa&object_type=attachment",
+													"imageFile": {
+														 "text": "FTD logo Full Color.jpg",
+														 "file_key": "64099bff-d356-48e1-b434-f0b52717d7aa",
+														 "file_id": "64099bff-d356-48e1-b434-f0b52717d7aa",
+														 "object_sid": "64099bff-d356-48e1-b434-f0b52717d7aa",
+														 "object_type": "attachment",
+														 "owner_type": "form",
+														 "owner_sid": "9a88b5bc-8abf-4747-bce7-155f322cd920",
+														 "url": "/rest-service/files/stream/?owner_sid=9a88b5bc-8abf-4747-bce7-155f322cd920&owner_type=form&object_sid=64099bff-d356-48e1-b434-f0b52717d7aa&object_type=attachment"
+													},
+													"alt": ""
+											 },
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false,
+											 "validation": {}
+										},
+										{
+											 "displayName": "Radio Buttons",
+											 "QuestionType": "DbRadioButton",
+											 "Label": "QIR Required?",
+											 "Choices": [
+													{
+														 "Label": "Yes",
+														 "Value": "Yes"
+													},
+													{
+														 "Label": "No",
+														 "Value": "No"
+													}
+											 ],
+											 "columnOrRow": "row",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1624589815811,
+											 "class": "",
+											 "show": true,
+											 "dbSettings": {
+													"useDB": false
+											 },
+											 "validation": {
+													"required": true,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "new": false,
+											 "id": 1624589815811,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "islive": false,
+											 "stopBlurSave": false,
+											 "Answer": null
+										}
+								 ]
+							}
+					 ],
+					 "readonly": false,
+					 "open": true,
+					 "show": true,
+					 "type": "Container_Type",
+					 "id": "tmp-0040312787419c",
+					 "ClientID": "1623344864995c",
+					 "showEditPanel": false
+				}
+		 ],
+		 "readonly": false,
+		 "type": "Section_Type",
+		 "ClientID": "1623344864995s",
+		 "id": "tmp-4997072546135s",
+		 "class": "",
+		 "expandOnLoad": true,
+		 "open": true,
+		 "show": true,
+		 "ui": {
+				"backgroundColor": "#757575",
+				"textColor": "#000"
+		 },
+		 "showEditPanel": false
+	},
+	{
+		 "displayName": "Section",
+		 "Label": "Section",
+		 "icon": "<i class=\"material-icons\">crop_square</i>",
+		 "showAsCollapsible": true,
+		 "showSectionOutline": true,
+		 "contents": [
+				{
+					 "displayName": "Container",
+					 "icon": "<i class=\"material-icons\">crop_square</i>",
+					 "columns": [
+							{
+								 "items": [
+										{
+											 "displayName": "Form Text",
+											 "QuestionType": "FormText",
+											 "formtext": "<p>Create a QIR to document the condition or lesson learned by entering the QIR title here and marking yes when QIR has been initiated.</p>",
+											 "type": "FormTool_Type",
+											 "show": true,
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "id": 1562875316791,
+											 "ClientID": 1562875316791,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false,
+											 "validation": {},
+											 "Label": ""
+										},
+										{
+											 "displayName": "Short Text",
+											 "QuestionType": "ShortText",
+											 "Label": "QIR Title",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1562875329116,
+											 "class": "",
+											 "show": true,
+											 "validation": {
+													"required": false,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1562875329116,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false
+										},
+										{
+											 "displayName": "Long Text",
+											 "QuestionType": "LongText",
+											 "Label": "Describe QIR",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1569528649906,
+											 "class": "",
+											 "show": true,
+											 "validation": {
+													"required": false,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1569528649906,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false
+										}
+								 ]
+							}
+					 ],
+					 "readonly": false,
+					 "open": true,
+					 "show": true,
+					 "type": "Container_Type",
+					 "id": "1562875309392c",
+					 "ClientID": "1562875309392c",
+					 "showEditPanel": false
+				}
+		 ],
+		 "readonly": false,
+		 "type": "Section_Type",
+		 "ClientID": "1562875309392s",
+		 "id": "1562875309392s",
+		 "class": "",
+		 "expandOnLoad": true,
+		 "open": true,
+		 "show": true,
+		 "ui": {
+				"backgroundColor": "#757575",
+				"textColor": "#000"
+		 },
+		 "showEditPanel": false
+	},
+	{
+		 "displayName": "Section",
+		 "Label": "Project Systematization",
+		 "showAsCollapsible": false,
+		 "showSectionOutline": false,
+		 "contents": [
+				{
+					 "displayName": "Container",
+					 "icon": "<i class=\"material-icons\">crop_square</i>",
+					 "columns": [
+							{
+								 "items": [
+										{
+											 "displayName": "Form Text",
+											 "QuestionType": "FormText",
+											 "formtext": "<p>This should be a discussion between PM, Portfolio Manager, and CTO to determine what can be systematized about this project's execution.&nbsp;&nbsp;</p>",
+											 "type": "FormTool_Type",
+											 "show": true,
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "id": 1576777125012,
+											 "ClientID": 1576777125012,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false,
+											 "validation": {},
+											 "Label": ""
+										},
+										{
+											 "displayName": "Radio Buttons",
+											 "QuestionType": "DbRadioButton",
+											 "Label": "Can project be systematized?",
+											 "Choices": [
+													{
+														 "Label": "Yes",
+														 "Value": "Yes"
+													},
+													{
+														 "Label": "No",
+														 "Value": "No"
+													}
+											 ],
+											 "columnOrRow": "row",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1569528323946,
+											 "class": "",
+											 "show": true,
+											 "dbSettings": {
+													"useDB": false
+											 },
+											 "validation": {
+													"required": false,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1569528323946,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false,
+											 "stopBlurSave": false
+										},
+										{
+											 "displayName": "Checkboxes",
+											 "QuestionType": "DbCheckbox",
+											 "Label": "Aspects to Systematize",
+											 "Choices": [
+													{
+														 "Label": "Execution Plan (Steps)",
+														 "Value": "Execution Plan (Steps)"
+													},
+													{
+														 "Label": "Engineering tools (templates)",
+														 "Value": "Engineering tools (templates)"
+													},
+													{
+														 "Label": "Deliverable (template)",
+														 "Value": "Deliverable (template)"
+													},
+													{
+														 "Label": "Client Input Form",
+														 "Value": "Client Input Form"
+													}
+											 ],
+											 "columnOrRow": "row",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1569528328446,
+											 "class": "",
+											 "show": true,
+											 "dbSettings": {
+													"useDB": false
+											 },
+											 "validation": {
+													"required": false,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1569528328446,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false
+										},
+										{
+											 "displayName": "Form Text",
+											 "QuestionType": "FormText",
+											 "formtext": "",
+											 "type": "FormTool_Type",
+											 "show": true,
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "id": 1576777223984,
+											 "ClientID": 1576777223984,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": true,
+											 "validation": {},
+											 "Label": ""
+										},
+										{
+											 "displayName": "Long Text",
+											 "QuestionType": "LongText",
+											 "Label": "Describe Systemztization",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1569528332694,
+											 "class": "",
+											 "show": true,
+											 "validation": {
+													"required": false,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1569528332694,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false
+										}
+								 ]
+							}
+					 ],
+					 "readonly": false,
+					 "open": true,
+					 "show": true,
+					 "type": "Container_Type",
+					 "id": "1569528286449c",
+					 "ClientID": "1569528286449c",
+					 "new": true,
+					 "showEditPanel": false
+				}
+		 ],
+		 "readonly": false,
+		 "type": "Section_Type",
+		 "ClientID": "1569528286449s",
+		 "id": "1569528286449s",
+		 "class": "",
+		 "expandOnLoad": true,
+		 "open": true,
+		 "show": false,
+		 "ui": {
+				"backgroundColor": "#757575",
+				"textColor": "#000"
+		 },
+		 "new": true,
+		 "showEditPanel": false,
+		 "displayLabel": "Project Systematization"
+	},
+	{
+		 "displayName": "Section",
+		 "Label": "Section",
+		 "showAsCollapsible": true,
+		 "showSectionOutline": true,
+		 "contents": [
+				{
+					 "displayName": "Container",
+					 "icon": "<i class=\"material-icons\">crop_square</i>",
+					 "columns": [
+							{
+								 "items": [
+										{
+											 "displayName": "Form Text",
+											 "QuestionType": "FormText",
+											 "formtext": "<p>Iniate a QIR for the lessons learned from the project to support in updating the system to avoid any issues identified by the project or leverage any strong decisions made by the project team during the project.</p>",
+											 "type": "FormTool_Type",
+											 "show": true,
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "id": 1576777236062,
+											 "ClientID": 1576777236062,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false,
+											 "validation": {},
+											 "Label": ""
+										},
+										{
+											 "displayName": "Checkboxes",
+											 "QuestionType": "DbCheckbox",
+											 "Label": "QIR Initiated for Lessons Learned",
+											 "Choices": [
+													{
+														 "Label": "Yes",
+														 "Value": "Yes"
+													}
+											 ],
+											 "columnOrRow": "row",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1562875324771,
+											 "class": "",
+											 "show": true,
+											 "dbSettings": {
+													"useDB": false
+											 },
+											 "validation": {
+													"required": true,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1562875324771,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false,
+											 "stopBlurSave": false
+										},
+										{
+											 "displayName": "Form Text",
+											 "QuestionType": "FormText",
+											 "formtext": "<p>The QIR for systemazation should include the following aspects:</p>\n<ol>\n<li>Develop project execution plan incorporating lessons learned from the project</li>\n<li>Develop Standardized input spreadsheet</li>\n<li>Standardize meeting slides, report, and PowerPoint training</li>\n<li>Use execution plan and templates as a basis for new Integrify process</li>\n<li>Develop initial Integrify process</li>\n</ol>",
+											 "type": "FormTool_Type",
+											 "show": true,
+											 "new": true,
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "loaded": true,
+											 "isdirty": false,
+											 "id": 1576777315550,
+											 "ClientID": 1576777315550,
+											 "islive": false,
+											 "showEditPanel": false,
+											 "stopBlurSave": false,
+											 "validation": {},
+											 "Label": ""
+										},
+										{
+											 "displayName": "Checkboxes",
+											 "QuestionType": "DbCheckbox",
+											 "Label": "QIR Initiated for Systemazation",
+											 "Choices": [
+													{
+														 "Label": "Yes",
+														 "Value": "Yes"
+													}
+											 ],
+											 "columnOrRow": "row",
+											 "type": "Question_Type",
+											 "flex": 100,
+											 "ClientID": 1576777098402,
+											 "class": "",
+											 "show": true,
+											 "dbSettings": {
+													"useDB": false
+											 },
+											 "validation": {
+													"required": true,
+													"requiredMessage": "This field is required",
+													"min": null,
+													"minMessage": "This field is too short",
+													"max": null,
+													"maxMessage": "This field is too long",
+													"regEx": null,
+													"regExMessage": "This field is not valid"
+											 },
+											 "events": {
+													"onChange": null,
+													"onBlur": null,
+													"onFocus": null
+											 },
+											 "Answer": null,
+											 "new": false,
+											 "id": 1576777098402,
+											 "showEditPanel": false,
+											 "loaded": true,
+											 "isdirty": false,
+											 "originalAnswer": null,
+											 "islive": false,
+											 "stopBlurSave": false
+										}
+								 ]
+							}
+					 ],
+					 "readonly": false,
+					 "open": true,
+					 "show": true,
+					 "type": "Container_Type",
+					 "id": "1569528291658c",
+					 "ClientID": "1569528291658c",
+					 "new": true,
+					 "showEditPanel": false
+				}
+		 ],
+		 "readonly": false,
+		 "type": "Section_Type",
+		 "ClientID": "1569528291658s",
+		 "id": "1569528291658s",
+		 "class": "",
+		 "expandOnLoad": true,
+		 "open": true,
+		 "show": true,
+		 "ui": {
+				"backgroundColor": "#757575",
+				"textColor": "#000"
+		 },
+		 "new": true,
+		 "showEditPanel": false
+	}
+]

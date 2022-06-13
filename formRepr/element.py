@@ -3,6 +3,7 @@ from formRepr.mapsEnums import *
 
 # keeps track of how many nameless grids we've had so far
 gridCount = 0
+sectionCount = 0
 
 class Element: # basic attributes common to all elements
 	def __init__(self, obj):
@@ -20,6 +21,12 @@ class Element: # basic attributes common to all elements
 			self.label = obj["Label"]
 			self.control_name = to_control_name(self.label)
 
+		# change default section name
+		if (self.formBlock == FormBlock.section 
+			and self.control_name == "section"):
+			global sectionCount
+			self.control_name += f"_{sectionCount}"
+			sectionCount += 1
 		# setting type for form fields
 		if self.formBlock == FormBlock.field:
 			self.fieldType = questionTypeMap[obj["QuestionType"]]

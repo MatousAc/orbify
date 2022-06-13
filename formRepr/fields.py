@@ -61,7 +61,7 @@ class FileAttach(Element):
 class Secret(Element):
 	def __init__(self, item):
 		super().__init__(item)
-		self.confirm = item["ConfirmPassword"]
+		self.confirm = False # FIXME
 class Signature(Element):
 	def __init__(self, item):
 		super().__init__(item)
@@ -71,7 +71,7 @@ class StaticText(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.staticText
-		self.control_name = item["id"]
+		self.control_name = id2control(item["id"])
 		self.text = item["formtext"]
 class Space(Element): # holds space in grid
 	def __init__(self, item):

@@ -1,4 +1,3 @@
-from trace import Trace
 from formRepr.formBlocks import *
 from helpers.resources import *
 from helpers.xmlUtilities import *
@@ -6,12 +5,14 @@ from visitors.binder import Binder
 from visitors.namer import Namer
 from visitors.sourcer import Sourcer
 from visitors.viewer import Viewer
+import pyperclip
 
 
 def genMeta(form: Form) -> str:
 	src = (
 		tag("application-name", innerText="ftd", close=True) +
 		tag("form-name", innerText=form.control_name, close=True) +
+		tag("title", attrStr=enlang, innerText=form.title, close=True) +
 		tag("description", attrStr=enlang, selfClosing=True) +
 		tag("created-with-version", innerText=version, close=True) +
 		tag("updated-with-version", innerText=version, close=True)
@@ -74,4 +75,4 @@ def gen_xhtml(form: Form) -> str:
 if __name__ == "__main__":
 	form = Form()
 	src = gen_xhtml(form)
-	print(src)
+	pyperclip.copy(src)

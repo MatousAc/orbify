@@ -91,7 +91,7 @@ class Form:
 	def __init__(self):
 		self.title = input("Form Name: ")
 		self.control_name = to_control_name(self.title)
-		self.json = json.load(open("examples/newHire.json"))
+		self.json = json.load(open("examples/input.json"))
 		self.sections = []
 		for section in self.json:
 			self.sections.append(Section(section))

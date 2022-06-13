@@ -44,3 +44,11 @@ def choiceDict(choiceList: list) -> dict:
 		choices[l] = dashcase(l)
 	return choices
 
+# converts a string of numbers into a string of letters
+def id2control(id: int) -> str:
+	divisor = 26
+	name = ""
+	while id > 100:
+		name += chr(id % divisor + 65)
+		id %= 10
+	return name

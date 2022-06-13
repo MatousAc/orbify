@@ -7,7 +7,7 @@ from helpers.resources import *
 
 class Viewer(Visitor):
 	def ref(self, block, resource):
-		return f" ref=$form-resources/{block.control_name}/{resource}"
+		return f' ref="$form-resources/{block.control_name}/{resource}"'
 
 	def idBind(self, block) -> str:
 		id = f"{block.control_name}-"
@@ -132,7 +132,7 @@ class Viewer(Visitor):
 
 	def visitSecret(self, secret: Secret) -> str:
 		src = self.basic3(secret)
-		return tag("fr:secret", attrStr=self.idBind(secret),
+		return tag("xf:secret", attrStr=self.idBind(secret),
 		innerText=src, close=True)
 
 	def visitSignature(self, signature: Signature) -> str:

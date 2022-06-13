@@ -24,6 +24,7 @@ questionTypeMap = {
 	"Password": FieldType.secret,
 	"Signature": FieldType.signature,
 	# form tools
+	"Image": FieldType.space,
 	"FormText": FieldType.staticText,
 	"BlankSpace": FieldType.space,
 }

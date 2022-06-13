@@ -1,0 +1,341 @@
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" 
+xmlns:xf="http://www.w3.org/2002/xforms"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:ev="http://www.w3.org/2001/xml-events"
+xmlns:xi="http://www.w3.org/2001/XInclude"
+xmlns:xxi="http://orbeon.org/oxf/xml/xinclude"
+xmlns:xxf="http://orbeon.org/oxf/xml/xforms"
+xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+xmlns:exf="http://www.exforms.org/exf/1-0"
+xmlns:fr="http://orbeon.org/oxf/xml/form-runner"
+xmlns:saxon="http://saxon.sf.net/"
+xmlns:sql="http://orbeon.org/oxf/xml/sql"
+xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:fb="http://orbeon.org/oxf/xml/form-builder"
+fr:data-format-version="4.0.0">
+	<xh:head>
+		<xh:title>iqr</xh:title>
+		<xf:model id="fr-form-model" xxf:expose-xpath-types="true" xxf:analysis.calculate="true">
+			<xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
+				<form>
+					<section_0>
+						<grid_0>
+							<is_qir_required/>
+						</grid_0>
+					</section_0>
+					<section_1>
+						<grid_1>
+							<J/>
+							<qir_title/>
+							<describe_qir/>
+						</grid_1>
+					</section_1>
+					<project_systematization>
+						<grid_2>
+							<Y/>
+							<is_can_project_be_systematized/>
+							<aspects_to_systematize/>
+							<O/>
+							<describe_systemztization/>
+						</grid_2>
+					</project_systematization>
+					<section_2>
+						<grid_3>
+							<C/>
+							<qir_initiated_for_lessons_learned/>
+							<I/>
+							<qir_initiated_for_systemazation/>
+						</grid_3>
+					</section_2>
+				</form>
+			</xf:instance>
+			<xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+				<xf:bind id="section_0-bind" ref="section_0" name="section_0">
+					<xf:bind id="grid_0-bind" ref="grid_0" name="grid_0">
+						<xf:bind id="is_qir_required-bind" ref="is_qir_required" name="is_qir_required" type="xf:boolean"/>
+</xf:bind>
+				</xf:bind>
+				<xf:bind id="section_1-bind" ref="section_1" name="section_1">
+					<xf:bind id="grid_1-bind" ref="grid_1" name="grid_1">
+						<xf:bind id="J-bind" ref="J" name="J"/>
+						<xf:bind id="qir_title-bind" ref="qir_title" name="qir_title" xxf:whitespace="trim"/>
+						<xf:bind id="describe_qir-bind" ref="describe_qir" name="describe_qir" xxf:whitespace="trim"/>
+</xf:bind>
+				</xf:bind>
+				<xf:bind id="project_systematization-bind" ref="project_systematization" name="project_systematization">
+					<xf:bind id="grid_2-bind" ref="grid_2" name="grid_2">
+						<xf:bind id="Y-bind" ref="Y" name="Y"/>
+						<xf:bind id="is_can_project_be_systematized-bind" ref="is_can_project_be_systematized" name="is_can_project_be_systematized" type="xf:boolean"/>
+						<xf:bind id="aspects_to_systematize-bind" ref="aspects_to_systematize" name="aspects_to_systematize"/>
+						<xf:bind id="O-bind" ref="O" name="O"/>
+						<xf:bind id="describe_systemztization-bind" ref="describe_systemztization" name="describe_systemztization" xxf:whitespace="trim"/>
+</xf:bind>
+				</xf:bind>
+				<xf:bind id="section_2-bind" ref="section_2" name="section_2">
+					<xf:bind id="grid_3-bind" ref="grid_3" name="grid_3">
+						<xf:bind id="C-bind" ref="C" name="C"/>
+						<xf:bind id="qir_initiated_for_lessons_learned-bind" ref="qir_initiated_for_lessons_learned" name="qir_initiated_for_lessons_learned"/>
+						<xf:bind id="I-bind" ref="I" name="I"/>
+						<xf:bind id="qir_initiated_for_systemazation-bind" ref="qir_initiated_for_systemazation" name="qir_initiated_for_systemazation"/>
+</xf:bind>
+				</xf:bind>
+			</xf:bind>
+			<xf:instance id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all">
+				<metadata>
+					<application-name>ftd</application-name>
+					<form-name>iqr</form-name>
+					<title xml:lang="en">iqr</title>
+					<description xml:lang="en"/>
+					<created-with-version>2019.2.2.202003311635 PE</created-with-version>
+					<updated-with-version>2019.2.2.202003311635 PE</updated-with-version>
+				</metadata>
+			</xf:instance>
+			<xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+				<attachments/>
+			</xf:instance>
+			<xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
+				<resources>
+					<resource xml:lang="en">
+						<section_0>
+							<label>Section</label>
+							<help/>
+						</section_0>
+						<is_qir_required>
+							<label>QIR Required?</label>
+							<hint/>
+						</is_qir_required>
+						<section_1>
+							<label>Section</label>
+							<help/>
+						</section_1>
+						<J>
+							<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline">
+								<p>Create a QIR to document the condition or lesson learned by entering the QIR title here and marking yes when QIR has been initiated.</p>
+							</text>
+						</J>
+						<qir_title>
+							<label>QIR Title</label>
+							<hint/>
+						</qir_title>
+						<describe_qir>
+							<label>Describe QIR</label>
+							<hint/>
+						</describe_qir>
+						<project_systematization>
+							<label>Project Systematization</label>
+							<help/>
+						</project_systematization>
+						<Y>
+							<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline">
+								<p>This should be a discussion between PM, Portfolio Manager, and CTO to determine what can be systematized about this project's execution.&nbsp;&nbsp;</p>
+							</text>
+						</Y>
+						<is_can_project_be_systematized>
+							<label>Can project be systematized?</label>
+							<hint/>
+						</is_can_project_be_systematized>
+						<aspects_to_systematize>
+							<label>Aspects to Systematize</label>
+							<hint/>
+							<item>
+								<label>Execution Plan (Steps)</label>
+								<hint/>
+								<value>execution-plan-steps</value>
+							</item>
+							<item>
+								<label>Engineering tools (templates)</label>
+								<hint/>
+								<value>engineering-tools-templates</value>
+							</item>
+							<item>
+								<label>Deliverable (template)</label>
+								<hint/>
+								<value>deliverable-template</value>
+							</item>
+							<item>
+								<label>Client Input Form</label>
+								<hint/>
+								<value>client-input-form</value>
+							</item>
+						</aspects_to_systematize>
+						<O>
+							<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"></text>
+						</O>
+						<describe_systemztization>
+							<label>Describe Systemztization</label>
+							<hint/>
+						</describe_systemztization>
+						<section_2>
+							<label>Section</label>
+							<help/>
+						</section_2>
+						<C>
+							<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline">
+								<p>Iniate a QIR for the lessons learned from the project to support in updating the system to avoid any issues identified by the project or leverage any strong decisions made by the project team during the project.</p>
+							</text>
+						</C>
+						<qir_initiated_for_lessons_learned>
+							<label>
+QIR Initiated for Lessons Learned
+</label>
+							<hint/>
+							<item>
+								<label>Yes</label>
+								<hint/>
+								<value>yes</value>
+							</item>
+						</qir_initiated_for_lessons_learned>
+						<I>
+							<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline">
+								<p>The QIR for systemazation should include the following aspects:</p>
+								<ol>
+									<li>Develop project execution plan incorporating lessons learned from the project</li>
+									<li>Develop Standardized input spreadsheet</li>
+									<li>Standardize meeting slides, report, and PowerPoint training</li>
+									<li>Use execution plan and templates as a basis for new Integrify process</li>
+									<li>Develop initial Integrify process</li>
+								</ol>
+							</text>
+						</I>
+						<qir_initiated_for_systemazation>
+							<label>
+QIR Initiated for Systemazation
+</label>
+							<hint/>
+							<item>
+								<label>Yes</label>
+								<hint/>
+								<value>yes</value>
+							</item>
+						</qir_initiated_for_systemazation>
+					</resource>
+				</resources>
+			</xf:instance>
+		</xf:model>
+	</xh:head>
+	<xh:body>
+		<fr:view>
+			<fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors">
+				<fr:section id="section_0-section" bind="section_0-bind">
+					<xf:label  ref="$form-resources/section_0/label"/>
+					<fr:grid id="grid_0-grid" bind="grid_0-bind">
+						<fr:c x="1" y="1" w="12" h="1"></fr:c>
+						<fr:c x="1" y="2" w="12" h="1">
+							<fr:yesno-input id="is_qir_required-control" bind="is_qir_required-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<xf:label  ref="$form-resources/is_qir_required/label"/>
+								<xf:hint  ref="$form-resources/is_qir_required/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+							</fr:yesno-input>
+						</fr:c>
+					</fr:grid>
+				</fr:section>
+				<fr:section id="section_1-section" bind="section_1-bind">
+					<xf:label  ref="$form-resources/section_1/label"/>
+					<fr:grid id="grid_1-grid" bind="grid_1-bind">
+						<fr:c x="1" y="1" w="12" h="1">
+							<fr:explanation id="J-control" bind="J-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<fr:text  ref="$form-resources/J/text" mediatype="text/html"/>
+							</fr:explanation>
+						</fr:c>
+						<fr:c x="1" y="2" w="12" h="1">
+							<xf:input id="qir_title-control" bind="qir_title-bind">
+								<xf:label  ref="$form-resources/qir_title/label"/>
+								<xf:hint  ref="$form-resources/qir_title/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+							</xf:input>
+						</fr:c>
+						<fr:c x="1" y="3" w="12" h="1">
+							<xf:input id="describe_qir-control" bind="describe_qir-bind">
+								<xf:label  ref="$form-resources/describe_qir/label"/>
+								<xf:hint  ref="$form-resources/describe_qir/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+							</xf:input>
+						</fr:c>
+					</fr:grid>
+				</fr:section>
+				<fr:section id="project_systematization-section" bind="project_systematization-bind">
+					<xf:label  ref="$form-resources/project_systematization/label"/>
+					<fr:grid id="grid_2-grid" bind="grid_2-bind">
+						<fr:c x="1" y="1" w="12" h="1">
+							<fr:explanation id="Y-control" bind="Y-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<fr:text  ref="$form-resources/Y/text" mediatype="text/html"/>
+							</fr:explanation>
+						</fr:c>
+						<fr:c x="1" y="2" w="12" h="1">
+							<fr:yesno-input id="is_can_project_be_systematized-control" bind="is_can_project_be_systematized-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<xf:label  ref="$form-resources/is_can_project_be_systematized/label"/>
+								<xf:hint  ref="$form-resources/is_can_project_be_systematized/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+							</fr:yesno-input>
+						</fr:c>
+						<fr:c x="1" y="3" w="12" h="1">
+							<xf:select id="aspects_to_systematize-control" bind="aspects_to_systematize-bind" appearance="full">
+								<xf:label  ref="$form-resources/aspects_to_systematize/label"/>
+								<xf:hint  ref="$form-resources/aspects_to_systematize/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+								<xf:itemset  ref="$form-resources/aspects_to_systematize/item">
+									<xf:label ref="label"/>
+									<xf:value ref="value"/>
+									<xf:hint ref="hint"/>
+								</xf:itemset>
+							</xf:select>
+						</fr:c>
+						<fr:c x="1" y="4" w="12" h="1">
+							<fr:explanation id="O-control" bind="O-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<fr:text  ref="$form-resources/O/text" mediatype="text/html"/>
+							</fr:explanation>
+						</fr:c>
+						<fr:c x="1" y="5" w="12" h="1">
+							<xf:input id="describe_systemztization-control" bind="describe_systemztization-bind">
+								<xf:label  ref="$form-resources/describe_systemztization/label"/>
+								<xf:hint  ref="$form-resources/describe_systemztization/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+							</xf:input>
+						</fr:c>
+					</fr:grid>
+				</fr:section>
+				<fr:section id="section_2-section" bind="section_2-bind">
+					<xf:label  ref="$form-resources/section_2/label"/>
+					<fr:grid id="grid_3-grid" bind="grid_3-bind">
+						<fr:c x="1" y="1" w="12" h="1">
+							<fr:explanation id="C-control" bind="C-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<fr:text  ref="$form-resources/C/text" mediatype="text/html"/>
+							</fr:explanation>
+						</fr:c>
+						<fr:c x="1" y="2" w="12" h="1">
+							<xf:select id="qir_initiated_for_lessons_learned-control" bind="qir_initiated_for_lessons_learned-bind" appearance="full">
+								<xf:label  ref="$form-resources/qir_initiated_for_lessons_learned/label"/>
+								<xf:hint  ref="$form-resources/qir_initiated_for_lessons_learned/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+								<xf:itemset  ref="$form-resources/qir_initiated_for_lessons_learned/item">
+									<xf:label ref="label"/>
+									<xf:value ref="value"/>
+									<xf:hint ref="hint"/>
+								</xf:itemset>
+							</xf:select>
+						</fr:c>
+						<fr:c x="1" y="3" w="12" h="1">
+							<fr:explanation id="I-control" bind="I-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+								<fr:text  ref="$form-resources/I/text" mediatype="text/html"/>
+							</fr:explanation>
+						</fr:c>
+						<fr:c x="1" y="4" w="12" h="1">
+							<xf:select id="qir_initiated_for_systemazation-control" bind="qir_initiated_for_systemazation-bind" appearance="full">
+								<xf:label  ref="$form-resources/qir_initiated_for_systemazation/label"/>
+								<xf:hint  ref="$form-resources/qir_initiated_for_systemazation/hint"/>
+								<xf:alert ref="$fr-resources/detail/labels/alert"/>
+								<xf:itemset  ref="$form-resources/qir_initiated_for_systemazation/item">
+									<xf:label ref="label"/>
+									<xf:value ref="value"/>
+									<xf:hint ref="hint"/>
+								</xf:itemset>
+							</xf:select>
+						</fr:c>
+					</fr:grid>
+				</fr:section>
+			</fr:body>
+		</fr:view>
+	</xh:body>
+</xh:html>
