@@ -2,6 +2,7 @@ from visitors.visitor import Visitor
 from helpers.xmlUtilities import tag, closing
 from formRepr.formBlocks import *
 from formRepr.fields import *
+from helpers.resources import ftdImgAttrs, ftdImgInner
 
 class Namer(Visitor):
 	def visitForm(self, form: Form) -> str:
@@ -68,8 +69,9 @@ class Namer(Visitor):
 	def visitSignature(self, signature: Signature) -> str:
 		return tag(signature.control_name, selfClosing=True)
 
-	def visitFTDImage(self, image: StaticText) -> str:
-   pass
+	def visitFTDImage(self, FTDImage: FTDImage) -> str:
+		return tag(FTDImage.control_name, attrDict=ftdImgAttrs,
+      innerText=ftdImgInner, close=True)
 
 	def visitStaticText(self, staticText: StaticText) -> str:
 		return tag(staticText.control_name, selfClosing=True)

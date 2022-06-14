@@ -32,6 +32,10 @@ class Place():
 			case FieldType.fileAttach:field = FileAttach(item)
 			case FieldType.secret: 		field = Secret(item)
 			case FieldType.signature: field = Signature(item)
+			case FieldType.ftdImage: 		
+				# unless its the logo, images become space
+				if isFTDImage(item):		field = FTDImage(item)
+				else: 									field = Space(item)
 			case FieldType.staticText:field = StaticText(item)
 			case FieldType.space: 		field = Space(item)
 		
@@ -41,6 +45,8 @@ class Place():
 		self.field = field
 		self.h = grid.h
 		self.w = grid.w
+		if field.fieldType == FieldType.ftdImage:
+			self.w = grid.w // 2
 		self.x = grid.x
 		self.y = grid.y
 	

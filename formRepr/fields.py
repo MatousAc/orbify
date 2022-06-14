@@ -5,17 +5,25 @@ from formRepr.mapsEnums import FieldType
 
 # all these classes define a single field
 # most are all slightly different
+
+
 class Text(Element):
 	def __init__(self, item):
 		super().__init__(item)
+
+
 class RichText(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.tinymceOptions = item["tinymceOptions"]
+
+
 class Numeric(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.precision = item["format"]["digitsAfterDecimal"]
+
+
 class Currency(Element):
 	def __init__(self, item):
 		super().__init__(item)
@@ -28,53 +36,83 @@ class Currency(Element):
 			case "en-gb": self.prefix = '£'
 			case "de-de": self.prefix = '€'
 			case "fr-fr": self.prefix = '€'
+
+
 class Email(Element):
 	def __init__(self, item):
 		super().__init__(item)
+
+
 class Date(Element):
 	def __init__(self, item):
 		super().__init__(item)
+
+
 class Radio(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		# here I create a dictionary from
-		# a list of dictionaries 
+		# a list of dictionaries
 		self.choices = choiceDict(item["Choices"])
+
+
 class YesNo(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.yesno
 		# change control_name to is_control_name
 		self.control_name = f"is_{self.control_name}"
+
+
 class CheckBox(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.choices = choiceDict(item["Choices"])
+
+
 class DropDown(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.choices = choiceDict(item["Choices"])
 		self.multipleSelect = item["multiple"]
+
+
 class FileAttach(Element):
 	def __init__(self, item):
 		super().__init__(item)
+
+
 class Secret(Element):
 	def __init__(self, item):
 		super().__init__(item)
-		self.confirm = False # FIXME
+		self.confirm = False  # FIXME
+
+
 class Signature(Element):
 	def __init__(self, item):
 		super().__init__(item)
 
+
 # form tools
+anonCount = 0
+class FTDImage(Element):
+	def __init__(self, item):
+		super().__init__(item)
+		self.fieldType = FieldType.ftdImage
+		global anonCount
+		self.control_name += f"_{anonCount}"
+		anonCount += 1
+
+
 class StaticText(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.staticText
 		self.control_name = id2control(item["id"])
 		self.text = staticTextScrub(item["formtext"])
-class Space(Element): # holds space in grid
+
+
+class Space(Element):  # holds space in grid
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.space
-

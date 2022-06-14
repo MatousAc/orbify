@@ -4,7 +4,7 @@ class FieldType(Enum): # defining all the different field types
 	text,	richText, numeric, email, date = auto(), auto(), auto(), auto(), auto()
 	radio, checkbox, dropdown, fileAttach = auto(), auto(), auto(), auto()
 	secret, signature, currency, yesno = auto(), auto(), auto(), auto()
-	ftdImage, staticText, space = auto(), auto() # form tools
+	ftdImage, staticText, space = auto(), auto(), auto() # form tools
 	
 
 questionTypeMap = {

@@ -98,6 +98,11 @@ class Binder(Visitor):
 		attrs["type"] = "xf:anyURI"
 		return tag(self.xf, attrDict=attrs, selfClosing=True)
 
+	def visitFTDImage(self, FTDImage: FTDImage) -> str:
+		attrs = self.idRefName(FTDImage)
+		attrs["type"] = "xf:anyURI"
+		return tag(self.xf, attrDict=attrs, selfClosing=True)
+  
 	def visitStaticText(self, staticText: StaticText) -> str:
 		return tag(self.xf, attrDict=self.idRefName(staticText), 
 			selfClosing=True)

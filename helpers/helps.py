@@ -35,6 +35,11 @@ def isYesNo(choices: dict) -> bool:
 	if ("true" in labels and "false" in labels): return True
 	return False # default
 
+
+def isFTDImage(item):
+	txt = item["properties"]["imageFile"]["text"].lower()
+	return "ftd logo" in txt
+
 # this function collapses a list of choice 
 # dictionaries into a single choice dictionary
 def choiceDict(choiceList: list) -> dict:

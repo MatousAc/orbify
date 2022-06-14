@@ -140,6 +140,13 @@ class Viewer(Visitor):
 		return tag("fr:handwritten-signature", attrDict=viewSignature,
 			attrStr=self.idBind(signature), innerText=src, close=True)
 
+	def visitFTDImage(self, FTDImage: FTDImage) -> str:
+		src = (self.basicTag(FTDImage, "label") +
+      self.basicAlert())
+		return tag("fr:image", attrDict=viewImage,
+      attrStr=self.idBind(FTDImage),
+      innerText=src, close=True)
+		
 	def visitStaticText(self, staticText: StaticText) -> str:
 		media = 'mediatype="text/html"'
 		text = tag("fr:text", selfClosing=True,

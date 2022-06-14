@@ -87,6 +87,10 @@ class Sourcer(Visitor):
 	def visitSignature(self, signature: Signature) -> str:
 		return self.labelHint(signature)
 
+	def visitFTDImage(self, FTDImage: FTDImage) -> str:
+		return tag(FTDImage.control_name, close=True,
+      innerText=tag("label", selfClosing=True))
+		
 	def visitStaticText(self, staticText: StaticText) -> str:
 		src = tag("text", attrStr=srcFormTextAttrs,
 			innerText=staticText.text, close=True)
