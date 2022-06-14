@@ -1,0 +1,417 @@
+[
+	{
+		 "showEditPanel": false,
+		 "ui": {
+				"textColor": "#585858",
+				"backgroundColor": "#ebecee"
+		 },
+		 "show": true,
+		 "open": true,
+		 "expandOnLoad": true,
+		 "class": "",
+		 "id": "",
+		 "ClientID": "",
+		 "type": "Section_Type",
+		 "contents": [
+				{
+					 "showEditPanel": false,
+					 "ClientID": "",
+					 "id": "",
+					 "type": "Container_Type",
+					 "show": true,
+					 "open": true,
+					 "columns": [
+							{
+								 "items": [
+										{
+											 "id": 1485458296970,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458296970,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Customer Name:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458311311,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458311311,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Competitor Name:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458322802,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458322802,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Competitor Support Price:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458342319,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458342319,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "List Price of Support:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458356395,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458356395,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Requested Price of Support:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458379319,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458379319,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Net Gain/Loss",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458393929,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458393929,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Total Percent Support Discount Requested:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458425167,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458425167,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Current Value of Deal:",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458442184,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458442184,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Term of Discount (months):",
+											 "QuestionType": "ShortText",
+											 "displayName": "Short Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458475680,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458475680,
+											 "flex": 100,
+											 "type": "Question_Type",
+											 "Label": "Business Justification:",
+											 "QuestionType": "LongText",
+											 "displayName": "Long Text",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true
+										},
+										{
+											 "id": 1485458504661,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": false
+											 },
+											 "Answer": [],
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458504661,
+											 "flex": 40,
+											 "type": "Question_Type",
+											 "Label": "Supporting Document:",
+											 "QuestionType": "FileAttachment",
+											 "displayName": "File Attachment",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true,
+											 "originalAnswer": [],
+											 "readonly": false,
+											 "uploadParentFolder": "temp",
+											 "uploadPath": "/"
+										},
+										{
+											 "id": 1485458521561,
+											 "new": false,
+											 "events": {
+													"onFocus": null,
+													"onBlur": null,
+													"onChange": null
+											 },
+											 "validation": {
+													"regExMessage": "This field is not valid",
+													"regEx": null,
+													"maxMessage": "This field is too long",
+													"max": null,
+													"minMessage": "This field is too short",
+													"min": null,
+													"requiredMessage": "This field is required",
+													"required": true
+											 },
+											 "show": true,
+											 "class": "",
+											 "ClientID": 1485458521561,
+											 "flex": 50,
+											 "type": "Question_Type",
+											 "Label": "Email:",
+											 "QuestionType": "EmailAddress",
+											 "displayName": "Email",
+											 "showEditPanel": false,
+											 "isdirty": false,
+											 "islive": false,
+											 "loaded": true,
+											 "stopBlurSave": false
+										}
+								 ]
+							}
+					 ],
+					 "icon": "<i class=\"material-icons\">crop_square</i>",
+					 "displayName": "Container"
+				}
+		 ],
+		 "showSectionOutline": true,
+		 "showAsCollapsible": true,
+		 "icon": "<i class=\"material-icons\">crop_square</i>",
+		 "Label": "Competitive Discount Form",
+		 "displayName": "Section"
+	}
+]

@@ -111,7 +111,7 @@ class StaticText(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.staticText
-		self.control_name = id2control(item["id"])
+		self.control_name = f'a_{item["id"]}'
 		self.text = staticTextScrub(item["formtext"])
 
 

@@ -1,4 +1,5 @@
 import json
+from pickle import FALSE
 import pyperclip
 from formRepr.fields import *
 from helpers.helps import *
@@ -61,7 +62,6 @@ class Grid(Element):
 	def __init__(self, obj):
 		super().__init__(obj)
 		self.open = obj["open"]
-		self.readonly = obj["readonly"]
 		# grid measurements
 		numDivisions = 12
 		self.numColumns = len(obj["columns"])
@@ -84,7 +84,6 @@ class Grid(Element):
 class Section(Element):
 	def __init__(self, obj):
 		super().__init__(obj)
-		self.readonly = obj["readonly"]
 		self.open = obj["open"]
 		self.label = obj["Label"]
 		self.grids = []
