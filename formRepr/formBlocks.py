@@ -1,4 +1,5 @@
 import json
+import pyperclip
 from formRepr.fields import *
 from helpers.helps import *
 from formRepr.mapsEnums import *
@@ -97,7 +98,7 @@ class Form:
 	def __init__(self):
 		self.title = input("Form Name: ")
 		self.control_name = to_control_name(self.title)
-		self.json = json.load(open("examples/input.json"))
+		self.json = json.loads(pyperclip.paste())
 		self.sections = []
 		for section in self.json:
 			self.sections.append(Section(section))

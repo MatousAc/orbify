@@ -12,6 +12,7 @@ questionTypeMap = {
 	"ShortText": FieldType.text,
 	"LongText": FieldType.text,
 	"SearchBox": FieldType.text,
+	"ContactSearch": FieldType.text,
 	"Hyperlink": FieldType.text, # eventually make link type?
 	"RichText": FieldType.richText,
 	"Number": FieldType.numeric,
