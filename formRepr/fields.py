@@ -42,6 +42,9 @@ class Email(Element):
 	def __init__(self, item):
 		super().__init__(item)
 
+class Contact(Element):
+	def __init__(self, item):
+		super().__init__(item)
 
 class Date(Element):
 	def __init__(self, item):

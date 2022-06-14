@@ -92,6 +92,16 @@ class Viewer(Visitor):
 		return tag("xf:input", attrStr=self.idBind(email),
 			innerText=src, close=True)
 
+	def visitContact(self, contact: Contact) -> str:
+		src = self.basic3(contact)
+		label = tag("xf:label", attrStr="ref=\"name\"", selfClosing=True)
+		value = tag("xf:value", attrStr="ref=\"id\"", selfClosing=True)
+		src += tag("xf:itemset", attrStr="ref=\"user\"",
+      innerText=label+value, close=True)
+		return tag("fr:databound-select1", attrDict=viewContact,
+			attrStr=self.idBind(contact),
+			innerText=src, close=True)
+
 	def visitDate(self, date: Date) -> str:
 		src = self.basic3(date)
 		return tag("fr:date", attrDict=viewDate,

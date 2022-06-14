@@ -81,6 +81,12 @@ viewCurrency = {
 	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
 }
 
+viewContact = {
+	"xmlns": fbURL,
+	"xmlns:xxbl": xxbl,
+	"resource": "https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users"
+}
+
 viewRichText = {
 	"xmlns:xxbl": xxbl,
 	"xmlns:f": "http://orbeon.org/oxf/xml/formatting"

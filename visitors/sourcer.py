@@ -51,6 +51,9 @@ class Sourcer(Visitor):
 	def visitEmail(self, email: Email) -> str:
 		return self.labelHint(email)
 
+	def visitContact(self, contact: Contact) -> str:
+		return self.labelHint(contact)
+
 	def visitDate(self, date: Date) -> str:
 		return self.labelHint(date)
 

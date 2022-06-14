@@ -23,6 +23,7 @@ class Place():
 																field = Currency(item)
 				else: 									field = Numeric(item)
 			case FieldType.email: 		field = Email(item)
+			case FieldType.contact:		field = Contact(item)
 			case FieldType.date: 			field = Date(item)
 			case FieldType.radio: 		
 				if isYesNo(item["Choices"]):

@@ -19,6 +19,8 @@ class Visitor:
 		raise Exception("Abstract method 'visitCurrency'")
 	def visitEmail(self, email: Email) -> str:
 		raise Exception("Abstract method 'visitEmail'")
+	def visitContact(self, contact: Contact) -> str:
+		raise Exception("Abstract method 'visitContact'")
 	def visitDate(self, date: Date) -> str:
 		raise Exception("Abstract method 'visitDate'")
 	def visitRadio(self, radio: Radio) -> str:
