@@ -1,5 +1,5 @@
 # **Orbify**
-**Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Development](#development)
+**Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program](#program)
 ## Overview
 This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking and reconfiguration of generic parameters, orbify reduces this waste of time and allows the Workflow Engineer to focus on translating more-complicated logic/layout features between the platforms.  
 Below I detail what exactly this tool can do for you, how to use it, along with some development notes.  
@@ -173,10 +173,23 @@ It appears that XForms has borrowed a bootstrap-style grid scheme (or the other 
 
 $w$ which is obviously the element's width. It can range from 1-12. A full-width element is w="12" and one that takes up half a page is $w="6"$. Height $h$ doesn't seem to have a limit. The $x$ and $y$ variables seem to indicate position on the page relative to the top left corner of the grid. Here is an example of what all these values look like: 
 
-## Development 
-
-Head text 
-
- 
-
- 
+## Program
+Form translation is orchestrated in [orbify.py](orbify.py).
+1. First the form object is created.
+   ~~~
+   form = Form()
+   ~~~
+	 JSON is retrieved from the clipboard and parsed. Then the form creates section objects, with in turn create grids, and so on and so forth. Each form "block" contains objects within it that are iteratively constructed using parsed JSON objects.  
+	 Eventually, we have `Form` > `Section` > `Grid` > `Place` - `Field` where each level block contains multiple smaller blocks except each place contains only one field.  
+	 This might feel like overkill, but it is actually a very useful and scalable code representation for continuous development.
+2. The second line of code
+   ~~~
+	 src = gen_xhtml(form)
+	 ~~~
+	 constructs a string with all the XML/XForms source code in it. From a developer's perspective, one would hope to have all the code that generates the model's *resources* in one place, while code that generates the *view* would be elsewhere. Although there are other ways to organize (possibly by field and class type, because of the hierarchical nature of XML, I chose to use the **visitor design pattern**.  
+	 This is a slightly more complex programming paradigm, so I won't explain it here, but it's proved to work extremely well for this use case.
+3. Finally,
+   ~~~
+	 pyperclip.copy(src)
+	 ~~~
+	 places the source code on your clipboard - ready to paste into Orbeon.
