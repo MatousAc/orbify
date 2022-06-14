@@ -45,7 +45,7 @@ def isFTDImage(item):
 def choiceDict(choiceList: list) -> dict:
 	choices = {}
 	for choice in choiceList:
-		l = choice["Label"]
+		l = str(choice["Label"])
 		choices[l] = dashcase(l)
 	return choices
 
