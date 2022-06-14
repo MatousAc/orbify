@@ -1,20 +1,27 @@
-What is this? 
+# Orbify
+## What is this? 
 
-This is a small project aiming to simplify the process of transferring forms from Integrify to Orbeon.  
+This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. This process regularly involves a ton of clicking and reconfiguration of generic parameters. My aim is to reduce the time spent clicking time and allow the Workflow engineer to focus on translating any more-complicated logic/layout features between the platforms.  
+Below I detail what exactly this tool can do for you, how to use it, along with some development notes.  
 
-This process to involve a ton of clicking and setting similar parameters. My aim is to reduce the clicking time and allow the Workflow engineer to focus on translating any more-complicated logic/layout features needed in Orbeon. 
-
-Below I detail what exactly this tool can do for you, how to use it, and some notes taken during development. 
-
- 
-
-Use 
+**Contents**  
+[Download](#prerequisites-and-download)  
+[Use](#use)  
+[Form Representation](#form-representation)  
+[Development](#development)  
+## Prerequisites and Download
+In order to run this script, you must
+1. install Python 3.10.x or greater
+2. get the python module pyperclip  
+   `pip install pyperclip`
+3. 
+## Use
 
 Orbify is designed to require minimal effort for use. 
 
  
 
-Form Representation 
+## Form Representation 
 
 Integrify forms uses a purely JSON representation to keep track of their forms.   
 
@@ -282,7 +289,7 @@ itemset (for select/select1)
 
  
 
-Development 
+## Development 
 
 Head text 
 
