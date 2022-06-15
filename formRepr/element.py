@@ -9,6 +9,10 @@ class Element: # basic attributes common to all elements
 	def __init__(self, obj):
 		self.displayName = obj["displayName"]
 		self.show = obj["show"]
+		# readonly
+		self.readonly = False
+		if "readonly" in list(obj.keys()):
+			self.readonly = obj["readonly"]
 		# everything is section/container/question/formTool
 		self.formBlock = formBlockMap[obj["type"]]
 

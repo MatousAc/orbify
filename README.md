@@ -1,15 +1,9 @@
-# Orbify
-## What is this? 
-
-This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. This process regularly involves a ton of clicking and reconfiguration of generic parameters. My aim is to reduce the time spent clicking time and allow the Workflow engineer to focus on translating any more-complicated logic/layout features between the platforms.  
+# **Orbify**
+**Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program](#program)
+## Overview
+This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking and reconfiguration of generic parameters, orbify reduces this waste of time and allows the Workflow Engineer to focus on translating more-complicated logic/layout features between the platforms.  
 Below I detail what exactly this tool can do for you, how to use it, along with some development notes.  
-
-**Contents**  
-[Download](#download)  
-[Use](#use)  
-[Capabilities](#capabilities)  
-[Form Representation](#form-representation)  
-[Development](#development)  
+ 
 ## Download
 In order to run this script, you must
 1. install Python 3.10.x or greater
@@ -26,34 +20,48 @@ Orbify is designed to require minimal to use.
 3.	enter the form's name (oddly, this *isn't* stored in the JSON)
 4. resulting XForms source code is on the clipboard
 ## Capabilities
-Orbify can translate most forms without a hitch. It translates the following fields without known bugs:
+**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor misalignment which can be adjusted by hand.
 |Integrify|Orbeon|
 |-|-|
-|Short Text|text input|
-|Long Text|text input|
-|Search Box|text input|
-|Hyperlink|text input|
-|Rich Text|formatted text input|
-|Number|number input, currency input|
-|Email Address|email input|
-|Contact Search|single select list with options populating from a resource|
-|Calendar|date input|
-|Radio Button|radio input/boolean input|
-|Checkbox|multi-select checkboxes|
-|Select List|static dropdown|
-|File Attachment|file attachment |
-|Password|secret input|
-|Signature|handwritten signature|
-|Image|blank space|
-|Form Text|explanatory text|
-|Blank Space|just a placeholder in the grid. no field associated|
+|section|section|
+|container|grid|
+|column|place|
+|field|field|
+
+**Fields**: Orbify translates the following fields without known bugs:
+|Integrify|Orbeon|
+|-|-|
+|short text|text input|
+|long text|text input|
+|search box|text input|
+|hyperlink|text input|
+|rich text|formatted text input|
+|number|number input, currency input|
+|email address|email input|
+|contact search|single select list with options populating from a resource|
+|calendar|date input|
+|radio button|radio input/boolean input|
+|checkbox|multi-select checkboxes|
+|select List|static dropdown|
+|file attachment|file attachment |
+|password|secret input|
+|signature|handwritten signature|
+|form text|explanatory text|
+|image|blank space $\downarrow$|
+|blank space|just a placeholder in the grid. no field associated|
 
 There are special cases. When **currency** is detected, orbify translates the number field into a currency input.  
 When a radio select has only yes and no options (or true/false), it is translated into a **boolean** input.  
 **Images** get a placeholder, except for FTD Logo Images, which are common enough to hardcode and include.  
 More similar additions will be added in the future (phone numbers, for instance).
-## Form Representation
 
+|Integrify|Orbeon|Supported?|
+|-|-|-|
+|required|required|$\checkmark$|
+|show|show|X|
+
+## Form Representation
+This section simply explains how forms are represented in either of the two systems.
 ### **Integrify**
 forms uses a purely JSON representation to keep track of their forms. There isn't much complexity to their setup, but basically the JSON is:  
 *json representation* | **code representation**
@@ -98,7 +106,7 @@ We start with the generic
 on the outside, and then the hierarchy is as follows:  
 xf:Instance > form > section_control > grid_control > field_control 
 
-Next is the xf:bind section, so I'll call this the "bind." It generically starts with
+Next is the xf:**bind** section, so I'll call this the "bind." It generically starts with
 ~~~
 <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')"> 
 ~~~
@@ -106,141 +114,82 @@ Inside this are tags that, again, mirror the form structure, except this time th
 ~~~
 <xf:bind id="control_name-bind" ref="control_name" name="control_name" type="xf:datatype"/> 
 ~~~
-Where datatype can be Boolean, anyURI, date, etc. Fields such as radio buttons, checkboxes, or dropdowns are no different from text fields with regards to how they store data, so datatype isn't specified for them here. They are just text in the background. In our program, however, they will each definitely have their own representation. 
+where `datatype` can be boolean, anyURI, date, decimal, etc. Fields such as radio buttons, checkboxes, or dropdowns are no different from text fields with regards to how they store data, so datatype isn't specified for them here. They are just text in the background. In our program, however, they will each definitely have their own representation.  
+The datatype is optional and not included in section or grid tags. Basic text input don't indicate a datatype, but typically include an xxf:whitespace="trim" attribute.  
+Constraints can also be set here. For instance, the currency datatype seems to be denoted by `type="xf:decimal" constraint="xxf:fraction-digits(2)"`. Also, this is where other data attributes such as required and relevant (visible?) may go. 
 
-The datatype is optional and not included in section or grid tags. Basic text inputs don't indicate a datatype, but typically include an xxf:whitespace="trim" attribute. 
-
-The currency datatype seems to be denoted by 
-
-type="xf:decimal" 
-
-constraint="xxf:fraction-digits(2)" 
-
-Also, this is where other data attributes such as required and relevant (visible?) go. 
-
- 
-
-Next there is another instance tag this time of the form: 
-
+Next there is another instance tag this time of the form:
+~~~
 <xf:instance id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all"> 
+~~~
+This appears to provide **metadata** about the form and isn't difficult to generate as it's layout is completely static.
+The form **attachments** instance tag, likewise, appears to be simple. It is invariably empty regardless of what attachments may be in the form.
+~~~
+<xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+	<attachments/> 
+</xf:instance>
+~~~
 
-This appears to provide metadata about the form and doesn't look hard to make. Orbify needs the form title and can fill out basic metadata, standard control_name, description (empty), created/updated software versions, etc. It's cookie-cutter enough to be easy I think. 
-
- 
-
-Next is the form attachments instance tag. It appears to be invariable empty regardless of what attachments. All it is is: 
-
-<xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all"> 
-
-<attachments/> 
-
-</xf:instance> 
-
- 
-
-The final piece of the model is the "resources." This section seems to keep static data for the form that is only "for display." we have the following tags: 
-
+The final piece of the model is the **resources** instance. This section seems to keep static data for the form that is only "for display" including form text, and checkbox/radio options. We have the following tags: 
+~~~
 <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all"> 
-
-<resources> 
-
-<resource xml:lang="en"> 
-
-Following this are tags for each piece of data in the form: 
-
-<control_name> 
-
-<label>Control Name</label> 
-
-<hint/> 
-
+	<resources>
+		<resource xml:lang="en"> 
+~~~
+Following this are tags for each piece of data in the form:
+~~~
+<control_name>
+	<label>Control Name</label>
+	<hint/>
 </control_name> 
+~~~
+Inputs with choices, such as radio buttons and checkboxes, have items in the resources section:
+~~~
+<item>
+	<label>Option</label>
+	<hint/>
+	<value>option</value>
+</item>
+~~~
+After this instance, the XForms model and head tags close.
 
-Within radio buttons/checkboxes, the options are items in the resources section (since the submitted data is same as a basic input). 
-
-<item> 
-
-<label>Option</label> 
-
-<hint/> 
-
-<value>option</value> 
-
-</item> 
-
-Clearly, this is easily programmable with the available data. 
-
-After this instance, the XForms model and head tags close. 
-
- 
-
-View 
-
+### **View**
 This section begins with the generic nested tags 
+~~~
+<xh:body>
+	<fr:view>
+		<fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors"> 
+~~~
 
-<xh:body> 
-
-<fr:view> 
-
-<fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors"> 
-
- 
-
-Within this there are tags for every section of the form:  
-
+Within this there are tags for every section of the form:
+~~~
 <fr:section id="control_name-section" bind="control_name-bind"> 
+~~~
+and every grid in the same format. Every data field is contained within an fr:c tag. This tag places data fields within the grid. The format is:
+~~~
+<fr:c x="#" y="#" w="#" h="#"> 
+~~~
+It appears that XForms has borrowed a bootstrap-style grid scheme (or the other way around).
 
-And every grid in the same format. Inside is likely the most difficult part of Orbify. Every data field is contained within an fr:c tag. This tag seems to place data fields within the grid. The format is 
+$w$ which is obviously the element's width. It can range from 1-12. A full-width element is w="12" and one that takes up half a page is $w="6"$. Height $h$ doesn't seem to have a limit. The $x$ and $y$ variables seem to indicate position on the page relative to the top left corner of the grid. Here is an example of what all these values look like: 
 
-<fr:c x="#" y="#" w="#"> 
-
-It appears that XForms has borrowed a bootstrap-style grid scheme. 
-
-The simplest variable above is w which is obviously the element's width. It can range from 1-12. A full-width element is w="12" and one that takes up half a page is w="6". 
-
-Next, the x and y variables seem to indicate position on the page relative to the top left corner of the grid. Here is an example of what all these values look like: 
-
- 
- 
-
-Within these tags is all the rest of the field's information. The first tag specifies type of viewed field it is. Known types are: 
-
-input 
-
-date 
-
-attachment 
-
-yesno-input 
-
-select 
-
-select1 
-
-currency 
-
- 
-
-These may include an id, bind, class, and other attributes. 
-
-Subtags include 
-
-label 
-
-hint 
-
-alert 
-
-itemset (for select/select1) 
-
- 
-
- 
-
-## Development 
-
-Head text 
-
- 
-
- 
+## Program
+Form translation is orchestrated in [orbify.py](orbify.py).
+1. First the form object is created.
+   ~~~
+   form = Form()
+   ~~~
+	 JSON is retrieved from the clipboard and parsed. Then the form creates section objects, with in turn create grids, and so on and so forth. Each form "block" contains objects within it that are iteratively constructed using parsed JSON objects.  
+	 Eventually, we have `Form` > `Section` > `Grid` > `Place` - `Field` where each level block contains multiple smaller blocks except each place contains only one field.  
+	 This might feel like overkill, but it is actually a very useful and scalable code representation for continuous development.
+2. The second line of code
+   ~~~
+	 src = gen_xhtml(form)
+	 ~~~
+	 constructs a string with all the XML/XForms source code in it. From a developer's perspective, one would hope to have all the code that generates the model's *resources* in one place, while code that generates the *view* would be elsewhere. Although there are other ways to organize (possibly by field and class type, because of the hierarchical nature of XML, I chose to use the **visitor design pattern**.  
+	 This is a slightly more complex programming paradigm, so I won't explain it here, but it's proved to work extremely well for this use case.
+3. Finally,
+   ~~~
+	 pyperclip.copy(src)
+	 ~~~
+	 places the source code on your clipboard - ready to paste into Orbeon.

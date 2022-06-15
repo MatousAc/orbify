@@ -15,563 +15,514 @@
          xmlns:fb="http://orbeon.org/oxf/xml/form-builder"
          fr:data-format-version="4.0.0">
     <xh:head>
-        <xh:title>Assign Proposal Writer</xh:title>
+        <xh:title>Develop BD Strategy</xh:title>
         <xf:model id="fr-form-model" xxf:expose-xpath-types="true" xxf:analysis.calculate="true">
-
-            
             <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
                 <form>
-                    <section-1>
-                        <grid-1>
-                            <proposal_writer_id itemset-empty="false"/>
-                            <proposal_writer_due_date/>
-                            <proposal_contact_ee>no</proposal_contact_ee>
-                            <proposal_submit_draft_to_client>no</proposal_submit_draft_to_client>
-                        </grid-1>
-                        
-                    </section-1>
-                    <section-2>
-                        <grid-2>
-                            <project_type_of_services/>
-                            <project_problem_statement/>
-                            <project-info.reference-material/>
-                            <project_facility_system_type/>
-                            <project_process_systems/>
-                            <project_mechanical_systems/>
-                            <project_desired_start_time/>
-                            <project_other_info/>
-                            <is_form_readonly/>
-                        </grid-2>
-                    </section-2>
+                    <section_0>
+                        <grid_0>
+                            <image_0 filename="FTD logo Full Color.jpg" mediatype="image/jpeg">
+/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d9345c74c8205ac6b8da5c91a/a7199ec5951beb7002622bd4456b1063208a8b42.bin
+</image_0>
+                        </grid_0>
+                    </section_0>
+                    <section_1>
+                        <grid_1>
+                            <a_tmp-2348383540058/>
+                            <bd_team_title/>
+                            <a_tmp-6208802518517/>
+                        </grid_1>
+                        <grid_2>
+                            <a_tmp-2977343464993/>
+                            <a_tmp-6550006794731/>
+                            <a_tmp-7054967465308/>
+                            <a_tmp-6279212393577/>
+                            <a_tmp-1246640136431/>
+                            <structure_lead itemset-empty="false"/>
+                            <relationship_lead itemset-empty="false"/>
+                            <team_member_1 itemset-empty="false"/>
+                            <team_member_2 itemset-empty="false"/>
+                            <team_member_3 itemset-empty="false"/>
+                        </grid_2>
+                        <grid_3>
+                            <a_tmp-8381172528331/>
+                            <bd_team_executive_sponsor itemset-empty="false"/>
+                        </grid_3>
+                    </section_1>
+                    <section_2>
+                        <grid_4>
+                            <a_1568135168652/>
+                            <bd_strategy_statement/>
+                            <bd_strategy_document_link/>
+                        </grid_4>
+                    </section_2>
                 </form>
+
             </xf:instance>
-
-            
             <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
-                <xf:bind id="section-1-bind" name="section-1" ref="section-1"
-                         readonly="$is_form_readonly='true'">
-                    <xf:bind id="grid-1-bind" ref="grid-1" name="grid-1">
-                        <xf:bind id="proposal_writer_due_date-bind" ref="proposal_writer_due_date"
-                                 name="proposal_writer_due_date"
-                                 type="xf:date"/>
-                        <xf:bind id="proposal_contact_ee-bind" ref="proposal_contact_ee"
-                                 name="proposal_contact_ee"
-                                 required="true()"/>
-                        <xf:bind id="proposal_submit_draft_to_client-bind" ref="proposal_submit_draft_to_client"
-                                 name="proposal_submit_draft_to_client"
-                                 required="true()"/>
-                        <xf:bind id="proposal_writer_id-bind" ref="proposal_writer_id" name="proposal_writer_id"
-                                 required="true()"/>
-                    </xf:bind>
-                    
-                </xf:bind>
-                <xf:bind id="section-2-bind" ref="section-2" name="section-2"
-                         readonly="$is_form_readonly='true'">
-                    <xf:bind id="grid-2-bind" ref="grid-2" name="grid-2">
-                        <xf:bind id="project_problem_statement-bind" ref="project_problem_statement"
-                                 name="project_problem_statement"
-                                 readonly="true()"/>
-                        <xf:bind id="project_other_info-bind" ref="project_other_info" name="project_other_info"
-                                 readonly="true()"/>
-                        <xf:bind id="project_type_of_services-bind" ref="project_type_of_services"
-                                 name="project_type_of_services"
-                                 readonly="true()"/>
-                        <xf:bind id="project-info.reference-material-bind" ref="project-info.reference-material"
-                                 name="project-info.reference-material"/>
-                        <xf:bind id="project_facility_system_type-bind" ref="project_facility_system_type"
-                                 name="project_facility_system_type"
-                                 readonly="true()"/>
-                        <xf:bind id="project_process_systems-bind" ref="project_process_systems"
-                                 name="project_process_systems"
-                                 relevant="$project_facility_system_type='process'"
-                                 readonly="true()"/>
-                        <xf:bind id="project_mechanical_systems-bind" ref="project_mechanical_systems"
-                                 name="project_mechanical_systems"
-                                 relevant="$project_facility_system_type='mechanical'"
-                                 readonly="true()"/>
-                        <xf:bind id="project_desired_start_time-bind" ref="project_desired_start_time"
-                                 name="project_desired_start_time"
-                                 readonly="true()"/>
-                        <xf:bind id="is_form_readonly-bind" ref="is_form_readonly" name="is_form_readonly"
-                                 relevant="false()"/>
+                <xf:bind id="section_0-bind" ref="section_0" name="section_0">
+                    <xf:bind id="grid_0-bind" ref="grid_0" name="grid_0">
+                        <xf:bind id="image_0-bind" ref="image_0" name="image_0" type="xf:anyURI"/>
                     </xf:bind>
                 </xf:bind>
-            </xf:bind>
+                <xf:bind id="section_1-bind" ref="section_1" name="section_1">
+                    <xf:bind id="grid_1-bind" ref="grid_1" name="grid_1">
+                        <xf:bind id="a_tmp-2348383540058-bind" ref="a_tmp-2348383540058"
+                                 name="a_tmp-2348383540058"/>
+                        <xf:bind id="bd_team_title-bind" ref="bd_team_title" name="bd_team_title"
+                                 required="false()"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="a_tmp-6208802518517-bind" ref="a_tmp-6208802518517"
+                                 name="a_tmp-6208802518517"/>
+                    </xf:bind>
+                    <xf:bind id="grid_2-bind" ref="grid_2" name="grid_2">
+                        <xf:bind id="a_tmp-2977343464993-bind" ref="a_tmp-2977343464993"
+                                 name="a_tmp-2977343464993"/>
+                        <xf:bind id="a_tmp-6550006794731-bind" ref="a_tmp-6550006794731"
+                                 name="a_tmp-6550006794731"/>
+                        <xf:bind id="a_tmp-7054967465308-bind" ref="a_tmp-7054967465308"
+                                 name="a_tmp-7054967465308"/>
+                        <xf:bind id="a_tmp-6279212393577-bind" ref="a_tmp-6279212393577"
+                                 name="a_tmp-6279212393577"/>
+                        <xf:bind id="a_tmp-1246640136431-bind" ref="a_tmp-1246640136431"
+                                 name="a_tmp-1246640136431"/>
+                        <xf:bind id="structure_lead-bind" ref="structure_lead" name="structure_lead"
+                                 required="false()"/>
+                        <xf:bind id="relationship_lead-bind" ref="relationship_lead" name="relationship_lead"
+                                 required="false()"/>
+                        <xf:bind id="team_member_1-bind" ref="team_member_1" name="team_member_1"
+                                 required="false()"/>
+                        <xf:bind id="team_member_2-bind" ref="team_member_2" name="team_member_2"
+                                 required="false()"/>
+                        <xf:bind id="team_member_3-bind" ref="team_member_3" name="team_member_3"
+                                 required="false()"/>
+                    </xf:bind>
+                    <xf:bind id="grid_3-bind" ref="grid_3" name="grid_3">
+                        <xf:bind id="a_tmp-8381172528331-bind" ref="a_tmp-8381172528331"
+                                 name="a_tmp-8381172528331"/>
+                        <xf:bind id="bd_team_executive_sponsor-bind" ref="bd_team_executive_sponsor"
+                                 name="bd_team_executive_sponsor"
+                                 required="false()"/>
+                    </xf:bind>
+                </xf:bind>
+                <xf:bind id="section_2-bind" ref="section_2" name="section_2">
+                    <xf:bind id="grid_4-bind" ref="grid_4" name="grid_4">
+                        <xf:bind id="a_1568135168652-bind" ref="a_1568135168652" name="a_1568135168652"/>
+                        <xf:bind id="bd_strategy_statement-bind" ref="bd_strategy_statement"
+                                 name="bd_strategy_statement"
+                                 required="false()"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="bd_strategy_document_link-bind" ref="bd_strategy_document_link"
+                                 name="bd_strategy_document_link"
+                                 required="false()"
+                                 xxf:whitespace="trim"/>
+                    </xf:bind>
+                </xf:bind>
 
-            
+            </xf:bind>
             <xf:instance id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all">
                 <metadata>
                     <application-name>ftd</application-name>
-                    <form-name>assign-proposal-writer</form-name>
-                    <title xml:lang="en">Assign Proposal Writer</title>
+                    <form-name>develop_bd_strategy</form-name>
+                    <title xml:lang="en">Develop BD Strategy</title>
                     <description xml:lang="en"/>
                     <created-with-version>2019.2.2.202003311635 PE</created-with-version>
                     <updated-with-version>2019.2.2.202003311635 PE</updated-with-version>
-                </metadata>
-            </xf:instance>
 
-            
+                </metadata>
+
+            </xf:instance>
             <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
                 <attachments/>
             </xf:instance>
-
-            
             <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
                 <resources>
                     <resource xml:lang="en">
-                        <project_type_of_services>
-                            <label>Type of Services</label>
-                            <hint/>
-                            <item>
-                                <label>Analytical Services</label>
-            
-                                <value>analytical-services</value>
-                            </item>
-                            <item>
-                                <label>Asset Management</label>
-            
-                                <value>asset-management</value>
-                            </item>
-                            <item>
-                                <label>Energy Conservation</label>
-            
-                                <value>energy-conservation</value>
-                            </item>
-                            <item>
-                                <label>Feasibility Studies</label>
-            
-                                <value>feasibility-studies</value>
-                            </item>
-                            <item>
-                                <label>Risk Analysis</label>
-            
-                                <value>risk-analysis</value>
-                            </item>
-                            <item>
-                                <label>Performance Analysis</label>
-            
-                                <value>performance-analysis</value>
-                            </item>
-                            <item>
-                                <label>Capacity Analysis</label>
-            
-                                <value>capacity-analysis</value>
-                            </item>
-                            <item>
-                                <label>Design of Experiments</label>
-            
-                                <value>design-of-experiments</value>
-                            </item>
-                            <item>
-                                <label>Design Criteria Development</label>
-            
-                                <value>design-criteria-development</value>
-                            </item>
-                            <item>
-                                <label>Design and Equipment RFPs</label>
-            
-                                <value>design-and-equipment-rfps</value>
-                            </item>
-                            <item>
-                                <label>Capital Project Cost Reduction</label>
-            
-                                <value>capital-project-cost-reduction</value>
-                            </item>
-                            <item>
-                                <label>Support during Detailed Design</label>
-            
-                                <value>support-during-detailed-design</value>
-                            </item>
-                            <item>
-                                <label>Support during Construction</label>
-            
-                                <value>support-during-construction</value>
-                            </item>
-                            <item>
-                                <label>Support during Commissioning</label>
-            
-                                <value>support-during-commissioning</value>
-                            </item>
-                        </project_type_of_services>
-                        <project_problem_statement>
-                            <label>Problem Statement</label>
-                            <hint/>
-                        </project_problem_statement>
-                        <project-info.reference-material>
-                            <label>Reference Material</label>
-                            <hint/>
-                        </project-info.reference-material>
-                        <project_facility_system_type>
-                            <label>Facility System Type</label>
-                            <hint/>
-                            <item>
-                                <label>Process</label>
-            
-                                <value>process</value>
-                            </item>
-                            <item>
-                                <label>Mechanical</label>
-            
-                                <value>mechanical</value>
-                            </item>
-                            <item>
-                                <label>Electrical</label>
-            
-                                <value>electrical</value>
-                            </item>
-                            <item>
-                                <label>Low Voltage System</label>
-            
-                                <value>low-voltage-system</value>
-                            </item>
-                            <item>
-                                <label>Instrumentation and Controls</label>
-            
-                                <value>instrumentation-and-controls</value>
-                            </item>
-                            <item>
-                                <label>Architecture</label>
-            
-                                <value>architecture</value>
-                            </item>
-                        </project_facility_system_type>
-                        <project_process_systems>
-                            <label>Process Systems</label>
-                            <hint/>
-                            <item>
-                                <label>Ultrapure Water</label>
-            
-                                <value>ultrapure-water</value>
-                            </item>
-                            <item>
-                                <label>Waste Water</label>
-            
-                                <value>waste-water</value>
-                            </item>
-                            <item>
-                                <label>Bulk Chemical</label>
-            
-                                <value>bulk-chemical</value>
-                            </item>
-                            <item>
-                                <label>Specialty Gas</label>
-            
-                                <value>specialty-gas</value>
-                            </item>
-                            <item>
-                                <label>Bulk Gas</label>
-            
-                                <value>bulk-gas</value>
-                            </item>
-                        </project_process_systems>
-                        <project_mechanical_systems>
-                            <label>Mechanical Systems</label>
-                            <hint/>
-                            <item>
-                                <label>Central Plant</label>
-            
-                                <value>central-plant</value>
-                            </item>
-                            <item>
-                                <label>HVAC</label>
-            
-                                <value>hvac</value>
-                            </item>
-                            <item>
-                                <label>Cleanroom HVAC</label>
-            
-                                <value>cleanroom-hvac</value>
-                            </item>
-                            <item>
-                                <label>Exhaust Systems</label>
-            
-                                <value>exhaust-systems</value>
-                            </item>
-                            <item>
-                                <label>Process Mechanical</label>
-            
-                                <value>process-mechanical</value>
-                            </item>
-                        </project_mechanical_systems>
-                        <project_desired_start_time>
-                            <label>How quickly are you wanting to start work?</label>
-                            <hint/>
-                            <item>
-                                <label>Immediately</label>
-            
-                                <value>immediately</value>
-                            </item>
-                            <item>
-                                <label>&lt; 1 month</label>
-            
-                                <value>&lt;-1-month</value>
-                            </item>
-                            <item>
-                                <label>1-3 months</label>
-            
-                                <value>1-3-months</value>
-                            </item>
-                            <item>
-                                <label>Just Looking</label>
-            
-                                <value>just-looking</value>
-                            </item>
-                        </project_desired_start_time>
-                        <project_other_info>
-                            <label>Other Information</label>
-                            <hint/>
-                        </project_other_info>
-                        <is_form_readonly>
-                            <label/>
-                            <hint/>
-                            <item>
-                                <label>is_form_readonly</label>
-                                <hint/>
-                                <value>false</value>
-                            </item>
-                        </is_form_readonly>
-                        <proposal_writer_id>
-                            <label>Select FTD Team Member</label>
-                            <hint/>
-                        </proposal_writer_id>
-                        <proposal_writer_due_date>
-                            <label>Select Proposal Due Date</label>
-                            <hint/>
-                        </proposal_writer_due_date>
-                        <proposal_contact_ee>
-                            <label>Contact External Expert during Proposal Phase?</label>
-                            <hint/>
-                            <item>
-                                <label>Yes</label>
-                                <hint/>
-                                <value>yes</value>
-                            </item>
-                            <item>
-                                <label>No</label>
-                                <hint/>
-                                <value>no</value>
-                            </item>
-                        </proposal_contact_ee>
-                        <proposal_submit_draft_to_client>
-                            <label>Submit Draft to Client?</label>
-                            <hint/>
-                            <item>
-                                <label>Yes</label>
-                                <hint/>
-                                <value>yes</value>
-                            </item>
-                            <item>
-                                <label>No</label>
-                                <hint/>
-                                <value>no</value>
-                            </item>
-                        </proposal_submit_draft_to_client>
-                        <section-1>
-                            <label>Proposal Writer Info</label>
-                        </section-1>
-                        <section-2>
-                            <label>Project Info</label>
-                        </section-2>
-                        
-                    </resource>
-                </resources>
-            </xf:instance>
+                        <section_0>
+                            <label>Section</label>
+                            <help/>
 
+                        </section_0>
+                        <image_0>
+                            <label/>
+                        </image_0>
+                        <section_1>
+                            <label>Section</label>
+                            <help/>
+
+                        </section_1>
+                        <a_tmp-2348383540058>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Title&lt;/p&gt;</text>
+
+                        </a_tmp-2348383540058>
+                        <bd_team_title>
+                            <label>BD Team Title</label>
+                            <hint/>
+                        </bd_team_title>
+                        <a_tmp-6208802518517>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;Special Team's Members&lt;/p&gt;</text>
+
+                        </a_tmp-6208802518517>
+                        <a_tmp-2977343464993>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Lead (Structure)&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;</text>
+
+                        </a_tmp-2977343464993>
+                        <a_tmp-6550006794731>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Lead (Relationship)&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;</text>
+
+                        </a_tmp-6550006794731>
+                        <a_tmp-7054967465308>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Member&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;</text>
+
+                        </a_tmp-7054967465308>
+                        <a_tmp-6279212393577>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Member&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;</text>
+
+                        </a_tmp-6279212393577>
+                        <a_tmp-1246640136431>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;BD Team Member&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;</text>
+
+                        </a_tmp-1246640136431>
+                        <structure_lead>
+                            <label>Structure Lead</label>
+                            <hint/>
+                        </structure_lead>
+                        <relationship_lead>
+                            <label>Relationship Lead</label>
+                            <hint/>
+                        </relationship_lead>
+                        <team_member_1>
+                            <label>Team Member 1</label>
+                            <hint/>
+                        </team_member_1>
+                        <team_member_2>
+                            <label>Team Member 2</label>
+                            <hint/>
+                        </team_member_2>
+                        <team_member_3>
+                            <label>Team Member 3</label>
+                            <hint/>
+                        </team_member_3>
+                        <a_tmp-8381172528331>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;CXO Sponsor for this team&lt;/p&gt;</text>
+
+                        </a_tmp-8381172528331>
+                        <bd_team_executive_sponsor>
+                            <label>BD Team Executive Sponsor</label>
+                            <hint/>
+                        </bd_team_executive_sponsor>
+                        <section_2>
+                            <label>Section</label>
+                            <help/>
+
+                        </section_2>
+                        <a_1568135168652>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;The project team shall meet to determine the business development strategy for the BD team.  &lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;The team should use the following link to develop the &lt;a href="https://ftdsolutions.sharepoint.com/:p:/r/Standards/1.%20SOPs%20%26%20Training/5.%20General%20Training/Business%20Development/Initial%20Customer%20BD%20Mapping,%20Strategy,%20and%20Planning%20Template.pptx?d=w59a5ee03511a45c6bb4eb5dee378491c&amp;amp;csf=1&amp;amp;e=tT7Z76" target="_blank" rel="noopener noreferrer"&gt;BD strategy development template&lt;/a&gt;.&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;A new folder shall be created for the BD team and a copy of the strategy template moved to this folder.  See path below:&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;https://ftdsolutions.sharepoint.com/:f:/r/sites/FTD-FGIInformationExchange/Shared%20Documents/One-Team%20BD?csf=1&amp;amp;e=hluNkm&lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;The strategy is devleoped through understanding the client conditions and leveraging FTD Solution's value offering within those conditions.  &lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;p&gt;Once the strategy has been developed state the business strategy statement below and provide a link to the strategy document for CEO ratification.  &lt;/p&gt;</text>
+
+                        </a_1568135168652>
+                        <bd_strategy_statement>
+                            <label>BD Strategy Statement</label>
+                            <hint/>
+                        </bd_strategy_statement>
+                        <bd_strategy_document_link>
+                            <label>BD Strategy Document Link</label>
+                            <hint/>
+                        </bd_strategy_document_link>
+
+                    </resource>
+
+                </resources>
+
+            </xf:instance>
         </xf:model>
     </xh:head>
     <xh:body>
         <fr:view>
             <fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"
                      xmlns:oxf="http://www.orbeon.com/oxf/processors">
-                <fr:section id="section-1-section" bind="section-1-bind">
-                    <xf:label ref="$form-resources/section-1/label"/>
-                    <fr:grid id="grid-1-grid" bind="grid-1-bind">
-                        <fr:c x="1" y="1" w="12">
+                <fr:section id="section_0-section" bind="section_0-bind">
+                    <xf:label ref="$form-resources/section_0/label"/>
+                    <fr:grid id="grid_0-grid" bind="grid_0-bind">
+                        <fr:c x="1" y="1" w="6" h="1">
+                            <fr:image xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                      xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                      id="image_0-control"
+                                      bind="image_0-bind"
+                                      class="fr-static-attachment">
+                                <xf:label ref="$form-resources/image_0/label"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </fr:image>
+
+                        </fr:c>
+
+                    </fr:grid>
+
+                </fr:section>
+                <fr:section id="section_1-section" bind="section_1-bind">
+                    <xf:label ref="$form-resources/section_1/label"/>
+                    <fr:grid id="grid_1-grid" bind="grid_1-bind">
+                        <fr:c x="1" y="1" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-2348383540058-control"
+                                            bind="a_tmp-2348383540058-bind">
+                                <fr:text ref="$form-resources/a_tmp-2348383540058/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="2" w="12" h="1">
+                            <xf:input id="bd_team_title-control" bind="bd_team_title-bind">
+                                <xf:label ref="$form-resources/bd_team_title/label"/>
+                                <xf:hint ref="$form-resources/bd_team_title/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </xf:input>
+
+                        </fr:c>
+                        <fr:c x="1" y="3" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-6208802518517-control"
+                                            bind="a_tmp-6208802518517-bind">
+                                <fr:text ref="$form-resources/a_tmp-6208802518517/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+
+                    </fr:grid>
+                    <fr:grid id="grid_2-grid" bind="grid_2-bind">
+                        <fr:c x="1" y="1" w="6" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-2977343464993-control"
+                                            bind="a_tmp-2977343464993-bind">
+                                <fr:text ref="$form-resources/a_tmp-2977343464993/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="2" w="6" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-6550006794731-control"
+                                            bind="a_tmp-6550006794731-bind">
+                                <fr:text ref="$form-resources/a_tmp-6550006794731/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="3" w="6" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-7054967465308-control"
+                                            bind="a_tmp-7054967465308-bind">
+                                <fr:text ref="$form-resources/a_tmp-7054967465308/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="4" w="6" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-6279212393577-control"
+                                            bind="a_tmp-6279212393577-bind">
+                                <fr:text ref="$form-resources/a_tmp-6279212393577/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="5" w="6" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-1246640136431-control"
+                                            bind="a_tmp-1246640136431-bind">
+                                <fr:text ref="$form-resources/a_tmp-1246640136431/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="7" y="1" w="6" h="1">
                             <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
                                                   xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                                  id="proposal_writer_id-control"
-                                                  bind="proposal_writer_id-bind"
+                                                  id="structure_lead-control"
+                                                  bind="structure_lead-bind"
                                                   resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
-                                <xf:label ref="$form-resources/proposal_writer_id/label"/>
-                                <xf:hint ref="$form-resources/proposal_writer_id/hint"/>
+                                <xf:label ref="$form-resources/structure_lead/label"/>
+                                <xf:hint ref="$form-resources/structure_lead/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
                                 <xf:itemset ref="user">
                                     <xf:label ref="name"/>
                                     <xf:value ref="id"/>
+
                                 </xf:itemset>
+
                             </fr:databound-select1>
+
                         </fr:c>
-                        <fr:c x="1" y="2" w="12">
-                            <fr:date xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                     xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava"
-                                     id="proposal_writer_due_date-control"
-                                     bind="proposal_writer_due_date-bind">
-                                <xf:label ref="$form-resources/proposal_writer_due_date/label"/>
-                                <xf:hint ref="$form-resources/proposal_writer_due_date/hint"/>
+                        <fr:c x="7" y="2" w="6" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="relationship_lead-control"
+                                                  bind="relationship_lead-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/relationship_lead/label"/>
+                                <xf:hint ref="$form-resources/relationship_lead/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                            </fr:date>
-                        </fr:c>
-                        <fr:c x="1" y="3" w="12">
-                            <xf:select1 id="proposal_contact_ee-control" appearance="full"
-                                        bind="proposal_contact_ee-bind">
-                                <xf:label ref="$form-resources/proposal_contact_ee/label"/>
-                                <xf:hint ref="$form-resources/proposal_contact_ee/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/proposal_contact_ee/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                    <xf:hint ref="hint"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
                                 </xf:itemset>
-                            </xf:select1>
+
+                            </fr:databound-select1>
+
                         </fr:c>
-                        <fr:c x="1" y="4" w="12">
-                            <xf:select1 id="proposal_submit_draft_to_client-control" appearance="full"
-                                        bind="proposal_submit_draft_to_client-bind">
-                                <xf:label ref="$form-resources/proposal_submit_draft_to_client/label"/>
-                                <xf:hint ref="$form-resources/proposal_submit_draft_to_client/hint"/>
+                        <fr:c x="7" y="3" w="6" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="team_member_1-control"
+                                                  bind="team_member_1-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/team_member_1/label"/>
+                                <xf:hint ref="$form-resources/team_member_1/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/proposal_submit_draft_to_client/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                    <xf:hint ref="hint"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
                                 </xf:itemset>
-                            </xf:select1>
+
+                            </fr:databound-select1>
+
                         </fr:c>
+                        <fr:c x="7" y="4" w="6" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="team_member_2-control"
+                                                  bind="team_member_2-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/team_member_2/label"/>
+                                <xf:hint ref="$form-resources/team_member_2/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
+                                </xf:itemset>
+
+                            </fr:databound-select1>
+
+                        </fr:c>
+                        <fr:c x="7" y="5" w="6" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="team_member_3-control"
+                                                  bind="team_member_3-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/team_member_3/label"/>
+                                <xf:hint ref="$form-resources/team_member_3/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
+                                </xf:itemset>
+
+                            </fr:databound-select1>
+
+                        </fr:c>
+
                     </fr:grid>
-                </fr:section>
-                <fr:section id="section-2-section" bind="section-2-bind">
-                    <xf:label ref="$form-resources/section-2/label"/>
-                    <fr:grid id="grid-2-grid" bind="grid-2-bind">
-                        <fr:c x="1" y="1" w="12">
-                            <xf:select1 id="project_type_of_services-control" bind="project_type_of_services-bind"
-                                        appearance="dropdown">
-                                <xf:label ref="$form-resources/project_type_of_services/label"/>
-                                <xf:hint ref="$form-resources/project_type_of_services/hint"/>
+                    <fr:grid id="grid_3-grid" bind="grid_3-bind">
+                        <fr:c x="1" y="1" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_tmp-8381172528331-control"
+                                            bind="a_tmp-8381172528331-bind">
+                                <fr:text ref="$form-resources/a_tmp-8381172528331/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="2" w="12" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="bd_team_executive_sponsor-control"
+                                                  bind="bd_team_executive_sponsor-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/bd_team_executive_sponsor/label"/>
+                                <xf:hint ref="$form-resources/bd_team_executive_sponsor/hint"/>
                                 <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/project_type_of_services/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
                                 </xf:itemset>
-                            </xf:select1>
+
+                            </fr:databound-select1>
+
                         </fr:c>
-                        <fr:c x="1" y="2" w="12" h="3">
-                            <fr:tinymce xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                        xmlns:f="http://orbeon.org/oxf/xml/formatting"
-                                        id="project_problem_statement-control"
-                                        bind="project_problem_statement-bind">
-                                <xf:label ref="$form-resources/project_problem_statement/label"/>
-                                <xf:hint ref="$form-resources/project_problem_statement/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                            </fr:tinymce>
-                        </fr:c>
-                        <fr:c x="1" y="5" w="12">
-                            <xf:trigger id="project-info.reference-material-control" appearance="minimal"
-                                        bind="project-info.reference-material-bind">
-                                <xf:label ref="$form-resources/project-info.reference-material/label"/>
-                    
-                                <xf:hint ref="$form-resources/project-info.reference-material/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                    
-                            </xf:trigger>
-                        </fr:c>
-                        <fr:c x="1" y="6" w="12">
-                            <xf:select1 id="project_facility_system_type-control"
-                                        bind="project_facility_system_type-bind"
-                                        appearance="dropdown">
-                                <xf:label ref="$form-resources/project_facility_system_type/label"/>
-                                <xf:hint ref="$form-resources/project_facility_system_type/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/project_facility_system_type/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </fr:c>
-                        <fr:c x="1" y="7" w="12">
-                            <xf:select1 id="project_process_systems-control" bind="project_process_systems-bind"
-                                        appearance="dropdown">
-                                <xf:label ref="$form-resources/project_process_systems/label"/>
-                                <xf:hint ref="$form-resources/project_process_systems/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/project_process_systems/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </fr:c>
-                        <fr:c x="1" y="8" w="12">
-                            <xf:select1 id="project_mechanical_systems-control" bind="project_mechanical_systems-bind"
-                                        appearance="dropdown">
-                                <xf:label ref="$form-resources/project_mechanical_systems/label"/>
-                                <xf:hint ref="$form-resources/project_mechanical_systems/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/project_mechanical_systems/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </fr:c>
-                        <fr:c x="1" y="9" w="12">
-                            <xf:select1 id="project_desired_start_time-control" bind="project_desired_start_time-bind"
-                                        appearance="dropdown">
-                                <xf:label ref="$form-resources/project_desired_start_time/label"/>
-                                <xf:hint ref="$form-resources/project_desired_start_time/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/project_desired_start_time/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                </xf:itemset>
-                            </xf:select1>
-                        </fr:c>
-                        <fr:c x="1" y="10" w="12" h="2">
-                            <fr:tinymce xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
-                                        xmlns:f="http://orbeon.org/oxf/xml/formatting"
-                                        id="project_other_info-control"
-                                        bind="project_other_info-bind">
-                                <xf:label ref="$form-resources/project_other_info/label"/>
-                                <xf:hint ref="$form-resources/project_other_info/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                            </fr:tinymce>
-                        </fr:c>
-                        <fr:c x="1" y="12" w="12">
-                            <xf:select id="is_form_readonly-control" appearance="full" bind="is_form_readonly-bind">
-                                <xf:label ref="$form-resources/is_form_readonly/label"/>
-                                <xf:hint ref="$form-resources/is_form_readonly/hint"/>
-                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
-                        
-                        
-                                <xf:itemset ref="$form-resources/is_form_readonly/item">
-                                    <xf:label ref="label"/>
-                                    <xf:value ref="value"/>
-                                    <xf:hint ref="hint"/>
-                                </xf:itemset>
-                            </xf:select>
-                        </fr:c>
+
                     </fr:grid>
+
                 </fr:section>
+                <fr:section id="section_2-section" bind="section_2-bind">
+                    <xf:label ref="$form-resources/section_2/label"/>
+                    <fr:grid id="grid_4-grid" bind="grid_4-bind">
+                        <fr:c x="1" y="1" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_1568135168652-control"
+                                            bind="a_1568135168652-bind">
+                                <fr:text ref="$form-resources/a_1568135168652/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="2" w="12" h="1">
+                            <xf:input id="bd_strategy_statement-control" bind="bd_strategy_statement-bind">
+                                <xf:label ref="$form-resources/bd_strategy_statement/label"/>
+                                <xf:hint ref="$form-resources/bd_strategy_statement/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </xf:input>
+
+                        </fr:c>
+                        <fr:c x="1" y="3" w="12" h="1">
+                            <xf:input id="bd_strategy_document_link-control" bind="bd_strategy_document_link-bind">
+                                <xf:label ref="$form-resources/bd_strategy_document_link/label"/>
+                                <xf:hint ref="$form-resources/bd_strategy_document_link/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </xf:input>
+
+                        </fr:c>
+
+                    </fr:grid>
+
+                </fr:section>
+
             </fr:body>
+
         </fr:view>
+
     </xh:body>
 </xh:html>
