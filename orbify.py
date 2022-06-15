@@ -1,4 +1,4 @@
-from formRepr.formBlocks import *
+from formRepr.formBlocks import Form, names2add
 from helpers.resources import *
 from helpers.xmlUtilities import *
 from visitors.binder import Binder
@@ -75,4 +75,8 @@ def gen_xhtml(form: Form) -> str:
 if __name__ == "__main__":
 	form = Form()
 	src = gen_xhtml(form)
+	print("\n################# Control Names #################")
+	for cn in names2add:
+		print(cn)
 	pyperclip.copy(src)
+	print("\nCode has been copied to clipboard!")
