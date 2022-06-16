@@ -22,7 +22,7 @@ class Element: # basic attributes common to all elements
 			self.control_name = f"grid_{gridCount}"
 			gridCount += 1
 		else: 
-			self.label = obj["Label"]
+			self.label = obj["Label"].strip().strip(":")
 			self.control_name = to_control_name(self.label)
 
 		# change default section name
