@@ -41,5 +41,7 @@ class Visitor:
 		raise Exception("Abstract method 'visitFTDImage'")
 	def visitStaticText(self, staticText: StaticText) -> str:
 		raise Exception("Abstract method 'visitStaticText'")
+	def visitLine(self, line: Line) -> str:
+		raise Exception("Abstract method 'visitLine'")
 	def visitSpace(self, space: Space) -> str:
 		raise Exception("Abstract method 'visitSpace'")

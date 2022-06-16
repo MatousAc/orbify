@@ -164,6 +164,14 @@ class Viewer(Visitor):
 		return tag("fr:explanation", attrDict=viewStaticText,
 			attrStr=self.idBind(staticText), 
 			innerText=text, close=True)
+  
+	def visitLine(self, line: Line) -> str:
+		media = 'mediatype="text/html"'
+		text = tag("fr:text", selfClosing=True,
+			attrStr=f'{self.ref(line, "text")} {media}')
+		return tag("fr:explanation", attrDict=viewStaticText,
+			attrStr=self.idBind(line), 
+			innerText=text, close=True)
 
 	def visitSpace(self, space: Space) -> str:
 		return "" # space not represented

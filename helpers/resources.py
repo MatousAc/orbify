@@ -38,6 +38,7 @@ ftdImgAttrs = {
 ftdImgInner = "/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d9345c74c8205ac6b8da5c91a/a7199ec5951beb7002622bd4456b1063208a8b42.bin"
 # resource attributes
 srcFormTextAttrs = 'xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"'
+sourceLine = "&lt;hr/&gt;"
 # view attributes
 # generals
 vfw = 'field-width="natural"'

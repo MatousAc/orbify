@@ -60,8 +60,13 @@ def id2control(id: int) -> str:
 
 # removes formatting tags from text that would be
 # misinterpreted as XML
+# also downsizes headings
 def staticTextScrub(text: str) -> str:
 	text = text.replace("<", "&lt;").replace(">", "&gt;")
 	# at this point we replace tabs with ' ' because this works 🤷‍♂️
 	text = text.replace("&nbsp;", " ")
+	# headings
+	text = text.replace("h5","h6").replace("h4","h5")
+	text = text.replace("h3","h4").replace("h2","h3")
+	text = text.replace("h1","h2")
 	return text

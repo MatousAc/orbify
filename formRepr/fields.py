@@ -114,6 +114,11 @@ class StaticText(Element):
 		self.control_name = f'a_{item["id"]}'
 		self.text = staticTextScrub(item["formtext"])
 
+class Line(Element):
+	def __init__(self, item):
+		super().__init__(item)
+		self.fieldType = FieldType.line
+		self.control_name = f'a_{item["id"]}'
 
 class Space(Element):  # holds space in grid
 	def __init__(self, item):

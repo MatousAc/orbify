@@ -1,6 +1,6 @@
 from visitors.visitor import Visitor
 from helpers.xmlUtilities import tag, closing
-from helpers.resources import srcFormTextAttrs, hintTag
+from helpers.resources import srcFormTextAttrs, hintTag, sourceLine
 from formRepr.formBlocks import *
 from formRepr.fields import *
 
@@ -93,11 +93,17 @@ class Sourcer(Visitor):
 	def visitFTDImage(self, FTDImage: FTDImage) -> str:
 		return tag(FTDImage.control_name, close=True,
       innerText=tag("label", selfClosing=True))
-		
+
 	def visitStaticText(self, staticText: StaticText) -> str:
 		src = tag("text", attrStr=srcFormTextAttrs,
 			innerText=staticText.text, close=True)
 		return tag(staticText.control_name,
+			innerText=src, close=True)
+
+	def visitLine(self, line: Line) -> str:
+		src = tag("text", attrStr=srcFormTextAttrs,
+			innerText=sourceLine, close=True)
+		return tag(line.control_name,
 			innerText=src, close=True)
 
 	def visitSpace(self, space: Space) -> str:

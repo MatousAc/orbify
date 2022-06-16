@@ -5,8 +5,8 @@ class FieldType(Enum): # defining all the different field types
 	email, contact = auto(), auto()
 	radio, checkbox, dropdown, fileAttach = auto(), auto(), auto(), auto()
 	secret, signature, currency, yesno = auto(), auto(), auto(), auto()
-	ftdImage, staticText, space = auto(), auto(), auto() # form tools
-	
+	ftdImage, staticText, space, line = auto(), auto(), auto(), auto() # form tools
+
 
 questionTypeMap = {
 	# real fields
@@ -28,6 +28,7 @@ questionTypeMap = {
 	# form tools
 	"Image": FieldType.ftdImage,
 	"FormText": FieldType.staticText,
+	"HorizontalRule": FieldType.line,
 	"BlankSpace": FieldType.space,
 }
 

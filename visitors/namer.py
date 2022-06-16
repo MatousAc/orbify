@@ -79,6 +79,9 @@ class Namer(Visitor):
 
 	def visitStaticText(self, staticText: StaticText) -> str:
 		return tag(staticText.control_name, selfClosing=True)
+
+	def visitLine(self, line: Line) -> str:
+		return tag(line.control_name, selfClosing=True)
  
 	def visitSpace(self, space: Space) -> str:
 		return "" # spaces aren't included in the data mapping

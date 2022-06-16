@@ -40,6 +40,7 @@ class Place():
 				if isFTDImage(item):		field = FTDImage(item)
 				else: 									field = Space(item)
 			case FieldType.staticText:field = StaticText(item)
+			case FieldType.line:			field = Line(item)
 			case FieldType.space: 		field = Space(item)
 		
 		# we keep track of control_names here cause they 

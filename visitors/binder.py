@@ -114,6 +114,10 @@ class Binder(Visitor):
 	def visitStaticText(self, staticText: StaticText) -> str:
 		return tag(self.xf, attrDict=self.commonAttrs(staticText), 
 			selfClosing=True)
+  
+	def visitLine(self, line: Line) -> str:
+		return tag(self.xf, attrDict=self.commonAttrs(line), 
+			selfClosing=True)
 
 	def visitSpace(self, space: Space) -> str:
 		return "" # space not represented

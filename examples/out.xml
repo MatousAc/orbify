@@ -1,0 +1,227 @@
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ev="http://www.w3.org/2001/xml-events"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xxi="http://orbeon.org/oxf/xml/xinclude"
+         xmlns:xxf="http://orbeon.org/oxf/xml/xforms"
+         xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+         xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+         xmlns:exf="http://www.exforms.org/exf/1-0"
+         xmlns:fr="http://orbeon.org/oxf/xml/form-runner"
+         xmlns:saxon="http://saxon.sf.net/"
+         xmlns:sql="http://orbeon.org/oxf/xml/sql"
+         xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+         xmlns:fb="http://orbeon.org/oxf/xml/form-builder"
+         fr:data-format-version="4.0.0">
+    <xh:head>
+        <xh:title>Develop Blog Plan</xh:title>
+        <xf:model id="fr-form-model" xxf:expose-xpath-types="true" xxf:analysis.calculate="true">
+            <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
+                <form>
+                    <section_0>
+                        <grid_0>
+                            <image_0 filename="FTD logo Full Color.jpg" mediatype="image/jpeg">
+/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d9345c74c8205ac6b8da5c91a/a7199ec5951beb7002622bd4456b1063208a8b42.bin
+</image_0>
+                            <a_1610741892977/>
+                            <hr/>
+                            <ftd_employee_name itemset-empty="false"/>
+                            <a_1610741943975/>
+                            <blog_topic/>
+                            <a_1610741983243/>
+                            <blog_due_date/>
+                        </grid_0>
+                    </section_0>
+                </form>
+
+            </xf:instance>
+            <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+                <xf:bind id="section_0-bind" ref="section_0" name="section_0">
+                    <xf:bind id="grid_0-bind" ref="grid_0" name="grid_0">
+                        <xf:bind id="image_0-bind" ref="image_0" name="image_0" type="xf:anyURI"/>
+                        <xf:bind id="a_1610741892977-bind" ref="a_1610741892977" name="a_1610741892977"/>
+                        <xf:bind id="ftd_employee_name-bind" ref="ftd_employee_name" name="ftd_employee_name"
+                                 required="false()"/>
+                        <xf:bind id="a_1610741943975-bind" ref="a_1610741943975" name="a_1610741943975"/>
+                        <xf:bind id="blog_topic-bind" ref="blog_topic" name="blog_topic" required="false()"
+                                 xxf:whitespace="trim"/>
+                        <xf:bind id="a_1610741983243-bind" ref="a_1610741983243" name="a_1610741983243"/>
+                        <xf:bind id="blog_due_date-bind" ref="blog_due_date" name="blog_due_date"
+                                 required="false()"
+                                 type="xf:date"/>
+                        <xf:bind id="hr-bind" ref="hr" name="hr"/>
+                    </xf:bind>
+                </xf:bind>
+
+            </xf:bind>
+            <xf:instance id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all">
+                <metadata>
+                    <application-name>ftd</application-name>
+                    <form-name>develop_blog_plan</form-name>
+                    <title xml:lang="en">Develop Blog Plan</title>
+                    <description xml:lang="en"/>
+                    <created-with-version>2019.2.2.202003311635 PE</created-with-version>
+                    <updated-with-version>2019.2.2.202003311635 PE</updated-with-version>
+
+                </metadata>
+
+            </xf:instance>
+            <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+                <attachments/>
+            </xf:instance>
+            <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
+                <resources>
+                    <resource xml:lang="en">
+                        <section_0>
+                            <label>Section</label>
+                            <help/>
+
+                        </section_0>
+                        <image_0>
+                            <label/>
+                        </image_0>
+                        <a_1610741892977>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">&lt;p&gt;Select the FTD employee who will be developing blog&lt;/p&gt;</text>
+
+                        </a_1610741892977>
+                        <hr>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline"
+                                  xmlns:xbl="http://www.w3.org/ns/xbl">&lt;hr/&gt;</text>
+                        </hr>
+                        <ftd_employee_name>
+                            <label>FTD Employee Name</label>
+                            <hint/>
+                        </ftd_employee_name>
+                        <a_1610741943975>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">
+&lt;p&gt;Enter the Blog Topic&lt;/p&gt;
+</text>
+
+                        </a_1610741943975>
+                        <blog_topic>
+                            <label>Blog Topic</label>
+                            <hint/>
+                        </blog_topic>
+                        <a_1610741983243>
+                            <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl"
+                                  xmlns:p="http://www.orbeon.com/oxf/pipeline">
+&lt;p&gt;Select the Blog Due Date&lt;/p&gt;
+</text>
+
+                        </a_1610741983243>
+                        <blog_due_date>
+                            <label>Blog Due Date</label>
+                            <hint/>
+                        </blog_due_date>
+
+                    </resource>
+
+                </resources>
+
+            </xf:instance>
+        </xf:model>
+    </xh:head>
+    <xh:body>
+        <fr:view>
+            <fr:body xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl"
+                     xmlns:oxf="http://www.orbeon.com/oxf/processors">
+                <fr:section id="section_0-section" bind="section_0-bind">
+                    <xf:label ref="$form-resources/section_0/label"/>
+                    <fr:grid id="grid_0-grid" bind="grid_0-bind">
+                        <fr:c x="1" y="1" w="6" h="1">
+                            <fr:image xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                      xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                      id="image_0-control"
+                                      bind="image_0-bind"
+                                      class="fr-static-attachment">
+                                <xf:label ref="$form-resources/image_0/label"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </fr:image>
+
+                        </fr:c>
+                        <fr:c x="1" y="2" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_1610741892977-control"
+                                            bind="a_1610741892977-bind">
+                                <fr:text ref="$form-resources/a_1610741892977/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="3" w="12">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="hr-control" bind="hr-bind">
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                                <fr:text ref="$form-resources/hr/text" mediatype="text/html"/>
+                            </fr:explanation>
+                        </fr:c>
+                        <fr:c x="1" y="4" w="12" h="1">
+                            <fr:databound-select1 xmlns="http://orbeon.org/oxf/xml/form-builder"
+                                                  xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                                  id="ftd_employee_name-control"
+                                                  bind="ftd_employee_name-bind"
+                                                  resource="https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users">
+                                <xf:label ref="$form-resources/ftd_employee_name/label"/>
+                                <xf:hint ref="$form-resources/ftd_employee_name/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                                <xf:itemset ref="user">
+                                    <xf:label ref="name"/>
+                                    <xf:value ref="id"/>
+
+                                </xf:itemset>
+
+                            </fr:databound-select1>
+
+                        </fr:c>
+                        <fr:c x="1" y="5" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_1610741943975-control"
+                                            bind="a_1610741943975-bind">
+                                <fr:text ref="$form-resources/a_1610741943975/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="6" w="12" h="1">
+                            <xf:input id="blog_topic-control" bind="blog_topic-bind">
+                                <xf:label ref="$form-resources/blog_topic/label"/>
+                                <xf:hint ref="$form-resources/blog_topic/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </xf:input>
+
+                        </fr:c>
+                        <fr:c x="1" y="7" w="12" h="1">
+                            <fr:explanation xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="a_1610741983243-control"
+                                            bind="a_1610741983243-bind">
+                                <fr:text ref="$form-resources/a_1610741983243/text" mediatype="text/html"/>
+
+                            </fr:explanation>
+
+                        </fr:c>
+                        <fr:c x="1" y="8" w="12" h="1">
+                            <fr:date xmlns:xxbl="http://orbeon.org/oxf/xml/xbl"
+                                     xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava"
+                                     id="blog_due_date-control"
+                                     bind="blog_due_date-bind"
+                                     field-width="natural">
+                                <xf:label ref="$form-resources/blog_due_date/label"/>
+                                <xf:hint ref="$form-resources/blog_due_date/hint"/>
+                                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+
+                            </fr:date>
+
+                        </fr:c>
+
+                    </fr:grid>
+
+                </fr:section>
+
+            </fr:body>
+
+        </fr:view>
+
+    </xh:body>
+</xh:html>

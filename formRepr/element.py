@@ -55,4 +55,5 @@ class Element: # basic attributes common to all elements
 			case FieldType.signature: return visitor.visitSignature(self)
 			case FieldType.ftdImage:	return visitor.visitFTDImage(self)
 			case FieldType.staticText:return visitor.visitStaticText(self)
+			case FieldType.line:			return visitor.visitLine(self)
 			case FieldType.space: 		return visitor.visitSpace(self)
