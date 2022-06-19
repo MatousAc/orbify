@@ -35,10 +35,24 @@ def isYesNo(choices: dict) -> bool:
 	if ("true" in labels and "false" in labels): return True
 	return False # default
 
-
+# determines if an image element is a generic FTD logo
 def isFTDImage(item):
 	txt = item["properties"]["imageFile"]["text"].lower()
 	return "ftd logo" in txt
+
+# determines if a text field should be a phone number field
+def isPhone(item):
+	lbl = item["Label"].lower().strip().strip(":")
+	return (
+		(lbl in ["phone", "phone #", "employee number",
+           "employee #", "cell #"]) or
+		("phone" in lbl and "area code" not in lbl) or
+		("cell phone" in lbl) or
+		("us phone" in lbl) or
+		("home phone" in lbl) or
+		("mobile phone" in lbl) or
+		("international phone" in lbl)
+	)
 
 # this function collapses a list of choice 
 # dictionaries into a single choice dictionary

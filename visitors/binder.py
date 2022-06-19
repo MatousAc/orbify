@@ -1,5 +1,6 @@
 from visitors.visitor import Visitor
 from helpers.xmlUtilities import tag, closing
+from helpers.resources import bindLinkAttrs, bindPhoneAttrs
 from formRepr.formBlocks import *
 from formRepr.fields import *
 
@@ -64,6 +65,14 @@ class Binder(Visitor):
 		attrs = self.commonAttrs(email)
 		attrs["type"] = "xf:email"
 		attrs["xxf:whitespace"] = "trim"
+		return tag(self.xf, attrDict=attrs, selfClosing=True)
+
+	def visitPhone(self, phone: Phone) -> str:
+		attrs = self.commonAttrs(phone) | bindPhoneAttrs
+		return tag(self.xf, attrDict=attrs, selfClosing=True)
+
+	def visitLink(self, Link: Link) -> str:
+		attrs = self.commonAttrs(Link) | bindLinkAttrs
 		return tag(self.xf, attrDict=attrs, selfClosing=True)
 
 	def visitContact(self, contact: Contact) -> str:

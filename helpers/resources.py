@@ -36,6 +36,18 @@ ftdImgAttrs = {
   "mediatype": "image/jpeg"
 }
 ftdImgInner = "/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d9345c74c8205ac6b8da5c91a/a7199ec5951beb7002622bd4456b1063208a8b42.bin"
+# bind attributes
+bindPhoneAttrs = {
+  "xxf:whitespace": "trim",
+	"constraint": ". = '' or matches(., '^\+?(\s*\(?\d\D?\s*){10,13}$')",
+	"calculate": "if (string-length(replace(., '\D', '')) = 10)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{4})', '($1) $2-$3')&#xA;else if (string-length(replace(., '\D', '')) = 11)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{1})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 12)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{2})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 13)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else .",
+	"readonly": "false()"
+}
+bindLinkAttrs = {
+	"xxf:whitespace": "trim",
+	"constraint": "matches(., '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}')"
+}
+
 # resource attributes
 srcFormTextAttrs = 'xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline"'
 sourceLine = "&lt;hr/&gt;"

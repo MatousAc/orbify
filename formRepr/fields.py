@@ -42,6 +42,17 @@ class Email(Element):
 	def __init__(self, item):
 		super().__init__(item)
 
+
+class Phone(Element):
+	def __init__(self, item):
+		super().__init__(item)
+		self.fieldType = FieldType.phone
+
+class Link(Element):
+	def __init__(self, item):
+		super().__init__(item)
+		self.fieldType = FieldType.link
+
 class Contact(Element):
 	def __init__(self, item):
 		super().__init__(item)

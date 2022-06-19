@@ -45,6 +45,12 @@ class Namer(Visitor):
 	def visitEmail(self, email: Email) -> str:
 		return tag(email.control_name, selfClosing=True)
 
+	def visitPhone(self, phone: Phone) -> str:
+		return tag(phone.control_name, selfClosing=True)
+
+	def visitLink(self, link: Link) -> str:
+		return tag(link.control_name, selfClosing=True)
+
 	def visitContact(self, contact: Contact) -> str:
 		return tag(contact.control_name, 
 			attrStr='itemset-empty="false"', selfClosing=True)

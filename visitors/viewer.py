@@ -92,6 +92,16 @@ class Viewer(Visitor):
 		return tag("xf:input", attrStr=self.idBind(email),
 			innerText=src, close=True)
 
+	def visitPhone(self, phone: Phone) -> str:
+		src = self.basic3(phone)
+		return tag("xf:input", attrStr=self.idBind(phone),
+			innerText=src, close=True)
+
+	def visitLink(self, link: Link) -> str:
+		src = self.basic3(link)
+		return tag("xf:input", attrStr=self.idBind(link),
+			innerText=src, close=True)
+
 	def visitContact(self, contact: Contact) -> str:
 		src = self.basic3(contact)
 		label = tag("xf:label", attrStr="ref=\"name\"", selfClosing=True)

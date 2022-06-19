@@ -17,13 +17,16 @@ class Place():
 	def __init__(self, grid, item):
 		field = None # create an instance of the field
 		match questionTypeMap[item["QuestionType"]]:
-			case FieldType.text: 			field = Text(item)
+			case FieldType.text:
+				if isPhone(item):				field = Phone(item)
+				else:										field = Text(item)
 			case FieldType.richText:	field = RichText(item)
 			case FieldType.numeric:
 				if item["format"]["currency"]["useCurrency"]:
 																field = Currency(item)
 				else: 									field = Numeric(item)
 			case FieldType.email: 		field = Email(item)
+			case FieldType.link: 			field = Link(item)
 			case FieldType.contact:		field = Contact(item)
 			case FieldType.date: 			field = Date(item)
 			case FieldType.radio: 		
