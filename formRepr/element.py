@@ -24,12 +24,13 @@ class Element: # basic attributes common to all elements
 		else: 
 			self.label = obj["Label"].strip().strip(":")
 			self.control_name = to_control_name(self.label)
+			self.label = self.label.replace("&", "&amp;")
 
 		# change default section name
 		if (self.formBlock == FormBlock.section 
-			and self.control_name == "section"):
+			and self.control_name in ["section", ""]):
 			global sectionCount
-			self.control_name += f"_{sectionCount}"
+			self.control_name = f"section_{sectionCount}"
 			sectionCount += 1
 		# setting type for form fields
 		if self.formBlock == FormBlock.field:

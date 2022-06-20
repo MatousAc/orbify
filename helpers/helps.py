@@ -14,12 +14,16 @@ def to_control_name(s: str) -> str:
 	s = s.strip().lower().replace(" ", "_")
 	# removes all but allowed characters
 	s = ''.join(filter(allowTheseChars, s))
+	# collapse weird cases of whitespace
+	s = s.replace("_-", "_").replace("-_", "_")
+	s = s.replace("__", "_").replace("__", "_")
 	return s
 
 # does the same except with dashes (values)
 def dashcase(s : str) -> str:
 	s = s.strip().lower().replace(" ", "-")
 	s = ''.join(filter(allowTheseChars, s))
+	s.replace("--", "-")
 	return s
 # FIXME the above two are painfully similar
 
@@ -59,8 +63,9 @@ def isPhone(item):
 def choiceDict(choiceList: list) -> dict:
 	choices = {}
 	for choice in choiceList:
-		l = str(choice["Label"])
-		choices[l] = dashcase(l)
+		l = str(choice["Label"]).replace("&", "&amp;")
+		choices[l] = l # value of label is label
+		# choices[l] = dashcase(l) # values are not just label
 	return choices
 
 # converts a string of numbers into a string of letters
@@ -79,7 +84,11 @@ def staticTextScrub(text: str) -> str:
 	text = text.replace("<", "&lt;").replace(">", "&gt;")
 	# at this point we replace tabs with ' ' because this works 🤷‍♂️
 	text = text.replace("&nbsp;", " ")
-	# headings
+	# replace with doubled-up ampersand encoding:
+	# one for ampersand preservation while copy-pasting, 
+	# and one for ampersand representation in XMP
+	text = text.replace(" & ;", " &amp;amp;")
+	# heading shrink
 	text = text.replace("h5","h6").replace("h4","h5")
 	text = text.replace("h3","h4").replace("h2","h3")
 	text = text.replace("h1","h2")

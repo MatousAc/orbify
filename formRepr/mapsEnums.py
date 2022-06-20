@@ -23,6 +23,7 @@ questionTypeMap = {
 	"DbCheckbox": FieldType.checkbox,
 	"DbSelectList": FieldType.dropdown,
 	"FileAttachment": FieldType.fileAttach,
+	"MultiFileAttachment": FieldType.fileAttach,
 	"Password": FieldType.secret,
 	"Signature": FieldType.signature,
 	# form tools
