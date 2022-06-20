@@ -89,7 +89,6 @@ class Section(Element):
 	def __init__(self, obj):
 		super().__init__(obj)
 		self.open = obj["open"]
-		self.label = obj["Label"]
 		self.grids = []
 		for grid in obj["contents"]:
 			self.grids.append(Grid(grid))
