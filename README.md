@@ -1,26 +1,26 @@
 # **Orbify**
 **Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program](#program)
 ## Overview
-This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking and reconfiguration of generic parameters, orbify reduces this waste of time and allows the Workflow Engineer to focus on translating more-complicated logic/layout features between the platforms.  
-Below I detail what exactly this tool can do for you, how to use it, along with some development notes.  
+This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking and reconfiguration of generic parameters, orbify reduces this waste of time and allows Workflow Engineers to focus on translating more-complicated logic/layout features between the platforms.  
+Below I detail what exactly this tool can do for you, and how to use it, along with some development notes.  
  
 ## Download
 In order to run this script, you must
 1. install Python 3.10.x or greater
-2. get the python module pyperclip  
+2. get the python module pyperclip. use:  
    `pip install pyperclip`
 3. clone [this repository](git@github.com:MatousAc/orbify.git)
-4. navigate into the repository
 ## Use
 
 Orbify is designed to require minimal to use.  
-1. copy the JSON you want translated to your clipboard
-2. in the [orbify repository](.) run  
+1. navigate into the orbify repository on the command line
+2. copy the JSON you want translated to your clipboard
+3. in the [orbify repository](.) run  
    `python orbify.py`
-3.	enter the form's name (oddly, this *isn't* stored in the JSON)
-4. resulting XForms source code is on the clipboard
+3. enter the form's name (oddly, this *isn't* stored in the JSON)
+4. the XForms source code is on your clipboard and control names for all data fields are printed out below
 ## Capabilities
-**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor misalignment which can be adjusted by hand.
+**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor misalignments which can be adjusted by hand.
 |Integrify|Orbeon|
 |-|-|
 |section|section|
@@ -34,27 +34,30 @@ Orbify is designed to require minimal to use.
 |short text|text input|
 |long text|text input|
 |search box|text input|
-|hyperlink|text input|
+|hyperlink|text input with link regex|
 |rich text|formatted text input|
-|number|number input, currency input|
+|number|number input or currency input|
 |email address|email input|
 |contact search|single select list with options populating from a resource|
 |calendar|date input|
-|radio button|radio input/boolean input|
+|radio button|radio input or boolean input|
 |checkbox|multi-select checkboxes|
 |select List|static dropdown|
-|file attachment|file attachment |
+|(multi) file attachment|file attachment |
 |password|secret input|
 |signature|handwritten signature|
 |form text|explanatory text|
+|horizontal line|explanatory text with \<hr/> tag|
 |image|blank space $\downarrow$|
 |blank space|just a placeholder in the grid. no field associated|
 
-There are special cases. When **currency** is detected, orbify translates the number field into a currency input.  
+There are special cases:  
+When **currency** is detected, orbify translates the number field into a currency input.  
 When a radio select has only yes and no options (or true/false), it is translated into a **boolean** input.  
-**Images** get a placeholder, except for FTD Logo Images, which are common enough to hardcode and include.  
-More similar additions will be added in the future (phone numbers, for instance).
+**Images** get a placeholder, except for **FTD Logo Images**, which are common enough to hardcode and include.  
+**Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
 
+**Field Attributes**
 |Integrify|Orbeon|Supported?|
 |-|-|-|
 |required|required|$\checkmark$|
@@ -190,6 +193,11 @@ Form translation is orchestrated in [orbify.py](orbify.py).
 	 This is a slightly more complex programming paradigm, so I won't explain it here, but it's proved to work extremely well for this use case.
 3. Finally,
    ~~~
+	 for cn in names2add:
+		print(cn)
+	 ~~~
+	 prints out all the data field's control names and
+   ~~~
 	 pyperclip.copy(src)
 	 ~~~
-	 places the source code on your clipboard - ready to paste into Orbeon.
+	 places the source code for the form on your clipboard - ready to paste into Orbeon.
