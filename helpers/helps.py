@@ -23,7 +23,7 @@ def to_control_name(s: str) -> str:
 def dashcase(s : str) -> str:
 	s = s.strip().lower().replace(" ", "-")
 	s = ''.join(filter(allowTheseChars, s))
-	s.replace("--", "-")
+	s = s.replace("--", "-").replace("--", "-")
 	return s
 # FIXME the above two are painfully similar
 
