@@ -64,8 +64,8 @@ def choiceDict(choiceList: list) -> dict:
 	choices = {}
 	for choice in choiceList:
 		l = str(choice["Label"]).replace("&", "&amp;")
-		choices[l] = l # value of label is label
-		# choices[l] = dashcase(l) # values are not just label
+		choices[l] = dashcase(l) # values are not just label
+		# choices[l] = l # value of label is label (can't do this)
 	return choices
 
 # converts a string of numbers into a string of letters
