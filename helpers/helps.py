@@ -84,10 +84,13 @@ def staticTextScrub(text: str) -> str:
 	text = text.replace("<", "&lt;").replace(">", "&gt;")
 	# at this point we replace tabs with ' ' because this works 🤷‍♂️
 	text = text.replace("&nbsp;", " ")
+	text = text.replace("&ldquo;", "\"")
+	text = text.replace("&rdquo;", "\"")
+	text = text.replace("&hellip;", "...")
 	# replace with doubled-up ampersand encoding:
 	# one for ampersand preservation while copy-pasting, 
-	# and one for ampersand representation in XMP
-	text = text.replace(" & ;", " &amp;amp;")
+	# and one for ampersand representation in XML
+	text = text.replace(" & ", " &amp;amp; ")
 	# heading shrink
 	text = text.replace("h5","h6").replace("h4","h5")
 	text = text.replace("h3","h4").replace("h2","h3")
