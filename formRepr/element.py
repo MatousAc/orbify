@@ -2,6 +2,7 @@ from helpers.helps import *
 from formRepr.mapsEnums import *
 
 # keeps track of how many nameless grids we've had so far
+fieldCount = 0
 gridCount = 0
 sectionCount = 0
 
@@ -25,18 +26,27 @@ class Element: # basic attributes common to all elements
 			self.label = obj["Label"].strip().strip(":")
 			self.control_name = to_control_name(self.label)
 			self.label = self.label.replace("&", "&amp;")
-
+		
+		self.control_nameFix()
+		# setting type for form fields
+		if self.formBlock == FormBlock.field:
+			self.fieldType = questionTypeMap[obj["QuestionType"]]
+			self.validation = obj["validation"]
+ 
+	def control_nameFix(self):
 		# change default section name
 		if (self.formBlock == FormBlock.section 
 			and self.control_name in ["section", ""]):
 			global sectionCount
 			self.control_name = f"section_{sectionCount}"
 			sectionCount += 1
-		# setting type for form fields
-		if self.formBlock == FormBlock.field:
-			self.fieldType = questionTypeMap[obj["QuestionType"]]
-			self.validation = obj["validation"]
- 
+		# missing field control name
+		if (self.formBlock in [FormBlock.field, FormBlock.formTool] and 
+			(self.label == "" or self.control_name == "")):
+			global fieldCount
+			self.label = f"Field {fieldCount}"
+			self.control_name = f"field_{fieldCount}"
+			fieldCount += 1
 
 	def accept(self, visitor):
 		match self.fieldType:
