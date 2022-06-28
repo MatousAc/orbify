@@ -1,4 +1,4 @@
-from formRepr.formBlocks import Form, names2add
+from formRepr.formBlocks import Form, fieldControls
 from helpers.resources import *
 from helpers.xmlUtilities import *
 from visitors.binder import Binder
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 	form = Form()
 	src = gen_xhtml(form)
 	print("\n################# Control Names #################")
-	for cn in names2add:
+	for cn in fieldControls:
 		print(cn)
 	pyperclip.copy(src)
 	print("\nCode has been copied to clipboard!")

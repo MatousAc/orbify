@@ -6,12 +6,12 @@ from helpers.helps import *
 from formRepr.mapsEnums import *
 # holds all control_names that need to be 
 # added in Genify for this form
-names2add = []
+fieldControls = []
 
 def trackNames(field):
 	if field.formBlock == FormBlock.field:
-		global names2add
-		names2add.append(field.control_name)
+		global fieldControls
+		fieldControls.append(field.control_name)
 
 class Place():
 	def __init__(self, grid, item):

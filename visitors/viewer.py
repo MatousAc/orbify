@@ -61,8 +61,10 @@ class Viewer(Visitor):
 	# this is finally where the "place" block is useful!
 	def visitPlace(self, p: Place) -> str: # p=place
 		placement = f'x="{p.x}" y="{p.y}" w="{p.w}" h="{p.h}"'
+		field = p.field.accept(self)
+		empty = field == ""
 		return tag("fr:c", attrStr=placement,
-			innerText=p.field.accept(self), close=True)
+			innerText=field, selfClosing=empty, close=not empty)
 
 	def visitText(self, text: Text) -> str:
 		src = self.basic3(text)

@@ -2,6 +2,7 @@
 from formRepr.element import Element
 from helpers.helps import *
 from formRepr.mapsEnums import FieldType
+from formRepr.element import allControls
 
 # all these classes define a single field
 # most are all slightly different
@@ -76,7 +77,7 @@ class YesNo(Element):
 		self.fieldType = FieldType.yesno
 		# change control_name to is_control_name
 		self.control_name = f"is_{self.control_name}"
-
+		self.preventConflicts()
 
 class CheckBox(Element):
 	def __init__(self, item):

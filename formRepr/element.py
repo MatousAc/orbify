@@ -1,3 +1,5 @@
+import string
+import random
 from helpers.helps import *
 from formRepr.mapsEnums import *
 
@@ -5,6 +7,8 @@ from formRepr.mapsEnums import *
 fieldCount = 0
 gridCount = 0
 sectionCount = 0
+# keeps track of all names to avoid conflicts
+allControls = []
 
 class Element: # basic attributes common to all elements
 	def __init__(self, obj):
@@ -17,29 +21,31 @@ class Element: # basic attributes common to all elements
 		# everything is section/container/question/formTool
 		self.formBlock = formBlockMap[obj["type"]]
 
-		# control_names
-		global gridCount
-		if self.formBlock == FormBlock.grid:
-			self.control_name = f"grid_{gridCount}"
-			gridCount += 1
-		else: 
-			self.label = obj["Label"].strip().strip(":")
-			self.control_name = to_control_name(self.label)
-			self.label = self.label.replace("&", "&amp;")
-		
-		self.control_nameFix()
+		self.set_control_name(obj)
 		# setting type for form fields
 		if self.formBlock == FormBlock.field:
 			self.fieldType = questionTypeMap[obj["QuestionType"]]
 			self.validation = obj["validation"]
  
-	def control_nameFix(self):
-		# change default section name
-		if (self.formBlock == FormBlock.section 
-			and self.control_name in ["section", ""]):
-			global sectionCount
-			self.control_name = f"section_{sectionCount}"
-			sectionCount += 1
+	def set_control_name(self, obj):
+		global gridCount
+		if self.formBlock == FormBlock.grid:
+			self.control_name = f"grid_{gridCount}"
+			gridCount += 1
+		else:
+			self.label = obj["Label"].strip().strip(":")
+			self.control_name = to_control_name(self.label)
+			self.label = self.label.replace("&", "&amp;")
+		
+		if self.formBlock == FormBlock.section:
+			#default section name
+			if self.control_name in ["section", ""]:
+				global sectionCount
+				self.control_name = f"section_{sectionCount}"
+				sectionCount += 1
+			# differentiate sections from form controls
+			else:
+				self.control_name = f"section_{self.control_name}"
 		# missing field control name
 		if (self.formBlock in [FormBlock.field, FormBlock.formTool] and 
 			(self.label == "" or self.control_name == "")):
@@ -47,6 +53,14 @@ class Element: # basic attributes common to all elements
 			self.label = f"Field {fieldCount}"
 			self.control_name = f"field_{fieldCount}"
 			fieldCount += 1
+		self.preventConflicts()
+
+	def preventConflicts(self):
+		while self.control_name in allControls:
+			letter = random.choice(string.ascii_lowercase)
+			self.control_name += letter
+			self.label += letter
+		allControls.append(self.control_name)
 
 	def accept(self, visitor):
 		match self.fieldType:
