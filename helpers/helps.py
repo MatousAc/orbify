@@ -86,6 +86,8 @@ def staticTextScrub(text: str) -> str:
 	text = text.replace("&nbsp;", " ")
 	text = text.replace("&ldquo;", "\"")
 	text = text.replace("&rdquo;", "\"")
+	text = text.replace("&lsquo;", "'")
+	text = text.replace("&rsquo;", "'")
 	text = text.replace("&hellip;", "...")
 	# replace with doubled-up ampersand encoding:
 	# one for ampersand preservation while copy-pasting, 
