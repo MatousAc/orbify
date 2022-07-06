@@ -4,6 +4,7 @@ from helpers.xmlUtilities import *
 from visitors.binder import Binder
 from visitors.namer import Namer
 from visitors.sourcer import Sourcer
+from visitors.actor import Actor
 from visitors.viewer import Viewer
 import pyperclip
 
@@ -42,13 +43,16 @@ def genModel(form: Form) -> str:
 	src += tag("xf:instance", attrStr=modelAttachAttrs,
 		innerText=tag("attachments", selfClosing=True), close=True)
 	
-	# lay out the forms resources
+	# lay out form resources
 	sourcer = Sourcer()
 	resource = tag("resource", attrStr=enlang,
 		innerText=form.accept(sourcer), close=True)
 	resources = tag("resources", innerText=resource, close=True)
 	src += tag("xf:instance", attrStr=modelResourcesAttrs,
 		innerText=resources, close=True)
+
+	# generate actions and services
+	src += form.accept(Actor())
 
 	# closing
 	src += closing("xf:model") + closing("xh:head")

@@ -95,9 +95,7 @@ viewCurrency = {
 }
 
 viewContact = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl,
-	"resource": "https://165.227.16.142.nip.io:8443/ftdproxyrs/users/orbeon/users"
+	"appearance": "dropdown"
 }
 
 viewRichText = {

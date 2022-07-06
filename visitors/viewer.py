@@ -59,7 +59,7 @@ class Viewer(Visitor):
 			innerText=src, close=True)
 
 	# this is finally where the "place" block is useful!
-	def visitPlace(self, p: Place) -> str: # p=place
+	def visitPlace(self, p: Place) -> str: # place
 		placement = f'x="{p.x}" y="{p.y}" w="{p.w}" h="{p.h}"'
 		field = p.field.accept(self)
 		empty = field == ""
@@ -106,11 +106,10 @@ class Viewer(Visitor):
 
 	def visitContact(self, contact: Contact) -> str:
 		src = self.basic3(contact)
-		label = tag("xf:label", attrStr="ref=\"name\"", selfClosing=True)
-		value = tag("xf:value", attrStr="ref=\"id\"", selfClosing=True)
-		src += tag("xf:itemset", attrStr="ref=\"user\"",
-      innerText=label+value, close=True)
-		return tag("fr:databound-select1", attrDict=viewContact,
+		label = tag("xf:label", attrStr='ref="label"', selfClosing=True)
+		value = tag("xf:value", attrStr='ref="value"', selfClosing=True)
+		src += tag("xf:itemset", innerText=label+value, close=True)
+		return tag("xf:select1", attrDict=viewContact,
 			attrStr=self.idBind(contact),
 			innerText=src, close=True)
 
