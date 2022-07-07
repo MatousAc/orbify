@@ -57,8 +57,8 @@ class Sourcer(Visitor):
 	def visitLink(self, link: Link) -> str:
 		return self.labelHint(link)
 
-	def visitContact(self, contact: Contact) -> str:
-		return self.labelHint(contact)
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		return self.labelHint(datadrop)
 
 	def visitDate(self, date: Date) -> str:
 		return self.labelHint(date)

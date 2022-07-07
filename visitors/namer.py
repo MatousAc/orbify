@@ -51,8 +51,8 @@ class Namer(Visitor):
 	def visitLink(self, link: Link) -> str:
 		return tag(link.control_name, selfClosing=True)
 
-	def visitContact(self, contact: Contact) -> str:
-		return tag(contact.control_name, selfClosing=True)
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		return tag(datadrop.control_name, selfClosing=True)
 
 	def visitDate(self, date: Date) -> str:
 		return tag(date.control_name, selfClosing=True)

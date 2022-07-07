@@ -27,14 +27,17 @@ class Place():
 				else: 									field = Numeric(item)
 			case FieldType.email: 		field = Email(item)
 			case FieldType.link: 			field = Link(item)
-			case FieldType.contact:		field = Contact(item)
+			case FieldType.datadrop:	field = Datadrop(item)
 			case FieldType.date: 			field = Date(item)
 			case FieldType.radio: 		
 				if isYesNo(item["Choices"]):
 																field = YesNo(item)
 				else: 									field = Radio(item)
 			case FieldType.checkbox: 	field = CheckBox(item)
-			case FieldType.dropdown: 	field = DropDown(item)
+			case FieldType.dropdown: 	
+				if (item["dbSettings"]["useDB"]):
+																field = Datadrop(item)
+				else: 									field = DropDown(item)
 			case FieldType.fileAttach:field = FileAttach(item)
 			case FieldType.secret: 		field = Secret(item)
 			case FieldType.signature: field = Signature(item)

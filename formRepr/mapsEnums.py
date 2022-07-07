@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 class FieldType(Enum): # defining all the different field types
 	text,	richText, numeric, date = auto(), auto(), auto(), auto()
-	email, phone, link, contact = auto(), auto(), auto(), auto()
+	email, phone, link, datadrop = auto(), auto(), auto(), auto()
 	radio, checkbox, dropdown, fileAttach = auto(), auto(), auto(), auto()
 	secret, signature, currency, yesno = auto(), auto(), auto(), auto()
 	ftdImage, staticText, space, line = auto(), auto(), auto(), auto() # form tools
@@ -17,10 +17,10 @@ questionTypeMap = {
 	"Number": FieldType.numeric,
 	"EmailAddress": FieldType.email,
 	"Hyperlink": FieldType.link,
-	"ContactSearch": FieldType.contact,
 	"Calendar": FieldType.date,
 	"DbRadioButton": FieldType.radio,
 	"DbCheckbox": FieldType.checkbox,
+	"ContactSearch": FieldType.datadrop,
 	"DbSelectList": FieldType.dropdown,
 	"FileAttachment": FieldType.fileAttach,
 	"MultiFileAttachment": FieldType.fileAttach,

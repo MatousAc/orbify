@@ -71,7 +71,7 @@ class Element: # basic attributes common to all elements
 			case FieldType.email: 		return visitor.visitEmail(self)
 			case FieldType.phone: 		return visitor.visitPhone(self)
 			case FieldType.link:			return visitor.visitLink(self)
-			case FieldType.contact: 	return visitor.visitContact(self)
+			case FieldType.datadrop: 	return visitor.visitDatadrop(self)
 			case FieldType.date: 			return visitor.visitDate(self)
 			case FieldType.radio: 		return visitor.visitRadio(self)
 			case FieldType.yesno:			return visitor.visitYesNo(self)

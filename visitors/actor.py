@@ -4,7 +4,10 @@ from formRepr.formBlocks import *
 from formRepr.fields import *
 from helpers.actionServiceDefs import *
 
-contactSearchCount = 0
+dropCount = {
+	DropType.ftdUsers: 0,
+	DropType.clients: 0
+}
 
 class Actor(Visitor):
 	def servInst(self, name):
@@ -56,14 +59,30 @@ class Actor(Visitor):
 		return tag(xfa, attrStr=f'id="{name}-binding"', 
 			innerText=general + request + response, close=True)
 	
-	# contact search gets actions and services
-	def visitContact(self, contact: Contact) -> str:
-		name = "get-ftd-users"
-		if contactSearchCount: name += contactSearchCount 
-		src = self.servInst(name)
-		src += self.servSubmit(name, GetFTDUsersRes)
-		src += self.action(name, contact, items="/*/user",
-      lbl="name", val="id")
+	# datadrop search gets actions and services
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		match datadrop.dropType:
+			case DropType.ftdUsers:
+				servName = "get-ftd-users"
+				items ="/*/user"
+				label ="name"
+				value ="id"
+				res = resURL + "/users/data.orbeon"
+			case DropType.clients:
+				servName = "get-clients"
+				items ="/*/client"
+				label ="name"
+				value ="id"
+				res = resURL + "/orbeon/clients"
+			case DropType.none: return ''
+		
+		global dropCount
+		if dropCount[datadrop.dropType]:
+			servName += dropCount[datadrop.dropType]
+		dropCount[datadrop.dropType] += 1
+		src = self.servInst(servName)
+		src += self.servSubmit(servName, res)
+		src += self.action(servName, datadrop, items, label, value)
 		return src
   
   # container fields only pass down and distribute the Actor

@@ -94,7 +94,7 @@ viewCurrency = {
 	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
 }
 
-viewContact = {
+viewDatadrop = {
 	"appearance": "dropdown"
 }
 

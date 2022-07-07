@@ -15,7 +15,7 @@ servSubmitAttrs = {
 	"mediatype": ""
 }
 
-GetFTDUsersRes = "https://165.227.16.142.nip.io:8443/ftdproxyrs/users/data.orbeon"
+resURL = "https://165.227.16.142.nip.io:8443/ftdproxyrs"
 
 actGenAttrs = {
 	"event": "xforms-value-changed xforms-enabled",

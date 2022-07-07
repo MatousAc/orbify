@@ -104,13 +104,13 @@ class Viewer(Visitor):
 		return tag("xf:input", attrStr=self.idBind(link),
 			innerText=src, close=True)
 
-	def visitContact(self, contact: Contact) -> str:
-		src = self.basic3(contact)
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		src = self.basic3(datadrop)
 		label = tag("xf:label", attrStr='ref="label"', selfClosing=True)
 		value = tag("xf:value", attrStr='ref="value"', selfClosing=True)
 		src += tag("xf:itemset", innerText=label+value, close=True)
-		return tag("xf:select1", attrDict=viewContact,
-			attrStr=self.idBind(contact),
+		return tag("xf:select1", attrDict=viewDatadrop,
+			attrStr=self.idBind(datadrop),
 			innerText=src, close=True)
 
 	def visitDate(self, date: Date) -> str:

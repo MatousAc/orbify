@@ -1,4 +1,5 @@
 
+from enum import Enum, auto
 from formRepr.element import Element
 from helpers.helps import *
 from formRepr.mapsEnums import FieldType
@@ -54,9 +55,22 @@ class Link(Element):
 		super().__init__(item)
 		self.fieldType = FieldType.link
 
-class Contact(Element):
+class DropType(Enum):
+	ftdUsers = auto()
+	clients = auto()
+	none = auto()
+class Datadrop(Element):
 	def __init__(self, item):
 		super().__init__(item)
+		self.fieldType = FieldType.datadrop
+		if item["QuestionType"] == "ContactSearch":
+			self.dropType = DropType.ftdUsers
+		elif self.control_name in [
+    	"client_name", "clients", "client_names",
+			"clients_names"
+     ] or item["dbSettings"]["DbSourceLabelColumn"] == "nvcCompany":
+			self.dropType = DropType.clients
+		else: self.dropType = DropType.none
 
 class Date(Element):
 	def __init__(self, item):

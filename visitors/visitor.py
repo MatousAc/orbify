@@ -23,8 +23,8 @@ class Visitor:
 		raise Exception("Abstract method 'visitPhone'")
 	def visitLink(self, link: Link) -> str:
 		raise Exception("Abstract method 'visitLink'")
-	def visitContact(self, contact: Contact) -> str:
-		raise Exception("Abstract method 'visitContact'")
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		raise Exception("Abstract method 'visitDatadrop'")
 	def visitDate(self, date: Date) -> str:
 		raise Exception("Abstract method 'visitDate'")
 	def visitRadio(self, radio: Radio) -> str:

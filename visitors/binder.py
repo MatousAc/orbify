@@ -75,8 +75,8 @@ class Binder(Visitor):
 		attrs = self.commonAttrs(Link) | bindLinkAttrs
 		return tag(self.xf, attrDict=attrs, selfClosing=True)
 
-	def visitContact(self, contact: Contact) -> str:
-		attrs = self.commonAttrs(contact)
+	def visitDatadrop(self, datadrop: Datadrop) -> str:
+		attrs = self.commonAttrs(datadrop)
 		return tag(self.xf, attrDict=attrs, selfClosing=True)
 
 	def visitDate(self, date: Date) -> str:
