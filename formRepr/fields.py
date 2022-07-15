@@ -13,6 +13,9 @@ class Text(Element):
 	def __init__(self, item):
 		super().__init__(item)
 
+class Area(Element):
+	def __init__(self, item):
+		super().__init__(item)
 
 class RichText(Element):
 	def __init__(self, item):

@@ -111,6 +111,9 @@ class Actor(Visitor):
 	def visitText(self, text: Text) -> str:
 		return ""
 
+	def visitArea(self, area: Area) -> str:
+		return ""
+
 	def visitRichText(self, richText: RichText) -> str:
 		return ""
 

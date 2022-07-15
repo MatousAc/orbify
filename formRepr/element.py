@@ -65,6 +65,7 @@ class Element: # basic attributes common to all elements
 	def accept(self, visitor):
 		match self.fieldType:
 			case FieldType.text: 			return visitor.visitText(self)
+			case FieldType.area: 			return visitor.visitArea(self)
 			case FieldType.richText:	return visitor.visitRichText(self)
 			case FieldType.numeric:		return visitor.visitNumeric(self)
 			case FieldType.currency:	return visitor.visitCurrency(self)

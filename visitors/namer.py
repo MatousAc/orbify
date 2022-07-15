@@ -33,6 +33,9 @@ class Namer(Visitor):
 	def visitText(self, text: Text) -> str:
 		return tag(text.control_name, selfClosing=True)
 
+	def visitArea(self, area: Area) -> str:
+		return tag(area.control_name, selfClosing=True)
+
 	def visitRichText(self, richText: RichText) -> str:
 		return tag(richText.control_name, selfClosing=True)
 

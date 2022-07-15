@@ -38,7 +38,10 @@ class Sourcer(Visitor):
 
 	def visitText(self, text: Text) -> str:
 		return self.labelHint(text)
-	
+
+	def visitArea(self, area: Area) -> str:
+		return self.labelHint(area)
+
 	def visitRichText(self, richText: RichText) -> str:
 		return self.labelHint(richText)
 

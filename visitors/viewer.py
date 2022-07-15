@@ -71,6 +71,11 @@ class Viewer(Visitor):
 		return tag("xf:input", attrStr=self.idBind(text),
 			innerText=src, close=True)
 
+	def visitArea(self, area: Area) -> str:
+		src = self.basic3(area)
+		return tag("xf:textarea", attrStr=self.idBind(area),
+			innerText=src, close=True)
+
 	def visitRichText(self, richText: RichText) -> str:
 		src = self.basic3(richText)
 		return tag("fr:tinymce", attrDict=viewRichText,

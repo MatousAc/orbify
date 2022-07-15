@@ -46,6 +46,10 @@ class Binder(Visitor):
 		attrs["xxf:whitespace"] = "trim"
 		return tag(self.xf, attrDict=attrs, selfClosing=True)
 
+	def visitArea(self, area: Area) -> str:
+		attrs = self.commonAttrs(area)
+		return tag(self.xf, attrDict=attrs, selfClosing=True)
+
 	def visitRichText(self, richText: RichText) -> str:
 		return tag(self.xf, attrDict=self.commonAttrs(richText),
 			selfClosing=True)

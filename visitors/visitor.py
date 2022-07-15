@@ -11,6 +11,8 @@ class Visitor:
 		raise Exception("Abstract method 'visitPlace'")
 	def visitText(self, text: Text) -> str:
 		raise Exception("Abstract method 'visitText'")
+	def visitArea(self, area: Area) -> str:
+		raise Exception("Abstract method 'visitArea'")
 	def visitRichText(self, richText: RichText) -> str:
 		raise Exception("Abstract method 'visitRichText'")
 	def visitNumeric(self, numeric: Numeric) -> str:

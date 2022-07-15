@@ -20,6 +20,7 @@ class Place():
 			case FieldType.text:
 				if isPhone(item):				field = Phone(item)
 				else:										field = Text(item)
+			case FieldType.area:			field = Area(item)
 			case FieldType.richText:	field = RichText(item)
 			case FieldType.numeric:
 				if item["format"]["currency"]["useCurrency"]:
@@ -33,7 +34,10 @@ class Place():
 				if isYesNo(item["Choices"]):
 																field = YesNo(item)
 				else: 									field = Radio(item)
-			case FieldType.checkbox: 	field = CheckBox(item)
+			case FieldType.checkbox:
+				if isYesNo(item["Choices"]):
+																field = YesNo(item)
+				else: 									field = CheckBox(item)
 			case FieldType.dropdown: 	
 				if (item["dbSettings"]["useDB"]):
 																field = Datadrop(item)
