@@ -78,7 +78,7 @@ class Actor(Visitor):
 		
 		global dropCount
 		if dropCount[datadrop.dropType]:
-			servName += dropCount[datadrop.dropType]
+			servName += str(dropCount[datadrop.dropType])
 		dropCount[datadrop.dropType] += 1
 		src = self.servInst(servName)
 		src += self.servSubmit(servName, res)
