@@ -23,6 +23,7 @@ def allowCharsDashcase(c : str) -> bool:
 	return (c.isalnum() 
 		or c == "_"
 		or c == "-"
+		or c == "/"
 		or c == ";"
 		or c == "&")
 
