@@ -4,7 +4,7 @@ def snake_case(s : str) -> str:
 # here are helper functions that automatically
 # generate control names. names are alphanumeric
 # with '_' between words. '-' is allowed too
-def allowTheseChars(c : str) -> bool:
+def allowCharsControl(c : str) -> bool:
 	return (c.isalnum() 
 		or c == "_"
 		or c == "-")
@@ -13,16 +13,23 @@ def to_control_name(s: str) -> str:
 	# remove spaces, make lower, replace w/ '_'
 	s = s.strip().lower().replace(" ", "_")
 	# removes all but allowed characters
-	s = ''.join(filter(allowTheseChars, s))
+	s = ''.join(filter(allowCharsControl, s))
 	# collapse weird cases of whitespace
 	s = s.replace("_-", "_").replace("-_", "_")
 	s = s.replace("__", "_").replace("__", "_")
 	return s
 
+def allowCharsDashcase(c : str) -> bool:
+	return (c.isalnum() 
+		or c == "_"
+		or c == "-"
+		or c == ";"
+		or c == "&")
+
 # does the same except with dashes (values)
 def dashcase(s : str) -> str:
 	s = s.strip().lower().replace(" ", "-")
-	s = ''.join(filter(allowTheseChars, s))
+	s = ''.join(filter(allowCharsDashcase, s))
 	s = s.replace("--", "-").replace("--", "-")
 	return s
 # FIXME the above two are painfully similar
