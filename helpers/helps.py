@@ -55,6 +55,7 @@ def isPhone(item):
 		("us phone" in lbl) or
 		("home phone" in lbl) or
 		("mobile phone" in lbl) or
+		("work phone" in lbl) or
 		("international phone" in lbl)
 	)
 
