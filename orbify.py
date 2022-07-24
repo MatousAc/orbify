@@ -1,6 +1,9 @@
+import json
+import pyperclip
 from formRepr.formBlocks import Form, fieldControls
 from helpers.resources import *
 from helpers.xmlUtilities import *
+from helpers.helps import extractJSON
 from visitors.binder import Binder
 from visitors.namer import Namer
 from visitors.sourcer import Sourcer
@@ -77,10 +80,13 @@ def gen_xhtml(form: Form) -> str:
 
 
 if __name__ == "__main__":
-	form = Form()
-	src = gen_xhtml(form)
+	name = input("Form Name: ")
+	src = extractJSON(pyperclip.paste())
+	src = json.loads(src)
+	form = Form(name, src)
+	result = gen_xhtml(form)
 	print("\n################# Control Names #################")
 	for cn in fieldControls:
 		print(cn)
-	pyperclip.copy(src)
+	pyperclip.copy(result)
 	print("\nCode has been copied to clipboard!")

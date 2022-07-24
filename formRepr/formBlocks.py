@@ -1,6 +1,3 @@
-import json
-from pickle import FALSE
-import pyperclip
 from formRepr.fields import *
 from helpers.helps import *
 from formRepr.mapsEnums import *
@@ -105,10 +102,10 @@ class Section(Element):
 
 
 class Form:
-	def __init__(self):
-		self.title = input("Form Name: ")
+	def __init__(self, title, json):
+		self.title = title
 		self.control_name = to_control_name(self.title)
-		self.json = json.loads(pyperclip.paste())
+		self.json = json
 		self.sections = []
 		for section in self.json:
 			self.sections.append(Section(section))

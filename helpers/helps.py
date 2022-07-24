@@ -1,3 +1,4 @@
+# makes a string into snake_case
 def snake_case(s : str) -> str:
 	return s.lower().replace(" ", "_")
 
@@ -107,3 +108,10 @@ def staticTextScrub(text: str) -> str:
 	text = text.replace("h3","h4").replace("h2","h3")
 	text = text.replace("h1","h2")
 	return text
+
+def extractJSON(text: str) -> str:
+	if text[0] == '[': return text
+	startStr = "code  View JSON"
+	start = text.find(startStr) + len(startStr)
+	return text[start:]
+
