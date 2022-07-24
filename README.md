@@ -1,9 +1,10 @@
 # **Orbify**
 **Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program](#program)
 ## Overview
-This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking and reconfiguration of generic parameters, orbify reduces this waste of time and allows Workflow Engineers to focus on translating more-complicated logic/layout features between the platforms.  
+This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking, copying, pasting, and reconfiguration of generic parameters, orbify reduces this waste of time and allows Workflow Engineers to focus on translating the more-complicated logic/layout features between the platforms.  
 Below I detail what exactly this tool can do for you, and how to use it, along with some development notes.  
- 
+Note, the program is specialized for FTD Solutions, but can be quite easily altered for other projects. A more generic version will come eventually in another branch.  
+
 ## Download
 In order to run this script, you must
 1. install Python 3.10.x or greater
@@ -12,68 +13,68 @@ In order to run this script, you must
 3. clone [this repository](git@github.com:MatousAc/orbify.git)
 ## Use
 
-Orbify is designed to require minimal to use.  
-1. navigate into the orbify repository on the command line
-2. copy the JSON you want translated to your clipboard
+Orbify is designed to require minimal effort to use.  
+1. navigate into the orbify repository on any CLI
+2. copy the JSON you want translated to your clipboard.  
+   it now suffices to hit `Ctrl + A, Ctrl + C` (while in Integrify's **View JSON**) to select and copy all the JSON because the extra text that is copied along with the JSON is ignored by Orbify.
 3. in the [orbify repository](.) run  
    `python orbify.py`
-3. enter the form's name (oddly, this *isn't* stored in the JSON)
-4. the XForms source code is on your clipboard and control names for all data fields are printed out below
+4. enter the form's name (oddly, this *isn't* stored in the JSON) and hit `Enter`
+5. the XForms source code is on your clipboard and control names for all data fields are printed out below
 ## Capabilities
-**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor misalignments which can be adjusted by hand.
+**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor horizontal misalignments which can be adjusted by hand.
 |Integrify|Orbeon|
 |-|-|
 |section|section|
 |container|grid|
-|column|place|
+|column|place (fc tag)|
 |field|field|
 
 **Fields**: Orbify translates the following fields without known bugs:
 |Integrify|Orbeon|
 |-|-|
 |short text|text input|
-|long text|text input|
-|search box|text input|
+|long text|text area|
+|search box|text input or static select with service and action (FTD API)|
 |hyperlink|text input with link regex|
 |rich text|formatted text input|
-|number|number input or currency input|
+|number|number input or currency input if currency detected|
 |email address|email input|
-|contact search|single select list with options populating from a resource|
+|contact search|static select with service and action using FTD API|
 |calendar|date input|
-|radio button|radio input or boolean input|
+|radio button|radio input|
 |checkbox|multi-select checkboxes|
-|select List|static dropdown|
-|(multi) file attachment|file attachment |
+|select list|static dropdown or static select with service and action (FTD API)|
+|(multi) file attachment|file attachment (multi is not available in Orbeon PE 2019|
 |password|secret input|
 |signature|handwritten signature|
 |form text|explanatory text|
-|horizontal line|explanatory text with \<hr/> tag|
+|horizontal line|explanatory text containing \<hr/> tag|
 |image|blank space $\downarrow$|
 |blank space|just a placeholder in the grid. no field associated|
 
 There are special cases:  
-When **currency** is detected, orbify translates the number field into a currency input.  
-When a radio select has only yes and no options (or true/false), it is translated into a **boolean** input.  
-**Images** get a placeholder, except for **FTD Logo Images**, which are common enough to hardcode and include.  
-**Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
+When a radio select or checkbox input has only the options "yes" and "no" (or true/false, case insensitive), it is translated into a **boolean** input, known as YesNo in Orbeon.  
+**Images** get a placeholder, except for **FTD Logo Images**, which are common enough in FTD forms to hardcode and include.  
+**Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", "Work Phone", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
 
 **Field Attributes**
 |Integrify|Orbeon|Supported?|
 |-|-|-|
 |required|required|$\checkmark$|
+|digits-after-decimal|digitsAfterDecimal|$\checkmark$|
 |show|show|X|
 
 ## Form Representation
-This section simply explains how forms are represented in either of the two systems.
+This section simply explains how forms are represented in both of the two systems.
 ### **Integrify**
-forms uses a purely JSON representation to keep track of their forms. There isn't much complexity to their setup, but basically the JSON is:  
-*json representation* | **code representation**
-* a list of *objects* 
+forms uses a purely JSON representation to keep track of their forms. There isn't much complexity to their setup. Below, it is hierarchically broken down with the *json representation* italicized and the **logical/code representation** emboldened:
+* The JSON from Integrify is a list of *objects* 
 * each object is a **section**, the building block of a form 
 * each section's contents list contains **container** *objects* 
-* a container has columns in which all *items*/**fields** reside 
-* if there are two objects in the column list, then this container is 2-columned. if there's one, then it's just a single column (common sense)
-* each item at this level corresponds to a field in the form 
+* a container has columns in which all *item objects*/**fields** reside 
+* if there are *two objects* in the column list, then this **container is 2-columned**. if there's one, then it's just a single column (common sense)
+* each item at this level corresponds to a field in the form
 * fields are *objects* that contain the field's attributes. these attributes include things like 
 	* QuestionType (ShortText, FileAttatchment) 
 	* Label (Job Title, Acceptance Letter) 
@@ -84,11 +85,11 @@ forms uses a purely JSON representation to keep track of their forms. There isn'
 	* validation {required, minMessage, . . .} 
 
 There are structures (such as sections, and columns) and attributes (Label, show, validation) that we need to retain, and others we won't really care to try to translate. Some fields for Orbeon are calculated (any control name can be easily based on "Label" or element count).  
-Note that Integrify's JSON notation does not contain the name of the form itself, so this is gathered at runtime.
+Note that Integrify's JSON notation does not contain the name of the form itself, so this is collected at runtime.
 
 ### **Orbeon**
 uses XForms to represent its forms. XForms is an XML-style representation that leverages the MVC approach.  
-The **model** describes the form data and sets up constraints and submissions.  
+The **model** describes the form data and sets up constraints, submission-types, API calls, and form resources.  
 The **view** describes what controls appear in the form, how they are grouped together, and what data they are bound to. 
 
 The very first tag is the xh:html tag, containing various imports from w3, Orbeon, and Saxon. This first tag is just about identical in each form andis handled using a simple string in Python.  
@@ -178,26 +179,32 @@ $w$ which is obviously the element's width. It can range from 1-12. A full-width
 
 ## Program
 Form translation is orchestrated in [orbify.py](orbify.py).
-1. First the form object is created.
+1. First the form's name is collected and the JSON is extracted from whatever is on the clipboard
    ~~~
-   form = Form()
+	 name = input("Form Name: ")
+	 src = extractJSON(pyperclip.paste())
+	 src = json.loads(src)
+	 ~~~
+2. Next, the form object is created.
+   ~~~
+	 form = Form(name, src)
    ~~~
 	 JSON is retrieved from the clipboard and parsed. Then the form creates section objects, with in turn create grids, and so on and so forth. Each form "block" contains objects within it that are iteratively constructed using parsed JSON objects.  
 	 Eventually, we have `Form` > `Section` > `Grid` > `Place` - `Field` where each level block contains multiple smaller blocks except each place contains only one field.  
 	 This might feel like overkill, but it is actually a very useful and scalable code representation for continuous development.
-2. The second line of code
+3. The second line of code
    ~~~
-	 src = gen_xhtml(form)
+	 result = gen_xhtml(form)
 	 ~~~
 	 constructs a string with all the XML/XForms source code in it. From a developer's perspective, one would hope to have all the code that generates the model's *resources* in one place, while code that generates the *view* would be elsewhere. Although there are other ways to organize (possibly by field and class type, because of the hierarchical nature of XML, I chose to use the **visitor design pattern**.  
 	 This is a slightly more complex programming paradigm, so I won't explain it here, but it's proved to work extremely well for this use case.
 3. Finally,
    ~~~
-	 for cn in names2add:
+	 for cn in fieldControls:
 		print(cn)
 	 ~~~
 	 prints out all the data field's control names and
    ~~~
-	 pyperclip.copy(src)
+	 pyperclip.copy(result)
 	 ~~~
 	 places the source code for the form on your clipboard - ready to paste into Orbeon.
