@@ -54,12 +54,12 @@ class Place():
 		# could have changed in the constructors above
 		trackNames(field)
 		self.field = field
-		self.h = grid.h
-		self.w = grid.w
+		self.h = grid.curH
+		self.w = grid.curW
 		if field.fieldType == FieldType.ftdImage:
-			self.w = grid.w // 2
-		self.x = grid.x
-		self.y = grid.y
+			self.w = grid.curW // 2
+		self.x = grid.curX
+		self.y = grid.curY
 	
 	def accept(self, visitor):
 		return visitor.visitPlace(self)
@@ -70,19 +70,33 @@ class Grid(Element):
 	def __init__(self, obj):
 		super().__init__(obj)
 		self.open = obj["open"]
-		# grid measurements
+		# getting grid measurements
 		numDivisions = 12
 		self.numColumns = len(obj["columns"])
-		self.w = (int) (numDivisions / self.numColumns)
-		self.h = 1
-		self.x = 1
+		self.numRows = 0
+		for col in obj["columns"]:
+			numRows = len(col["items"])
+			if numRows > self.numRows:
+				self.numRows = numRows
+		# where we are in the grid right now
+		self.curW = (int) (numDivisions / self.numColumns)
+		self.curH = 1
+		self.curX = 1
 		self.places = []
 		for col in obj["columns"]:
-			self.y = 1
+			self.curY = 0
 			for item in col["items"]:
+				self.curY += 1 # move one row farther down
 				self.places.append(Place(self, item))
-				self.y += 1 # move one row farther down
-			self.x += self.w # move one column farther over
+			# here we insert blank spaces wherever there aren't enough
+			# fields to fill up the total number of rows
+			numSpaces = self.numRows - self.curY
+			while numSpaces > 0:
+				self.curY += 1
+				# add space
+				self.places.append(Place(self, spaceItem()))
+				numSpaces -= 1
+			self.curX += self.curW # move one column farther over
 	
 	def accept(self, visitor):
 		return visitor.visitGrid(self)

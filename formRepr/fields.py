@@ -66,7 +66,7 @@ class Datadrop(Element):
 	def __init__(self, item):
 		super().__init__(item)
 		self.fieldType = FieldType.datadrop
-		if item["QuestionType"] == "ContactSearch":
+		if item["QuestionType"] in ["ContactSearch", "MultiContactSearch"]:
 			self.dropType = DropType.ftdUsers
 		elif self.control_name in [
     	"client_name", "clients", "client_names",

@@ -115,3 +115,11 @@ def extractJSON(text: str) -> str:
 	start = text.find(startStr) + len(startStr)
 	return text[start:]
 
+def spaceItem():
+  return {
+    "QuestionType": "BlankSpace",
+    "displayName": "",
+    "Label": "",
+    "show": True,
+    "type": "FormTool_Type"
+	}

@@ -21,6 +21,7 @@ questionTypeMap = {
 	"DbRadioButton": FieldType.radio,
 	"DbCheckbox": FieldType.checkbox,
 	"ContactSearch": FieldType.datadrop,
+	"MultiContactSearch": FieldType.datadrop,
 	"DbSelectList": FieldType.dropdown,
 	"FileAttachment": FieldType.fileAttach,
 	"MultiFileAttachment": FieldType.fileAttach,
