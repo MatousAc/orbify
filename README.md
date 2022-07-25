@@ -27,7 +27,7 @@ Orbify is designed to require minimal effort to use.
 |-|-|
 |section|section|
 |container|grid|
-|column|place (fc tag)|
+|column|place <fr:c/>|
 |field|field|
 
 **Fields**: Orbify translates the following fields without known bugs:
