@@ -40,8 +40,7 @@ ftdImgInner = "/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d
 bindPhoneAttrs = {
   "xxf:whitespace": "trim",
 	"constraint": ". = '' or matches(., '^\+?(\s*\(?\d\D?\s*){10,13}$')",
-	"calculate": "if (string-length(replace(., '\D', '')) = 10)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{4})', '($1) $2-$3')&#xA;else if (string-length(replace(., '\D', '')) = 11)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{1})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 12)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{2})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 13)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else .",
-	"readonly": "false()"
+	"calculate": "if (string-length(replace(., '\D', '')) = 10)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{4})', '($1) $2-$3')&#xA;else if (string-length(replace(., '\D', '')) = 11)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{1})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 12)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{2})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 13)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else ."
 }
 bindLinkAttrs = {
 	"xxf:whitespace": "trim",

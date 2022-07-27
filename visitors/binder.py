@@ -9,10 +9,13 @@ class Binder(Visitor):
 
 	def commonAttrs(self, block):
 		attrs = {
-			"id":		f"{block.control_name}-bind",
-			"ref":	block.control_name,
-			"name":	block.control_name
+			"id":			f"{block.control_name}-bind",
+			"ref":		block.control_name,
+			"name":		block.control_name,
+			"readonly":	f'{"true" if block.readonly else "false"}()'
 		}
+		if not block.visible: # implicitly visible
+			attrs["relevant"] = 'false()'
 		if block.formBlock == FormBlock.field:
 			req = block.validation["required"]
 			attrs["required"] = f'{"true" if req else "false"}()'

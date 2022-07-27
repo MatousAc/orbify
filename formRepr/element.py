@@ -18,6 +18,12 @@ class Element: # basic attributes common to all elements
 		self.readonly = False
 		if "readonly" in list(obj.keys()):
 			self.readonly = obj["readonly"]
+		# visible
+		self.visible = True
+		if "hidden" in list(obj.keys()):
+			# for now, we only care to auto hide things 
+   		# that are explicitly set as hidden
+			self.visible = not obj["hidden"]
 		# everything is section/container/question/formTool
 		self.formBlock = formBlockMap[obj["type"]]
 

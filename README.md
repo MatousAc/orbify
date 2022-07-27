@@ -62,8 +62,10 @@ When a radio select or checkbox input has only the options "yes" and "no" (or tr
 |Integrify|Orbeon|Supported?|
 |-|-|-|
 |required|required|$\checkmark$|
+|readonly|readonly|$\checkmark$|
+|hidden|visibility/relevant|$\checkmark$|
+|show|visibility/relevant|X|
 |digits-after-decimal|digitsAfterDecimal|$\checkmark$|
-|show|show|X|
 
 ## Form Representation
 This section simply explains how forms are represented in both of the two systems.
