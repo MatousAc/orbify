@@ -32,6 +32,7 @@ questionTypeMap = {
 	"FormText": FieldType.staticText,
 	"HorizontalRule": FieldType.line,
 	"BlankSpace": FieldType.space,
+	"Grid": FieldType.space,
 }
 
 # the different levels of form building blocks

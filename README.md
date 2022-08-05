@@ -54,9 +54,10 @@ Orbify is designed to require minimal effort to use.
 |blank space|just a placeholder in the grid. no field associated|
 
 There are special cases:  
-When a radio select or checkbox input has only the options "yes" and "no" (or true/false, case insensitive), it is translated into a **boolean** input, known as YesNo in Orbeon.  
-**Images** get a placeholder, except for **FTD Logo Images**, which are common enough in FTD forms to hardcode and include.  
-**Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", "Work Phone", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
+* When a radio select or checkbox input has only the options "yes" and "no" (or true/false, case insensitive), it is translated into a **boolean** input, known as YesNo in Orbeon.  
+* **Images** get a placeholder, except for **FTD Logo Images**, which are common enough in FTD forms to hardcode and include.  
+* **Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", "Work Phone", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
+* **Grid** translation is not currently supported. Grids are replaced with blank spaces.
 
 **Field Attributes**
 |Integrify|Orbeon|Supported?|
