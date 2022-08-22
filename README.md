@@ -65,8 +65,9 @@ There are special cases:
 |required|required|$\checkmark$|
 |readonly|readonly|$\checkmark$|
 |hidden|visibility/relevant|$\checkmark$|
-|show|visibility/relevant|X|
 |digits-after-decimal|digitsAfterDecimal|$\checkmark$|
+|show|visibility/relevant|X|
+|Allowed File Types|Supported Mime Types|X|
 
 ## Form Representation
 This section simply explains how forms are represented in both of the two systems.
