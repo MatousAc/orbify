@@ -27,7 +27,7 @@ fr:data-format-version="4.0.0\""""
 # model outer tag attributes
 modelAttrs = 'id="fr-form-model" xxf:expose-xpath-types="true" xxf:analysis.calculate="true"'
 modelDataMapAttrs = 'id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id"'
-modelBindAttrs = """id="fr-form-binds" ref="instance('fr-form-instance')\""""
+modelBindAttrs = """id="fr-form-binds" ref="instance('fr-form-instance')" readonly="/form/is_form_readonly/text() = 'true'\""""
 modelMetaAttrs = 'id="fr-form-metadata" xxf:readonly="true" xxf:exclude-result-prefixes="#all"'
 modelAttachAttrs = 'id="fr-form-attachments" xxf:exclude-result-prefixes="#all"'
 modelResourcesAttrs = 'xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all"'

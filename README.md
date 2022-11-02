@@ -2,8 +2,7 @@
 [Overview](#overview) | [How to Run](#how-to-run) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program Structure](#program-structure)
 ## Overview
 This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking, copying, pasting, and reconfiguration of generic parameters, orbify reduces this waste of time and allows Workflow Engineers to focus on translating the more-complicated logic/layout features between the platforms.  
-Below I detail what exactly this tool can do for you, and how to use it, along with some development notes.
-Note, the program is specialized for FTD Solutions, but can be quite easily altered for other projects. A more generic version will come eventually in another branch.  
+Below I detail what exactly this tool can do for you, and how to use it, along with some development notes. Note, the program is specialized in a few places for FTD Solutions, but can be used and extended by others.
 
 ## How to Run
 Orbify is designed to require minimal effort to use. In order to run this script, you must
