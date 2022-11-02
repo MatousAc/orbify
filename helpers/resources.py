@@ -39,12 +39,12 @@ ftdImgInner = "/fr/service/persistence/crud/orbeon/builder/data/f3b1932efed53c4d
 # bind attributes
 bindPhoneAttrs = {
   "xxf:whitespace": "trim",
-	"constraint": ". = '' or matches(., '^\+?(\s*\(?\d\D?\s*){10,13}$')",
-	"calculate": "if (string-length(replace(., '\D', '')) = 10)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{4})', '($1) $2-$3')&#xA;else if (string-length(replace(., '\D', '')) = 11)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{1})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 12)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{2})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 13)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else ."
+  "constraint": ". = '' or matches(., '^\+?(\s*\(?\d\D?\s*){10,13}$')",
+  "calculate": "if (string-length(replace(., '\D', '')) = 10)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{4})', '($1) $2-$3')&#xA;else if (string-length(replace(., '\D', '')) = 11)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{1})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 12)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{2})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else if (string-length(replace(., '\D', '')) = 13)&#xA;then replace(replace(., '\D', ''),&#xA;        '(\d{3})(\d{3})(\d{3})(\d{4})', '+$1 ($2) $3-$4')&#xA;else ."
 }
 bindLinkAttrs = {
-	"xxf:whitespace": "trim",
-	"constraint": ". = '' or matches(., '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}')"
+  "xxf:whitespace": "trim",
+  "constraint": ". = '' or matches(., '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}')"
 }
 
 # resource attributes
@@ -56,58 +56,58 @@ vfw = 'field-width="natural"'
 xxbl = "http://orbeon.org/oxf/xml/xbl"
 fbURL = "http://orbeon.org/oxf/xml/form-builder"
 xblurl = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl
+  "xmlns": fbURL,
+  "xmlns:xxbl": xxbl
 }
 # specifics
 viewFrBody = 'xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors"'
 viewDate = {
-	"xmlns:xxbl": xxbl,
-	"xmlns:DateSupport": "java:org.orbeon.xbl.DateSupportJava",
-	"field-width": "natural"
+  "xmlns:xxbl": xxbl,
+  "xmlns:DateSupport": "java:org.orbeon.xbl.DateSupportJava",
+  "field-width": "natural"
 }
 
 viewNumeric = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl,
-	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
+  "xmlns": fbURL,
+  "xmlns:xxbl": xxbl,
+  "xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
 }
 
 viewAttach = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl,
-	"class": "fr-attachment"
+  "xmlns": fbURL,
+  "xmlns:xxbl": xxbl,
+  "class": "fr-attachment"
 }
 
 viewYesNo = viewSignature = xblurl
 
 viewRadio = {
-	"appearance": "full"
+  "appearance": "full"
 }
 
 viewCheckBox = viewRadio
 
 viewCurrency = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl,
-	"xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
+  "xmlns": fbURL,
+  "xmlns:xxbl": xxbl,
+  "xmlns:NumberSupport": "java:org.orbeon.xbl.NumberSupportJava"
 }
 
 viewDatadrop = {
-	"appearance": "dropdown"
+  "appearance": "dropdown"
 }
 
 viewRichText = {
-	"xmlns:xxbl": xxbl,
-	"xmlns:f": "http://orbeon.org/oxf/xml/formatting"
+  "xmlns:xxbl": xxbl,
+  "xmlns:f": "http://orbeon.org/oxf/xml/formatting"
 }
 
 viewStaticText = {
-	"xmlns:xxbl": xxbl
+  "xmlns:xxbl": xxbl
 }
 
 viewImage = {
-	"xmlns": fbURL,
-	"xmlns:xxbl": xxbl,
-	"class": "fr-static-attachment"
+  "xmlns": fbURL,
+  "xmlns:xxbl": xxbl,
+  "class": "fr-static-attachment"
 }
