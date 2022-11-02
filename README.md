@@ -1,36 +1,37 @@
 # **Orbify**
-**Contents** | [Overview](#overview) | [Download](#download) | [Use](#use) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program](#program)
+[Overview](#overview) | [How to Run](#how-to-run) | [Capabilities](#capabilities) | [Form Representation](#form-representation) | [Program Structure](#program-structure)
 ## Overview
 This is a small project aiming to simplify the process of transferring forms from **Integrify** to **Orbeon**. Because this process regularly involves much clicking, copying, pasting, and reconfiguration of generic parameters, orbify reduces this waste of time and allows Workflow Engineers to focus on translating the more-complicated logic/layout features between the platforms.  
-Below I detail what exactly this tool can do for you, and how to use it, along with some development notes.  
+Below I detail what exactly this tool can do for you, and how to use it, along with some development notes.
 Note, the program is specialized for FTD Solutions, but can be quite easily altered for other projects. A more generic version will come eventually in another branch.  
 
-## Download
-In order to run this script, you must
-1. install Python 3.10.x or greater
-2. get the python module pyperclip. use:  
+## How to Run
+Orbify is designed to require minimal effort to use. In order to run this script, you must
+1. Install Python 3.10.x or greater.
+2. Get the python module pyperclip.  
    `pip install pyperclip`
-3. clone [this repository](git@github.com:MatousAc/orbify.git)
-## Use
-
-Orbify is designed to require minimal effort to use.  
-1. navigate into the orbify repository on any CLI
-2. copy the JSON you want translated to your clipboard.  
-   it now suffices to hit `Ctrl + A, Ctrl + C` (while in Integrify's **View JSON**) to select and copy all the JSON because the extra text that is copied along with the JSON is ignored by Orbify.
-3. in the [orbify repository](.) run  
+3. Clone [this repository](git@github.com:MatousAc/orbify.git).  
+   `git clone git@github.com:MatousAc/orbify.git`
+4. Navigate into the orbify repository on the command line.
+5. Copy the JSON you want translated to your clipboard. You can just open Integrify's **View JSON** modal and then hit `Ctrl + A, Ctrl + C` to select and copy all the JSON on the page. This selects a bit more than just the JSON in the modal, but Orbify should ignore anything that comes before the JSON.
+6. Run `orbify.py` in [this repository](.).  
    `python orbify.py`
-4. enter the form's name (oddly, this *isn't* stored in the JSON) and hit `Enter`
-5. the XForms source code is on your clipboard and control names for all data fields are printed out below
+7. Enter the form's name (sadly, this *isn't* stored in the JSON) and hit `Enter`. Orbify then uses the JSON on your clipboard to create XML.
+8. The XForms source code will then be copied to your clipboard and the control names for all data fields will be printed out in the terminal. Paste this source code into Orbify's "Edit Source" modal and click `Apply`.
 ## Capabilities
-**Layout**: Just about all pieces of the layout are translated. The only significant difference is that in integrify there are columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor horizontal misalignments which can be adjusted by hand.
+### Layout 
+Just about all pieces of the layout are translated. The only significant difference is that in integrify there are only columns inside containers, while Orbeon's grids have uniform columns *and rows*. This can cause some minor horizontal misalignments which can be adjusted by hand.
+
+Shown below, the layout elements in every row serve generally the same functionality.
 |Integrify|Orbeon|
 |-|-|
 |section|section|
 |container|grid|
-|column|place <fr:c/>|
+|column|\<fr:c/>|
 |field|field|
 
-**Fields**: Orbify translates the following fields without known bugs:
+### Fields
+Orbify translates the following fields from Integrify (left) to Orbeon (right) without known bugs:
 |Integrify|Orbeon|
 |-|-|
 |short text|text input|
@@ -54,32 +55,33 @@ Orbify is designed to require minimal effort to use.
 |blank space|just a placeholder in the grid. no field associated|
 
 There are special cases:  
-* When a radio select or checkbox input has only the options "yes" and "no" (or true/false, case insensitive), it is translated into a **boolean** input, known as YesNo in Orbeon.  
-* **Images** get a placeholder, except for **FTD Logo Images**, which are common enough in FTD forms to hardcode and include.  
-* **Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", "Work Phone", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting.  
-* **Grid** translation is not currently supported. Grids are replaced with blank spaces.
+* When a radio select or checkbox input has only the options "yes" and "no" (or true/false, case insensitive), it is translated into a **boolean** input, known as YesNo input in Orbeon. This is done because the intent of the input is clear, yet misconfigured.  
+* **Images** get a placeholder. because the data for them is not included in the JSON and downloading and uploading them to Orbeon has not yet been implemented. However, **FTD Logo Images** are common enough in FTD forms to hardcode and include.  
+* **Phone numbers** are detected based on field labels ("Cell Phone", "Phone #", "Work Phone", etc . . .) and are translated into text inputs with special phone-number-like constraints and rigid formatting. These allow for up-to 13 digit phone numbers (international format).  
+* **Integrify Grid** translation to Orbeon is not currently supported. Grids/table inputs are replaced with blank spaces in Orbeon.
 
-**Field Attributes**
+### Field Attributes
+Below are attributes on fields and/or containers and their respective names in Integrify and Orbeon. Some are supported, while others are not.
 |Integrify|Orbeon|Supported?|
 |-|-|-|
 |required|required|$\checkmark$|
 |readonly|readonly|$\checkmark$|
-|hidden|visibility/relevant|$\checkmark$|
+|hidden|visibility/relevancy|$\checkmark$|
+|show|visibility/relevancy|X|
 |digits-after-decimal|digitsAfterDecimal|$\checkmark$|
-|show|visibility/relevant|X|
 |Allowed File Types|Supported Mime Types|X|
 
 ## Form Representation
 This section simply explains how forms are represented in both of the two systems.
 ### **Integrify**
-forms uses a purely JSON representation to keep track of their forms. There isn't much complexity to their setup. Below, it is hierarchically broken down with the *json representation* italicized and the **logical/code representation** emboldened:
+Integrify uses a pure JSON representation to keep track of its forms. There isn't much complexity to their setup. Below, it is hierarchically broken down with the *json representation* italicized and the **logical representation** emboldened:
 * The JSON from Integrify is a list of *objects* 
 * each object is a **section**, the building block of a form 
-* each section's contents list contains **container** *objects* 
-* a container has columns in which all *item objects*/**fields** reside 
-* if there are *two objects* in the column list, then this **container is 2-columned**. if there's one, then it's just a single column (common sense)
-* each item at this level corresponds to a field in the form
-* fields are *objects* that contain the field's attributes. these attributes include things like 
+* each section's "*contents* list" contains **container** *objects* 
+* if there are *two objects* in the column list, then this container has **two columns**. if there's *one object*, then there is just a **single column** in this container (common sense)
+* inside each container's columns are *item objects*
+* each item at this level corresponds to a **field** in the form
+* **fields** are *objects* that contain the field's attributes. these attributes include things like 
 	* QuestionType (ShortText, FileAttatchment) 
 	* Label (Job Title, Acceptance Letter) 
 	* Class (for CSS) 
@@ -88,15 +90,16 @@ forms uses a purely JSON representation to keep track of their forms. There isn'
 	* id 
 	* validation {required, minMessage, . . .} 
 
-There are structures (such as sections, and columns) and attributes (Label, show, validation) that we need to retain, and others we won't really care to try to translate. Some fields for Orbeon are calculated (any control name can be easily based on "Label" or element count).  
-Note that Integrify's JSON notation does not contain the name of the form itself, so this is collected at runtime.
+Note that there are structures (such as sections, and columns) and attributes (Label, show, validation) that we need to retain, and others we won't really care to try to translate.  
+Also, some fields for Orbeon are calculated (any control name can be easily based on "Label" or element count).  
+Notice that Integrify's JSON notation does not contain the name of the form itself, so this is collected at runtime.
 
 ### **Orbeon**
-uses XForms to represent its forms. XForms is an XML-style representation that leverages the MVC approach.  
+Orbeon uses XForms to represent its forms. XForms is an XML-style representation that leverages what is called the "MVC approach".  
 The **model** describes the form data and sets up constraints, submission-types, API calls, and form resources.  
 The **view** describes what controls appear in the form, how they are grouped together, and what data they are bound to. 
 
-The very first tag is the xh:html tag, containing various imports from w3, Orbeon, and Saxon. This first tag is just about identical in each form andis handled using a simple string in Python.  
+The very first tag is the xh:html tag, containing various imports from w3, Orbeon, and Saxon. This first tag is just about identical in each form and is handled using a simple string in Python.  
 To a high degree, all of the following sections mirror the form structure. The model primarily deals with data and data-binding, while the view will deal a lot more with placement and such.
 
 #### **Model**
@@ -161,7 +164,7 @@ Inputs with choices, such as radio buttons and checkboxes, have items in the res
 ~~~
 After this instance, the XForms model and head tags close.
 
-### **View**
+#### **View**
 This section begins with the generic nested tags 
 ~~~
 <xh:body>
@@ -181,7 +184,7 @@ It appears that XForms has borrowed a bootstrap-style grid scheme (or the other 
 
 $w$ which is obviously the element's width. It can range from 1-12. A full-width element is w="12" and one that takes up half a page is $w="6"$. Height $h$ doesn't seem to have a limit. The $x$ and $y$ variables seem to indicate position on the page relative to the top left corner of the grid. Here is an example of what all these values look like: 
 
-## Program
+## Program Structure
 Form translation is orchestrated in [orbify.py](orbify.py).
 1. First the form's name is collected and the JSON is extracted from whatever is on the clipboard
    ~~~

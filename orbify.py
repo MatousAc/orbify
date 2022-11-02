@@ -9,8 +9,6 @@ from visitors.namer import Namer
 from visitors.sourcer import Sourcer
 from visitors.actor import Actor
 from visitors.viewer import Viewer
-import pyperclip
-
 
 def genMeta(form: Form) -> str:
 	src = (
