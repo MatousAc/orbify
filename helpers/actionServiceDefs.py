@@ -15,7 +15,7 @@ servSubmitAttrs = {
 	"mediatype": ""
 }
 
-resURL = "https://165.227.16.142.nip.io:8443/ftdproxyrs"
+resURL = "{xxf:property('ftd.url')}/ftdproxyrs"
 
 actGenAttrs = {
 	"event": "xforms-value-changed xforms-enabled",
