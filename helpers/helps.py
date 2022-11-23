@@ -50,7 +50,6 @@ def isYesNo(choices: dict) -> bool:
 
 # determines if an image element is a generic FTD logo
 def isFTDImage(item):
-  print(f"item {item}")
   if (not item["properties"]["imageFile"]): return False
   txt = item["properties"]["imageFile"]["text"].lower()
   return "ftd logo" in txt
