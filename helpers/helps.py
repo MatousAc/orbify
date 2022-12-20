@@ -18,6 +18,15 @@ def to_control_name(s: str) -> str:
   # collapse weird cases of whitespace
   s = s.replace("_-", "_").replace("-_", "_")
   s = s.replace("__", "_").replace("__", "_")
+  if (s and s[0].isdigit()):
+    num2word = {
+      "0" : "zero", "1": "one",
+      "2" : "two", "3": "three",
+      "4" : "four", "5": "five",
+      "6" : "six", "7": "seven",
+      "8" : "eight", "9": "nine"
+    }
+    s = num2word[s[0]] + s[1:]
   return s
 
 def allowCharsDashcase(c : str) -> bool:
