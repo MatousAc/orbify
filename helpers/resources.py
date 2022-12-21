@@ -2,7 +2,7 @@
 # generating the source code string 
 
 # general
-version = "2019.2.2.202003311635 PE"
+version = "2021.1.4.202208011854 PE"
 enlang = 'xml:lang="en"'
 hintTag = "<hint/>"
 
