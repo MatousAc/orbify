@@ -73,13 +73,12 @@ Below are attributes on fields and/or containers and their respective names in I
 ## Form Representation
 This section simply explains how forms are represented in both of the two systems.
 ### **Integrify**
-Integrify uses a pure JSON representation to keep track of its forms. There isn't much complexity to their setup. Below, it is hierarchically broken down with the *json representation* italicized and the **logical representation** emboldened:
-* The JSON from Integrify is a list of *objects* 
+Integrify uses a pure JSON representation to keep track of its forms. There isn't much complexity to their setup. Below, it is hierarchically broken down with the *json representation* italicized and the **logical meaning** emboldened:
+* An Integrify form is just JSON. At the top level, it is a list of *objects* 
 * each object is a **section**, the building block of a form 
 * each section's "*contents* list" contains **container** *objects* 
 * if there are *two objects* in the column list, then this container has **two columns**. if there's *one object*, then there is just a **single column** in this container (common sense)
-* inside each container's columns are *item objects*
-* each item at this level corresponds to a **field** in the form
+* inside each container's columns are *item objects*. each item at this level corresponds to a **field** in the form
 * **fields** are *objects* that contain the field's attributes. these attributes include things like 
 	* QuestionType (ShortText, FileAttatchment) 
 	* Label (Job Title, Acceptance Letter) 
